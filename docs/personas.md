@@ -11,7 +11,7 @@
 #### Gender: Male
 
 ![alt text][ben]
-Ben is a curious and ambitious teenager. Ben has a passion for computers, video games, and YouTube. Ben his time outside of school watching YouTube videos on gaming and tech. He also spends a lot of his time playing Halo 5 on his Xbox One at home. He has never programmed before but is interested in learning. Ben uses YouTube videos as tutorials for many things, so he is also using it to watch a course about learning how to program Python. Ben learns by doing and loves to test out code he's learning about and mess around with it.
+Ben is a curious and ambitious teenager. Ben has a passion for computers, video games, and YouTube. Ben spends his time outside of school watching YouTube videos on gaming and tech. He also spends a lot of his time playing Halo 5 on his Xbox One at home. He has never programmed before but is interested in learning. Ben uses YouTube videos as tutorials for many things, so he is also using it to watch a course about learning how to program Python. Ben learns by doing and loves to test out code he's learning about and mess around with it.
 ***
 #### Name: Prof. Howard Stark
 #### Age: 64
