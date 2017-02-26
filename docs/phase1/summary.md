@@ -4,7 +4,7 @@ OBJECTIVES
 ###Overview
 1. Setup account management and (restricted) guest access
 2. Allow users to compile and run Python code
-  - access to save / load files with an account
+  - Access to save / load files with an account
 3. UI to manage files, navigate site, and work on code
 
 ###Details
@@ -46,7 +46,7 @@ KEY USERS
 
 4. Professionals encompass anyone who is working in the field of I.T. or similar
 	and would appreciate an easy, distraction free environment to use as a test bench,
-	that they can have mobile access to, and have access from multiple computers.
+	that they can have have access to from multiple computers.
 
 ---
 
@@ -81,18 +81,19 @@ PRINCIPLES
 ###Overview
 1. Intuitive, easy to navigate UI
 2. Instant and simple coding
-3. unified repository
+3. Unified repository
 4. Useful for educational and presentation purposes
 
 ###Details
-1. The spacious coding environment with the easy to navigate UI is preferred over
+1. The spacious coding environment with an easy to navigate UI is preferred over
 	unnecessary features and information that cluster the interface and confuse
 	entry level users.
 
 2. All users must have a way to instantly begin coding without any required configuration.
 
 3. The application (for registered users) has a way to allow them to access files
-	from any computer with internet. This is preferred over an ability to have offline access.
+	from any computer with internet, providing a repository that can be accessed
+	from anywhere. This is preferred over offline but local access.
 
-4. The application's simple interface and sharing capabilities benefits presentational and
-	education purposes at the cost of a less professional environment with more features.
+4. The application's simple interface and sharing capabilities benefits presentation and
+	education usages. This is preferred over a more technical and customizable interface.
