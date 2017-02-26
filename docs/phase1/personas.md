@@ -1,6 +1,6 @@
-[ben]: https://github.com/UTMCSC301/final-project-grace_ubryte/blob/master/docs/images/ben.jpg?raw=true "Ben Smith"
-[howard]: https://github.com/UTMCSC301/final-project-grace_ubryte/blob/master/docs/images/howard.jpg?raw=true "Prof. Howard Stark"
-[jessica]: https://github.com/UTMCSC301/final-project-grace_ubryte/blob/master/docs/images/jessica.jpeg?raw=true "Jessica Musk"
+[ben]: https://github.com/UTMCSC301/final-project-grace_ubryte/blob/master/docs/phase1/images/ben.jpg?raw=true "Ben Smith"
+[howard]: https://github.com/UTMCSC301/final-project-grace_ubryte/blob/master/docs/phase1/images/howard.jpg?raw=true "Prof. Howard Stark"
+[jessica]: https://github.com/UTMCSC301/final-project-grace_ubryte/blob/master/docs/phase1/images/jessica.jpeg?raw=true "Jessica Musk"
 
 
 
