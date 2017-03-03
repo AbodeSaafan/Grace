@@ -1,4 +1,4 @@
-PRODUCT BACKLOG-** GRACE REPL **
+PRODUCT BACKLOG- ** GRACE REPL **
 
 | User Story | Size | Importance Ranking |
 | --- | --- | --- |
