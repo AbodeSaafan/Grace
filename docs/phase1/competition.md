@@ -1,4 +1,4 @@
-**Grace REPL and the competitions**
+**Grace REPL against the Competition**
 
 Grace REPL is a web based application whose primary use is to allow users to write, compile and run code conveniently. Grace REPL allows for users  to write code without an account (&quot;guest account&quot;) for quick code testing, or to save projects and work through the creation of an account. Accounts can be customized through various settings hence giving the user a unique and personal coding experience. Additionally, Grace REPL also allows users with accounts to share their projects with other users.
 
