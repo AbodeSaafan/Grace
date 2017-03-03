@@ -18,3 +18,5 @@ PRODUCT BACKLOG- **GRACE REPL**
 | As a persistent user, I must be able to manage the access settings for accounts I use so I can preserve my preferred manner of accessing my persistent files. | 3 | 11 |
 | As a user experienced with IDEs, I want to be able to customize my user interface so I can enjoy a coding environment I am comfortable with. | 3 | 12 | 
 
+__ABOUT PIVOTALTRACKER SIZES:__ As PivotalTracker does not support the quasi-fibonnaci system we used for scaling, we've converted our points. Size 1-2 are 1 point on Pivotal. Size 3-5 are 2 points on Pivotal. Size 8-21 are 3 points on Pivotal.
+
