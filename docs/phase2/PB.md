@@ -16,4 +16,4 @@ PRODUCT BACKLOG- **GRACE REPL**
 | As an experienced coder, I should be able to navigate text and code with access to keyboard shortcuts. | 5 | 8 |
 | As a user coding with peers, I want to be able to view and edit files I share so I can make my own contributions to group work. | 5 | 9 |
 | As a persistent user, I must be able to manage the access settings for accounts I use so I can preserve my preferred manner of accessing my persistent files. | 3 | 12 |
-| As a presistent user, I want to be able to create and login to my account | 8 | 2 |
+| As a persistent user, I want to be able to create and login to my account | 8 | 2 |
