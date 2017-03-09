@@ -16,8 +16,8 @@
 
 User Story Name | Task | Members | Estimate (hrs) | Actual (hrs) |
 --- | --- | --- | --- | ---
-User Accounts | Create DB Schema | V J M | 1 | actual here | 
- | | Account registration | V M | 4 | actual here | 
- | | Account login | J | 3 | actual here | 
- Online Code Compilation | Interface to enter code | A S | 1 | actual here | 
- | | Compiling of code | A S | 5 | actual here | 
+User Accounts | Create DB Schema | V J M | 1 | - | 
+ | | Account registration | V M | 4 | - | 
+ | | Account login | J | 3 | - | 
+ Online Code Compilation | Interface to enter code | A S | 1 | 1 | 
+ | | Compiling of code | A S | 5 | 4 | 
