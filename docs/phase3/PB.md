@@ -13,7 +13,7 @@ PRODUCT BACKLOG- **GRACE REPL**
 | As an experimenting coder, I want to be able to quickly process commands in an interactive shell in the interest of quickly determining Python's behavior on certain computations. | 8 | 7 |
 | As a user coding with peers, I want to share my saved files with others for easy group access. | 13 | 5 |
 | As a persistent user, I want to be able to edit and manage access to my preserved files so I can control what I want other users and myself to be able to access. | 5 | 6 |
-| As an experienced coder, I should be able to navigate text and code with access to keyboard shortcuts. | 3 | 14 |
+| As an experienced coder, I should be able to navigate text and code with access to keyboard shortcuts. | 3 | 15 |
 | As a user coding with peers, I want to be able to view and edit files I share so I can make my own contributions to group work. | 2 | 8 |
 | As a persistent user, I must be able to manage the access settings for accounts I use so I can preserve my preferred manner of accessing my persistent files. | 5 | 11 |
 | As a persistent user, I want to be able to create and login to my account | 8 | 2 |
