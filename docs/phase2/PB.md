@@ -5,10 +5,10 @@ PRODUCT BACKLOG- **GRACE REPL**
 |As an inexperienced coder, I want an inviting web app prioritizing simplicity over advanced coding features so I can learn coding in a comfortable environment. | 21 | 1 |
 | As a persistent user, I should be able to preserve some of my online code files onto an account so I do not lose particularly salient code. | 13 | 3 |
 | As a persistent user, I should be able to access files which I've preserved before in the interest of reusing important code I created previously. | 3 | 10 |
-| As an experienced coder, I want to be able to export the code I write to my computer for further offline use and development. | 2 | 14 |
-| As an experienced coder, I want to be able to import code which I've already written for online editing so I can write on an extant code base. | 2 | 15 |
+| As an experienced coder, I want to be able to export the code I write to my computer for further offline use and development. | 2 | 13 |
+| As an experienced coder, I want to be able to import code which I've already written for online editing so I can write on an extant code base. | 2 | 14 |
 | As a persistent user without offline access to Python, I want to compile Python files online for easy code verification. | 8 | 4 |
-| As a user on a tight schedule, I want to be able to compile Python code online without dealing with user verification so I can quickly code without unnecessary hassle. | 1 | 16 |
+| As a user on a tight schedule, I want to be able to compile Python code online without dealing with user verification so I can quickly code without unnecessary hassle. | 1 | 15 |
 | As an experienced coder, I want to be able to see errors in my Python file compilation so I can diagnose errors in code that I've written. | 3 | 11 |
 | As an experimenting coder, I want to be able to quickly process commands in an interactive shell in the interest of quickly determining Python's behavior on certain computations. | 5 | 6 |
 | As a user coding with peers, I want to share my saved files with others for easy group access. | 8 | 5 |
