@@ -1,5 +1,5 @@
 # SCRUM Retrospective Meeting 1- GRACE uBryte
----
+
 #### March 9, 2017 
 #### 11:30 AM - 12:55 PM
 ---
@@ -13,14 +13,14 @@
 ***
 
 # Unfinished tasks:
-___
+
 - Account login
 - Account register
 
 These tasks are accurately represented as our existing user story in our phase 3 PB and PivotalTracker.
 
 # Meeting Overview:
-___
+
 
 In this retrospective, the GRACE team reflected on their successes and errors in Sprint 1. The entire team was present for the meeting.
 
@@ -49,6 +49,5 @@ was not finished in time for sprint 1.
 Conversely, our best experiences included the completion of the compiler- seeing the working results was obviously satisfying for all involved. The design document, notably the system architecture diagram was very helpful in understanding the technologies available to us and how they interact. Finally, finishing our initial CRC model provided us one of our best experiences in sprint 1 as well. After that was designed, our group envisioned our code base with a much greater clarity than before, and it was a fun experience coding with it on hand. 
 
 # Meeting Conclusion:
-___
 
 GRACE's first SCRUM meeting was a successful gathering where our team members were able to find our bearings again. We noted our past mistakes and attempted to ensure we would not repeat them in the future. 
