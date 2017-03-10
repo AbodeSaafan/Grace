@@ -29,7 +29,7 @@ accordingly.
 
 As a result, the product backlog received an overhaul. Though user story content did not change, their size and importance were reworked to accommodate our new vision for the code's structure. All revised rankings were reached through group consensus at the meeting.
 
-Our aforementioned CRC model employs the DAO design pattern. Because of our experiences in sprint 1, we realised how querying MongoDB would interface with Object Oriented design; the group unanimously agreed upon this revision to our CRC design in light of this.
+Our aforementioned CRC model employs the DAO design pattern. Because of our experiences in sprint 1, we realized how querying MongoDB would interface with Object Oriented design; the group unanimously agreed upon this revision to our CRC design in light of this.
 
 In our reflection, we identified several strengths of our developmental approach which we agreed to continue. These include:
 - Staying in our designated subgroups for completing tasks
