@@ -1,1 +1,0 @@
-This folder will be used as somewhat of a testbunch as well as where the feature demos will be stored if they need to be seperated from main application
