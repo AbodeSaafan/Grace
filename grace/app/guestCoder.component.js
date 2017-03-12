@@ -19,14 +19,11 @@ System.register(['angular2/core'], function(exports_1, context_1) {
             }],
         execute: function() {
             let AppComponent = class AppComponent {
-                guestClicked() {
-                    console.log("guest clicked!!");
-                }
             };
             AppComponent = __decorate([
                 core_1.Component({
-                    selector: 'landing',
-                    templateUrl: 'views/landing.html'
+                    selector: 'guestCode',
+                    templateUrl: 'views/guestCode.html'
                 }), 
                 __metadata('design:paramtypes', [])
             ], AppComponent);
@@ -34,4 +31,4 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         }
     }
 });
-//# sourceMappingURL=app.component.js.map
+//# sourceMappingURL=guestCoder.component.js.map

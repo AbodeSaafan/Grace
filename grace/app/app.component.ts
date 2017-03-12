@@ -4,4 +4,8 @@ import {Component} from 'angular2/core';
     selector: 'landing',
     templateUrl: 'views/landing.html'
 })
-export class AppComponent { }
+export class AppComponent { 
+	guestClicked() {
+		console.log("guest clicked!!");
+	}
+}
