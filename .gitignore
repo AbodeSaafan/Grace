@@ -92,6 +92,9 @@ typings/
 # dotenv environment variables file
 .env
 
+# Random stuff
+.extra
+
 
 # End of https://www.gitignore.io/api/angular,node
 
