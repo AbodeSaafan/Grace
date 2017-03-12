@@ -15,3 +15,8 @@ Some information about the team developing this project can be found here at [uB
 #### Name Siginifigance 
 
 The name, GRACE, is inspired by Grace Hopper who invented the first compiler for a programming language. 
+
+
+### Setup
+
+Read the setup.md file included to set up the grace web app 
