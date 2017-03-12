@@ -1,0 +1,27 @@
+{
+  "name": "GRACE",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "concurrent \"npm run tsc:w\" \"npm run lite\" ",    
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "lite": "lite-server",
+    "typings": "typings",
+    "postinstall": "typings install" 
+  },  
+  "license": "ISC",
+  "dependencies": {
+    "angular2": "*",
+    "systemjs": "*",
+    "es6-promise": "*",
+    "es6-shim": "*",
+    "reflect-metadata": "*",
+    "rxjs": "*",
+    "zone.js": "*"
+  },
+  "devDependencies": {
+    "concurrently": "*",
+    "lite-server": "*",
+    "typescript": "*"
+  }
+}
