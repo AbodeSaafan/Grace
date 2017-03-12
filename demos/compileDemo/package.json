@@ -1,0 +1,13 @@
+{
+  "name": "grace",
+  "version": "0.0.0",
+  "private": true,
+  "main": "app.js",
+  "scripts": {},
+  "dependencies": {
+    "body-parser": "*",
+    "express": "*",
+    "mongoose": "*",
+    "compilex": "*"
+  }
+}
