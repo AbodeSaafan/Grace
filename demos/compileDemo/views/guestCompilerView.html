@@ -1,6 +1,6 @@
 <HTML>
 	<head>
-		<title>Compiler View</title>
+		<title>Guest Compiler View</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
         <script language="javascript" src="js/jquery-3.1.1.min.js" ></script>
         <script language="javascript" src="js/compile.js" > </script>
@@ -10,11 +10,11 @@
 		<H1>Example Compiler</H1>
 		<table>
 			<tr>
-				<td><textarea cols="60" rows="15"></textarea></td>
-				<td><textarea cols="60" rows="15" disabled></textarea></td>
+				<td><textarea id="codeInput" cols="60" rows="15"></textarea></td>
+				<td><textarea id="codeOutput" cols="60" rows="15" disabled></textarea></td>
 			</tr>
 		</table>
 		
-		<button>Compile</button>
+		<button onclick="compiledClicked();">Compile</button>
 	</body>
 </HTML>

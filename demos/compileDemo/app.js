@@ -12,7 +12,7 @@ app.use(express.static(__dirname + '/public'));
 
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname + '/views/compilerView.html'));
+  res.sendFile(path.join(__dirname + '/views/guestCompilerView.html'));
 })
 
 app.get('/compile', function (req, res) {
