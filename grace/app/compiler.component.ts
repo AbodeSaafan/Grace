@@ -5,4 +5,5 @@ import {Component} from 'angular2/core';
     selector: 'compiler',
     templateUrl: 'views/compiler.html'
 })
-export class AppComponent { }
+export class Compiler { 
+}

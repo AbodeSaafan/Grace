@@ -3,8 +3,8 @@
 <div id="landingChoices">
 	<table id="landingChoicesTable">
 		<tr>
-			<td><button id="registerButton" class="btn btn-1 btn-1a">Register</button></td>
-			<td><button id="loginButton">Login</button></td>
+			<td><button id="registerButton" (click)="registerClicked()">Register</button></td>
+			<td><button id="loginButton" (click)="loginClicked()">Login</button></td>
 		</tr>
 		<tr>
 			<td colspan="2"><button id="codeAsGuest" (click)="guestClicked()">Code as guest</button></td>

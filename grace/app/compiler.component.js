@@ -11,23 +11,23 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var AppComponent;
+    var Compiler;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            let AppComponent = class AppComponent {
+            let Compiler = class Compiler {
             };
-            AppComponent = __decorate([
+            Compiler = __decorate([
                 core_1.Component({
                     selector: 'compiler',
                     templateUrl: 'views/compiler.html'
                 }), 
                 __metadata('design:paramtypes', [])
-            ], AppComponent);
-            exports_1("AppComponent", AppComponent);
+            ], Compiler);
+            exports_1("Compiler", Compiler);
         }
     }
 });

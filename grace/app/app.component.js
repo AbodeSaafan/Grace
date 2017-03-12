@@ -22,11 +22,18 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 guestClicked() {
                     console.log("guest clicked!!");
                 }
+                loginClicked() {
+                    console.log("login clicked!!");
+                }
+                registerClicked() {
+                    console.log("register clicked!!");
+                }
             };
             AppComponent = __decorate([
                 core_1.Component({
                     selector: 'landing',
-                    templateUrl: 'views/landing.html'
+                    templateUrl: 'views/landing.html',
+                    styleUrls: ['public/css/style.css']
                 }), 
                 __metadata('design:paramtypes', [])
             ], AppComponent);

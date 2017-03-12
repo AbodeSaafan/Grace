@@ -11,23 +11,23 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var AppComponent;
+    var GuestCode;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            let AppComponent = class AppComponent {
+            let GuestCode = class GuestCode {
             };
-            AppComponent = __decorate([
+            GuestCode = __decorate([
                 core_1.Component({
                     selector: 'guestCode',
                     templateUrl: 'views/guestCode.html'
                 }), 
                 __metadata('design:paramtypes', [])
-            ], AppComponent);
-            exports_1("AppComponent", AppComponent);
+            ], GuestCode);
+            exports_1("GuestCode", GuestCode);
         }
     }
 });

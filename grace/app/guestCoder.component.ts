@@ -5,4 +5,4 @@ import {Component} from 'angular2/core';
     selector: 'guestCode',
     templateUrl: 'views/guestCode.html'
 })
-export class AppComponent { }
+export class GuestCode { }
