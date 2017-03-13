@@ -1,38 +1,4 @@
-.headerButton {
-	border: 1px solid #777;
-	color: #777;
-	background-color: #FFF;
-	height: 100%;
-	position: relative;
-	margin: 5px;
-}
-
-.headerButton:hover {
-	border: 1px solid #555;
-	color: #555;
-}
-
-.compiler {
-	height: 90%;
-	width: 100%;
-}
-
-.topBar {
-	left: 0px;
-	right: 0px;
-	top: 0px;
-	height: 10%;
-	padding-bottom: 1%;
-}
-
-.backButton {
-	float: left;
-}
-
-.signupButton {
-	float: right;
-}
-
-.graceLogo {
-	margin: 0 auto;
+*, body {
+	margin: 0;
+	padding: 0;
 }

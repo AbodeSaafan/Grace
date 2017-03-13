@@ -10,6 +10,7 @@ import { CompilerComponent } from './compiler/compiler.component';
 import {routing} from './app.routing';
 import { LandingComponent } from './landing/landing.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { RegistrationComponent } from './registration/registration.component';
     GuestCoderComponent,
     CompilerComponent,
     LandingComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    HeaderComponent
 
   ],
   imports: [
