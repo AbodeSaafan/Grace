@@ -18,7 +18,7 @@ export class RegistrationComponent  {
       }),
       account: fb.group({
       	email: '',
-      	password: ''
+      	password: ['', Validators.required]
       })
     });
   }
