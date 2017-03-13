@@ -1,0 +1,60 @@
+.headerBar{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+@font-face {
+  font-family: "ubuntu";
+  src: url('../../../assets/ubuntu_font.ttf');
+}
+
+.headerBar,h1,h2,h3,h4,h5,h6 {
+  font-family: "ubuntu", arial;
+}
+
+.headerBar {
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  top: 0;
+  width: 100%;
+  padding: 10px 3%;
+  margin: 0px;
+}
+
+.headerButtonStyle{
+  background-color: white;
+  border: 1px solid #ddd;
+  font-size: 12px;
+  height: 30px;
+  line-height: 27px;
+  padding: 0 20px;
+  
+  color: #aaa;
+}
+
+.headerButtonStyle:hover {
+  border: 1px solid #bbb;
+  cursor: pointer;
+  color: #333;
+}
+
+.headerLeftButton {
+  float: left;
+}
+
+.headerRightButton {
+  float:right;
+  position: inline;
+}
+
+.headerCenter {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.headerLogo {
+  height: 30px;
+  vertical-align: middle;
+}

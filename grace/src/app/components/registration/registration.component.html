@@ -1,0 +1,16 @@
+	<form [formGroup]="form">
+      <div formGroupName="name">
+        <input formControlName="first" placeholder="First" minlength="2" maxlength="25" required pattern="[a-zA-Z]+">
+        <input formControlName="last" placeholder="Last" minlength="2" maxlength="25" required pattern="[a-zA-Z]+">
+      </div>
+      <div formGroupName="account">
+      	<input formControlName="email" placeholder="Email" type="email" name="email" maxlength="45" required>
+      	<input formControlName="password" placeholder="Password" minlength="6" maxlength="18" required pattern="[a-zA-Z0-9?!$]+">
+
+     	 <button>Submit</button>
+	    </div>
+  </form>
+
+<p>Value: {{ form.value | json }}</p>
+<p>Form status: {{ form.status }}</p>
+<p>Password status: {{ form.get('account.password').status}}</p>
