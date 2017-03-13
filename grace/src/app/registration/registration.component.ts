@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { Component, Inject} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-registration',
@@ -8,14 +8,18 @@ import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Valida
 })
 
 export class RegistrationComponent  {
-	
-	form: FormGroup;
-	constructor(public fb: FormBuilder){
-		this.form = this.fb.group({
-			first: '',
-			last: '',
-			email: '',
-			password: ''
-		});
-	}
+   	form: FormGroup;
+
+  	constructor(@Inject(FormBuilder) fb: FormBuilder) {
+    this.form = fb.group({
+      name: fb.group({
+        first: '',
+        last: ''
+      }),
+      account: fb.group({
+      	email: '',
+      	password: ''
+      })
+    });
+  }
 }

@@ -1,12 +1,14 @@
+	<form [formGroup]="form">
+      <div formGroupName="name">
+        <input formControlName="first" placeholder="First">
+        <input formControlName="last" placeholder="Last">
+      </div>
+      <div formGroupName="account">
+      	<input formControlName="email" placeholder="Email">
+      	<input formControlName="password" placeholder="Password">
 
-<div>
-	<form novalidate [formGroup]="form">
+     	 <button>Submit</button>
+	  </div>
+    </form>
 
-	<input formControlName="first" placeholder="Enter first name">
-	<input formControlName="last" placeholder="Enter last name">
-	<input formControlName="email" placeholder="Enter email">
-	<input formControlName="password" placeholder="Enter email">
-	<button formControlName="submit"> Register </button>
-
-	</form>
-</div>
+<p>Value: {{ form.value | json }}</p>
