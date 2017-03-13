@@ -5,12 +5,13 @@ import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { GuestCoderComponent } from './guest-coder/guest-coder.component';
-import { CompilerComponent } from './compiler/compiler.component';
+import { GuestCoderComponent } from './components/guest-coder/guest-coder.component';
+import { CompilerComponent } from './components/compiler/compiler.component';
 import {routing} from './app.routing';
-import { LandingComponent } from './landing/landing.component';
-import { RegistrationComponent } from './registration/registration.component';
-import { HeaderComponent } from './header/header.component';
+import { LandingComponent } from './components/landing/landing.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { HeaderComponent } from './components/header/header.component';
+import { CompileService } from './services/compile.service'
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { HeaderComponent } from './header/header.component';
     HttpModule,
     routing
   ],
-  providers: [],
+  providers: [CompileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,7 +6,7 @@
 
 @font-face {
   font-family: "ubuntu";
-  src: url('../../assets/ubuntu_font.ttf');
+  src: url('../../../assets/ubuntu_font.ttf');
 }
 
 .headerBar,h1,h2,h3,h4,h5,h6 {
