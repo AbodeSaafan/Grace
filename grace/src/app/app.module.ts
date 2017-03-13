@@ -8,13 +8,15 @@ import { GuestCoderComponent } from './guest-coder/guest-coder.component';
 import { CompilerComponent } from './compiler/compiler.component';
 import {routing} from './app.routing';
 import { LandingComponent } from './landing/landing.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GuestCoderComponent,
     CompilerComponent,
-    LandingComponent
+    LandingComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
