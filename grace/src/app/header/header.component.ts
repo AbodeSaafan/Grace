@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import * as $ from 'jquery';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -7,9 +9,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+	name: string;
+	address: address;
+	hobbies: string[];
+	showHobbies: boolean;
 
-  ngOnInit() {
-  }
+	constructor() {
+		this.name = "Shayan";
+		this.address = {
+			street: 'blah',
+			unit: 3
+		}
+		this.hobbies = ['a','b','c'];
+		this.showHobbies = false;
+	}
 
+	ngOnInit() {
+	}
+
+	toggleHobbies() {
+		this.showHobbies = !this.showHobbies;
+		var hobbyButton = $('#hobbyButton');
+		if (this.showHobbies){
+			hobbyButton.html('Hide Hobbies');
+		} else {
+			hobbyButton.html('Show Hobbies');
+		}
+		
+	}
+
+}
+
+interface address {
+	street: string;
+	unit: number;
 }

@@ -5,3 +5,13 @@
 </div>
 
 
+<div>
+	<p>{{name}}</p>
+	<p>{{address.unit}}</p>
+	<br>
+	<button (click)="toggleHobbies();" id="hobbyButton">Show Hobbies</button>
+	<ul *ngIf="showHobbies">
+		<li *ngFor="let hobby of hobbies">{{hobby}}</li>
+	</ul>
+</div>
+
