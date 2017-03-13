@@ -25,6 +25,7 @@ export class LandingComponent implements OnInit {
 
 	registerClicked() {
 		console.log("register clicked!!");
+		this.shown = 'REGISTER';
 	}
 
 
