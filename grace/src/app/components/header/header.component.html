@@ -1,0 +1,17 @@
+<div class="headerBar">
+	<div class="headerLeftButton headerButtonStyle">Back</div>
+	<div class="headerRightButton headerButtonStyle">Sign Up</div>
+	<div class="headerCenter"><img class="headerLogo" src="#"></div>
+</div>
+
+
+<div>
+	<p>{{name}}</p>
+	<p>{{address.unit}}</p>
+	<br>
+	<button (click)="toggleHobbies();" id="hobbyButton">Show Hobbies</button>
+	<ul *ngIf="showHobbies">
+		<li *ngFor="let hobby of hobbies">{{hobby}}</li>
+	</ul>
+</div>
+

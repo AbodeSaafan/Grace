@@ -1,0 +1,16 @@
+<h1 align="center"> {{title}}</h1>
+
+<div id="landingChoices">
+	<table id="landingChoicesTable">
+		<tr>
+			<td><button id="registerButton" (click)="registerClicked()">Register</button></td>
+			<td><button id="loginButton" (click)="loginClicked()">Login</button></td>
+		</tr>
+		<tr>
+			<td colspan="2"><button id="codeAsGuest" (click)="guestClicked()">Code as guest</button></td>
+		</tr>
+		<p *ngIf="shown == 'NONE'">VINCE WAS HERE</p>
+		<app-registration *ngIf="shown == 'REGISTER'"></app-registration>
+		<app-compiler *ngIf="shown == 'GUESTCODER'"></app-compiler>
+	</table>
+</div>
