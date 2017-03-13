@@ -1,8 +1,7 @@
 import {ModuleWithProviders} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
-import {CompilerComponent} from './compiler/compiler.component';
-import {AppComponent} from './app.component';
+import {GuestCoderComponent} from './guest-coder/guest-coder.component';
 import {LandingComponent} from './landing/landing.component';
 
 const appRoutes: Routes = [
@@ -11,8 +10,8 @@ const appRoutes: Routes = [
 		component: LandingComponent
 	},
 	{
-		path : 'compiler',
-		component: CompilerComponent
+		path : 'guest',
+		component: GuestCoderComponent
 	}
 ];
 

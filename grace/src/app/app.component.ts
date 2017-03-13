@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { GuestCoderComponent } from './guest-coder/guest-coder.component';
 
 @Component({
   selector: 'app-root',

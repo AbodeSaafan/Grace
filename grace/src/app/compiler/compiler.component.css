@@ -1,3 +1,8 @@
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
 textarea {
     resize: none;
 }
@@ -7,8 +12,39 @@ body {
 	align-content: center;
 }
 
-button {
-	width: 75px;
-	height: 50px;
-	
+.codeArea {
+	width: 49.5%;
+}
+
+.inputArea {
+	float: left;
+}
+
+.outputArea {
+	float: right;
+}
+
+.compilerContainer {
+	width: 99.7%;
+	background-color: blue;
+	margin: 0 auto;
+}
+
+.headerButton {
+	background-color: white;
+	border: 1px solid #666;
+	color: #666;
+	height: 90%;
+	top: 0px;
+}
+
+.headerLogoContainer {
+	background-color: red;
+	width: 50%;
+	margin: 0 auto;
+}
+
+.topBar {
+	height: 100px;
+	background-color: #999;
 }
