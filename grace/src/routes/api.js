@@ -6,4 +6,9 @@ router.get('/api', function(req,res){
 	res.send("USER API");
 });
 
+router.get('/test', function(req, res){
+	res.send(req.query.id);
+	// Test this by going to http://localhost:3000/test?id="abode"
+});
+
 module.exports = router;

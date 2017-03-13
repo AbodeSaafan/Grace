@@ -6,6 +6,7 @@ var http = require('http');
 var api = require('./routes/api');
 
 var app = express();
+
 /*
 app.set('views',path.join(_dirname, 'views'));
 app.set('view engine','ejs');
@@ -17,11 +18,11 @@ app.use(bodyParse.urlencoded({extended: false}));
 
 app.use(express.static(path.join(__dirname,"")));
 console.log(path.join(__dirname,""));
-app.use('/api',api);
+app.use(api);
 
-app.get('*', (req, res) => {
+/*app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, './index.html'));
-});
+});*/
 
 var port = process.env.PORT || '3000';
 
