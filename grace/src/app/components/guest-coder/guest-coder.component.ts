@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HeaderConfig } from '../header/header.component';
 
 @Component({
 	selector: 'app-guest-coder',
@@ -7,8 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GuestCoderComponent implements OnInit {
 
-	constructor() { }
+	guestHeader: HeaderConfig;
+
+	constructor() {
+		// If left content  == 'none', the button will not show
+		// likewise for right content
+		this.guestHeader = {
+			leftButtonContent: "guestL",
+			rightButtonContent: "guestR",
+			leftButtonSrc: "",
+			rightButtonSrc: "",
+			leftButtonFunction: this.guestLeft,
+			rightButtonFunction: this.guestRight
+		}
+	}
 	
+	guestLeft() {
+		alert("guest left clicked");
+	}
+
+	guestRight() {
+		alert("guest right clicked");
+	}
+
 	ngOnInit() {
 	}
 

@@ -1,17 +1,12 @@
 <div class="headerBar">
-	<div class="headerLeftButton headerButtonStyle">Back</div>
-	<div class="headerRightButton headerButtonStyle">Sign Up</div>
-	<div class="headerCenter"><img class="headerLogo" src="#"></div>
+	<div  *ngIf="config.leftButtonContent!='none'" class="headerLeftButton headerButtonStyle" (click)="config.leftButtonFunction();">
+		<img class="headerButtonImg" [src]="config.leftButtonSrc" alt="">{{config.leftButtonContent}}
+	</div>
+
+	<div *ngIf="config.rightButtonContent!='none'" class="headerRightButton headerButtonStyle" (click)="config.rightButtonFunction();">
+		<img class="headerButtonImg" [src]="config.rightButtonSrc" alt="">{{config.rightButtonContent}}
+	</div>
+	<div class="headerCenter"><img class="headerLogo" 
+		src="../../../assets/grace_repl_header_logo.svg"
+		href=""></div>
 </div>
-
-
-<div>
-	<p>{{name}}</p>
-	<p>{{address.unit}}</p>
-	<br>
-	<button (click)="toggleHobbies();" id="hobbyButton">Show Hobbies</button>
-	<ul *ngIf="showHobbies">
-		<li *ngFor="let hobby of hobbies">{{hobby}}</li>
-	</ul>
-</div>
-
