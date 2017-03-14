@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CompileService } from '../../services/compile.service';
 
 @Component({
 	selector: 'app-guest-coder',
@@ -8,14 +7,9 @@ import { CompileService } from '../../services/compile.service';
 })
 export class GuestCoderComponent implements OnInit {
 
-	outputReturn:string = "";
-	constructor(private compileService: CompileService) { }
+	constructor() { }
 	
 	ngOnInit() {
-		this.compileService.compileCode("print 5").subscribe(output => {
-			this.outputReturn = output.output;
-			console.log(this.outputReturn);
-		});
 	}
 
 }
