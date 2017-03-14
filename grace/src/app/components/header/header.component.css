@@ -39,6 +39,15 @@
   color: #333;
 }
 
+.headerButtonImg {
+  height: 60%;
+  vertical-align: middle;
+}
+
+img.headerImgStyle {
+  height: 60%;
+}
+
 .headerLeftButton {
   float: left;
 }

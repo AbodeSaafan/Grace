@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import * as $ from 'jquery';
 
@@ -9,38 +9,39 @@ import * as $ from 'jquery';
 })
 export class HeaderComponent implements OnInit {
 
-	name: string;
-	address: address;
-	hobbies: string[];
-	showHobbies: boolean;
+	@Input() config: HeaderConfig;
 
 	constructor() {
-		this.name = "Shayan";
-		this.address = {
-			street: 'blah',
-			unit: 3
+		if (!this.config) {
+			this.config = {
+				leftButtonContent: "",
+				rightButtonContent: "Right",
+				leftButtonSrc: "../../../assets/grace_header_logo.svg",
+				rightButtonSrc: "",
+				leftButtonFunction: this.leftAlert,
+				rightButtonFunction: this.rightAlert
+			}
 		}
-		this.hobbies = ['a','b','c'];
-		this.showHobbies = false;
+	}
+
+	leftAlert() {
+		alert("grace clicked");
+	}
+
+	rightAlert() {
+		alert("right clicked");
 	}
 
 	ngOnInit() {
 	}
 
-	toggleHobbies() {
-		this.showHobbies = !this.showHobbies;
-		var hobbyButton = $('#hobbyButton');
-		if (this.showHobbies){
-			hobbyButton.html('Hide Hobbies');
-		} else {
-			hobbyButton.html('Show Hobbies');
-		}
-		
-	}
-
 }
 
-interface address {
-	street: string;
-	unit: number;
+export interface HeaderConfig {
+	leftButtonContent: string;
+	rightButtonContent: string;
+	leftButtonSrc: string;
+	rightButtonSrc: string;
+	leftButtonFunction: Function;
+	rightButtonFunction: Function;
 }
