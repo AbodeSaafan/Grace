@@ -12,8 +12,4 @@ export class CompilerComponent implements OnInit {
   ngOnInit() {
   }
 
-  compileClicked(){
-  	console.log("Clicked compile so DO IT");
-  }
-
 }
