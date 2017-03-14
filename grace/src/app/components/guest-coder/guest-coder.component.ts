@@ -13,7 +13,7 @@ export class GuestCoderComponent implements OnInit {
 	
 	ngOnInit() {
 		this.compileService.compileCode("print 5").subscribe(output => {
-			this.outputReturn = output;
+			this.outputReturn = output.output;
 			console.log(this.outputReturn);
 		});
 	}
