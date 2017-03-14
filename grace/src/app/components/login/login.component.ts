@@ -21,9 +21,17 @@ export class LoginComponent  {
     });
   }
   onSubmit() {
-    // console.log(value, valid);
-    console.log(this.user.status);
-    console.log('how');
-    // here you go Julius
+      // here you go Julius
+    
+  if( this.user.status == 'INVALID') {
+        console.log(this.user.status);
+
+  } else {
+    // check account exists
+        console.log('check for account');
+
+    }
+
   }
 }
+

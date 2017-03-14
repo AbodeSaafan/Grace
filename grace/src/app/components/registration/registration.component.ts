@@ -26,9 +26,15 @@ export class RegistrationComponent  {
     });
   }
   onSubmit() {
-    // console.log(value, valid);
-    console.log(this.user.status);
-    console.log('how');
-    // here you go Julius
+    //bad input
+  if( this.user.status == 'INVALID') {
+        console.log(this.user.status);
+
+  } else {
+    // if else to check if account already exists (PUT), else POST
+        console.log('check');
+
+    }
+
   }
 }
