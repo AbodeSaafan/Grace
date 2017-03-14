@@ -1,11 +1,11 @@
 	<form [formGroup]="form">
       <div formGroupName="name">
-        <input formControlName="first" placeholder="First" minlength="2" maxlength="25" required pattern="[a-zA-Z]+">
-        <input formControlName="last" placeholder="Last" minlength="2" maxlength="25" required pattern="[a-zA-Z]+">
+        <input formControlName="First Name: " placeholder="First" minlength="2" maxlength="25" required pattern="[a-zA-Z]+">
+        <input formControlName="Last Name: " placeholder="Last" minlength="2" maxlength="25" required pattern="[a-zA-Z]+">
       </div>
       <div formGroupName="account">
-      	<input formControlName="email" placeholder="Email" type="email" name="email" maxlength="45" required>
-      	<input formControlName="password" placeholder="Password" minlength="6" maxlength="18" required pattern="[a-zA-Z0-9?!$]+">
+      	<input formControlName="E-Mail: " placeholder="Email" type="email" name="email" maxlength="45" required>
+      	<input formControlName="Password: " placeholder="Password" minlength="6" maxlength="18" required pattern="[a-zA-Z0-9?!$]+">
 
      	 <button>Submit</button>
 	    </div>
