@@ -1,1 +1,0 @@
-This folder is used to store CSS style sheets for the front-end that will be served to client
