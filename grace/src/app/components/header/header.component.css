@@ -20,6 +20,7 @@
   width: 100%;
   padding: 10px 3%;
   margin: 0px;
+  height: 52px;
 }
 
 .headerButtonStyle{
@@ -57,13 +58,11 @@ img.headerImgStyle {
   position: inline;
 }
 
-.headerCenter {
-  padding: 0;
-  margin: 0;
-  text-align: center;
-}
-
 .headerLogo {
   height: 30px;
   vertical-align: middle;
+  display: block;
+  position: absolute;
+  cursor: pointer;
 }
+
