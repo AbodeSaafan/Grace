@@ -11,7 +11,8 @@ import {routing} from './app.routing';
 import { LandingComponent } from './components/landing/landing.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { HeaderComponent } from './components/header/header.component';
-import { CompileService } from './services/compile.service'
+import { CompileService } from './services/compile.service';
+import { LoginComponent } from './components/login/login.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CompileService } from './services/compile.service'
     CompilerComponent,
     LandingComponent,
     RegistrationComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent
 
   ],
   imports: [
