@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-landing',
@@ -8,7 +9,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class LandingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -18,6 +19,7 @@ export class LandingComponent implements OnInit {
   guestClicked() {
 		console.log("guest clicked!!");
 		this.shown = 'GUESTCODER';
+		this.router.navigateByUrl('/guest');
 	}
 
 	loginClicked() {
