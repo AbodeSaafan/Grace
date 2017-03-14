@@ -4,25 +4,20 @@ import {Router} from '@angular/router';
 // import {AuthorizeService} from './../../services/authorize.service';
 
 @Component({
-  selector: 'app-registration',
-  templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 
 
 // ngOnInit?
-export class RegistrationComponent  {
+export class LoginComponent  {
   user: FormGroup;
   constructor(private fb: FormBuilder) {}
   ngOnInit() {
     this.user = this.fb.group({
-      first: ['', [Validators.required, Validators.minLength(2)]],
-      last: ['', [Validators.required, Validators.minLength(2)]],
-
-      account: this.fb.group({
-        email: ['', Validators.required],
-        password: ['', Validators.required]
-      })
+      email: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(2)]],
     });
   }
   onSubmit() {

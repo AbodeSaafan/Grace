@@ -22,6 +22,8 @@ export class LandingComponent implements OnInit {
 
 	loginClicked() {
 		console.log("login clicked!!");
+		this.shown = 'LOGIN';
+
 	}
 
 	registerClicked() {
