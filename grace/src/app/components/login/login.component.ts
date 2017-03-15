@@ -1,7 +1,7 @@
 import { Component, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-// import {AuthorizeService} from './../../services/authorize.service';
+import {AuthorizeService} from './../../services/authorize.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
 // ngOnInit?
 export class LoginComponent  {
   user: FormGroup;
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private AuthorizeService: AuthorizeService) {}
   ngOnInit() {
     this.user = this.fb.group({
       email: ['', Validators.required],
@@ -29,7 +29,17 @@ export class LoginComponent  {
   } else {
     // check account exists
         console.log('check for account');
+        this.AuthorizeService.signIn(this.user.value.email, this.user.value.password).subscribe(data => {
+            console.log(data.pass);
+            if (this.user.value.password == data.pass){
+                alert("Login successfull");
+             }
+             else{
+               alert("Login failed");
+             }
 
+        });
+        
     }
 
   }

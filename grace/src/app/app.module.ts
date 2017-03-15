@@ -14,6 +14,7 @@ import { LandingComponent } from './components/landing/landing.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CompileService } from './services/compile.service';
+import { AuthorizeService } from './services/authorize.service';
 import { LoginComponent } from './components/login/login.component';
 import { AceEditorModule } from 'ng2-ace-editor';
 
@@ -36,7 +37,7 @@ import { AceEditorModule } from 'ng2-ace-editor';
     AceEditorModule,
     MaterialModule
   ],
-  providers: [CompileService],
+  providers: [CompileService,AuthorizeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -29,6 +29,24 @@ router.get('/signin/:id', function(req,res){
 	});
 });
 
+router.put('/reg', function(req,res){
+    var user = req.body;
+    if (!user.id || !(user.pass)){
+        res.status(400);
+        res.json({"error":"User not created"});
+
+    }
+    else{
+        db.users.save(user, function(err,user){
+            if(err){
+                res.send(err);
+            }
+            res.json(JSON.stringify(user));
+        });
+    }
+    
+});
+
 router.put('/register', function(req,res){
 	var createNew = new User({
 		firstName: req.body.firstName,
