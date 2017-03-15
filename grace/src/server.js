@@ -26,13 +26,6 @@ app.use(express.static(path.join(__dirname,"")));
 console.log(path.join(__dirname,""));
 app.use(api);
 
-/*app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './index.html'));
-});*/
-
-
-console.log(token1);
-
 var port = process.env.PORT || '3000';
 
 app.set('port',port);
