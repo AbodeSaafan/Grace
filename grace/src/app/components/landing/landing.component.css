@@ -13,7 +13,10 @@ body {
 	width: 100%;
 	height: 100%;
 	table-layout: fixed;
-	margin-top: 10%;
+	margin-top: 0%;
+	/*border-collapse: separate;*/
+	border-spacing: 20px 25px;
+
 }
 
 button {
@@ -27,14 +30,17 @@ button {
 
 .header {
 	/*float: right;*/
+	padding-top: 50px;
 	position: relative;
 	margin: auto;
-
+	height: 200px;
+	width: 400px;
 }
 img{
 	display: block;
 	margin: 0 auto;
-	
+	height: 100%;
+	width: 100%;
 }
 
 h6{
@@ -44,6 +50,19 @@ h6{
   	src: url('../../../assets/ubuntu_font.ttf');
 
 }
+
+.logButton{
+	background-color: #d91b5b; 
+	border: none;
+	color: white;
+
+}
+.logButton:hover{
+	background-color: #404041;
+    color: white;
+
+}
+
 button{
 	background-color: #404041; 
     border: none;
@@ -64,29 +83,21 @@ button:hover{
 }
 
 
-/*.loadingQuote, .blinking {
-  
-  font-family: "ubuntu";
-  src: url('../../../assets/ubuntu_font.ttf');
-}
-
-.blinking {
-  animation: blinker 1s linear infinite;
-}
-*/
-
 .register{
 	position: relative;
 	margin: auto;
 }
 
 #motto{
-	margin-top: 8%;
+	margin-top: 4%;
+	margin-bottom: 4%;
 	font-size: 15px;
-	font-family: "ubuntu";
-  	src: url('../../../assets/ubuntu_font.ttf'); 
+ 	font-family: 'Space Mono', monospace;
+  	/*src: url('../../../assets/ubuntu_font.ttf'); */
 }
-
+td{
+	height: 75px;
+}
 table{
 	position: relative;
 	margin-top: -30px;
