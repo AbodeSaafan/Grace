@@ -29,10 +29,11 @@ router.get('/signin/:id', function(req,res){
 	});
 });
 
-router.put('/reg/:id', function(req,res){
-   // var user = req.body;
-    console.log(1);
-    /*if (!user.id || !(user.pass)){
+router.post('/register', function(req,res){
+    var user = req.body;
+    console.log(user._id);
+    console.log(user.pass);
+    if (!user._id || !(user.pass)){
         res.status(400);
         res.json({"error":"User not created"});
 
@@ -44,28 +45,8 @@ router.put('/reg/:id', function(req,res){
             }
             res.json(JSON.stringify(user));
         });
-    }*/
+    }
     
-});
-
-router.put('/register', function(req,res){
-	var createNew = new User({
-		firstName: req.body.firstName,
-		lastName: req.body.lastName,
-		email: req.body.email,
-		salt: req.body.salt,
-		hashedPassword: req.body.hashedPassword
-	});
-
-	createNew.save(function(){
-		res.json(user);
-	});
-});
-
-
-router.get('/register', function(req, res){
-	console.log("hi");
-	res.json(req.body);
 });
 
 router.get('/test', function(req, res){
