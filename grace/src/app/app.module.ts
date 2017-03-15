@@ -19,6 +19,7 @@ import { FileStorageService } from './services/file-storage.service';
 import { LoginComponent } from './components/login/login.component';
 import { AceEditorModule } from 'ng2-ace-editor';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import 'hammerjs';
 
 @NgModule({
   declarations: [
