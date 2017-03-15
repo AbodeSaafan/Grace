@@ -10,6 +10,8 @@ export class AuthorizeService {
 	// placeholder, abode required
 	private token: string = "";
 
+	private email: string = "";
+
 	constructor(private http: Http) { }
 
 	signingUp(fName: string, lName: string, email: string, salt: string, hashedPass: string){
@@ -18,10 +20,9 @@ export class AuthorizeService {
 		params.set('salt', salt);
 		params.set('fName', fName);
 		params.set('lName', lName);
-		params.set('hashedPassword', hashedPass);
+		params.set('pass', hashedPass);
 
-console.log(email);
-		return this.http.put("http://localhost:3000/reg/a@gmail.com", JSON.stringify(params))
+		return this.http.post("http://localhost:3000/register", params)
 						.map(res => res.json());
 
 		// have to find some way to catch errors
@@ -52,8 +53,20 @@ console.log(email);
 		this.passed = false;
 	}
 
+	getEmail(){
+		return this.email;
+	}
+
 	// so outside we should just call this if we ever want to check authentication status
 	hasAuthenticated(): boolean{
+		/*Call api, make sure token valid<= true or false, before return true set email, if false set email empty*/
+		
+		if (this.passed){
+			this.email = "blahblah"
+		}else{
+			this.email = "";
+		}
+
 		return this.passed;
 	}
 
