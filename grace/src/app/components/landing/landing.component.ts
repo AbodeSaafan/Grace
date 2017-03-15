@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router'
 import { routerTransition } from '../../router.animations';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-landing',
@@ -12,9 +13,23 @@ import { routerTransition } from '../../router.animations';
 })
 export class LandingComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  	this.shown = 'NONE';
+   }
 
   ngOnInit() {
+  	$('.register').hide();
+  	$('#registerButton').click(function(){
+  		$('.register').slideToggle()
+  		if(this.shown == 'NONE'){
+  			this.shown = 'REGISTER';
+  			  		// alert ('toggle');
+
+  		} else{
+  			this.shown = 'NONE';
+  		}
+  	});
+
   }
 
   title = 'GRACE REPL';
@@ -42,9 +57,6 @@ export class LandingComponent implements OnInit {
 			this.shown = 'NONE';
 		} else {
 			this.shown = 'REGISTER';	
-		}
-		
+		}	
 	}
-
-
 }

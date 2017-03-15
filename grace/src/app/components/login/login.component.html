@@ -1,7 +1,10 @@
+<div class="form">
 	<form [formGroup]="user">
        
       	<input formControlName="email" placeholder="Email" type="email" name="email" maxlength="45" required>
-      	<input formControlName="password" placeholder="Password" minlength="2" maxlength="18" required pattern="[a-zA-Z0-9?!$]+">
-
-    <button (click)="onSubmit()"> Login</button>
-  </form>
+      	<input formControlName="password" placeholder="Password" type="password" required pattern="[a-zA-Z0-9?!$]+">
+  	</form>
+</div>
+<div class="submit">
+ 	<button (click)="onSubmit()"> Login</button>
+</div>

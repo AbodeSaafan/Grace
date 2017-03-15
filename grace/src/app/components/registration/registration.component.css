@@ -3,17 +3,33 @@
 	position: relative;
 	margin: 0 auto;
 	width: 50%;
-	border-style: solid;
 }
 
 input {
-    width: 100%;
+    width: 80%;
     position: relative;
-	float: right;
-	left: 0px;
+	left: 21px;
+	background-color: white;
+	color: black;
+	line-height: 22px;
+	text-align: center;
+	border-radius: 5px;
+	}
+
+input:focus {
+    background-color: white;
+    color: black;
+
 }
 
+.submit {
+	width:50%;
+	position: relative;
+	margin: 0 auto;
+}
 button{
+	position: relative;
+	top: 20px;
 	background-color: #404041; 
     border: none;
     color: white;
@@ -26,11 +42,9 @@ button{
   	src: url('../../../assets/ubuntu_font.ttf');
   	-webkit-transition-duration: 0.4s;
 
-  	height: 10px;
   	position: relative;
   	margin: 0 auto;
 
-  	line-height: 30%;
 
   	width: 100%;
   }
