@@ -33,11 +33,8 @@ import { AceEditorModule } from 'ng2-ace-editor';
     ReactiveFormsModule,
     HttpModule,
     routing,
-<<<<<<< HEAD
-    AceEditorModule
-=======
+    AceEditorModule,
     MaterialModule
->>>>>>> origin/master
   ],
   providers: [CompileService],
   bootstrap: [AppComponent]
