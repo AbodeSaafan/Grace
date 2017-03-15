@@ -1,6 +1,7 @@
-<h1 align="center"> {{title}}</h1>
-
+<div class="header"><img align="center" src="../../assets/grace_repl_splash_logo.svg"></div>
 <div id="landingChoices">
+
+	<h6 id="motto">Convenient coding starts here.</h6>
 	<table id="landingChoicesTable">
 		<tr>
 			<td><button id="registerButton" (click)="registerClicked()">Register</button></td>
@@ -9,9 +10,11 @@
 		<tr>
 			<td colspan="2"><button id="codeAsGuest" (click)="guestClicked()">Code as guest</button></td>
 		</tr>
-		<p *ngIf="shown == 'NONE'">VINCE WAS HERE</p>
-		<app-registration *ngIf="shown == 'REGISTER'"></app-registration>
+		
+	</table>
+	
+	<p *ngIf="shown == 'NONE'"></p>
+		<div class="register"><app-registration *ngIf="shown == 'REGISTER'"></app-registration></div>
 		<app-login *ngIf="shown == 'LOGIN'"></app-login>
 		<app-compiler *ngIf="shown == 'GUESTCODER'"></app-compiler>
-	</table>
 </div>
