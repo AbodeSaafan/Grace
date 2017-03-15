@@ -4,7 +4,7 @@
 	display: block;
 	float: left;
 	position: relative;
-	height: 200px;
+	min-height: 200px;
 }
 
 
