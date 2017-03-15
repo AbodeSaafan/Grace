@@ -30,6 +30,9 @@ app.use(api);
   res.sendFile(path.join(__dirname, './index.html'));
 });*/
 
+
+console.log(token1);
+
 var port = process.env.PORT || '3000';
 
 app.set('port',port);
