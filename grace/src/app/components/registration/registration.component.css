@@ -1,0 +1,43 @@
+.form{
+	/*float: right;*/
+	position: relative;
+	margin: 0 auto;
+	width: 50%;
+	border-style: solid;
+}
+
+input {
+    width: 100%;
+    position: relative;
+	float: right;
+	left: 0px;
+}
+
+button{
+	background-color: #404041; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 13px;
+    border-radius: 4px;
+    font-family: "ubuntu";
+  	src: url('../../../assets/ubuntu_font.ttf');
+  	-webkit-transition-duration: 0.4s;
+
+  	height: 10px;
+  	position: relative;
+  	margin: 0 auto;
+
+  	line-height: 30%;
+
+  	width: 100%;
+  }
+
+button:hover{
+	background-color: #d91b5b;
+    color: black;
+     width: 100%;
+
+}
