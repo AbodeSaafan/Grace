@@ -15,8 +15,10 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { HeaderComponent } from './components/header/header.component';
 import { CompileService } from './services/compile.service';
 import { AuthorizeService } from './services/authorize.service';
+import { FileStorageService } from './services/file-storage.service';
 import { LoginComponent } from './components/login/login.component';
 import { AceEditorModule } from 'ng2-ace-editor';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { AceEditorModule } from 'ng2-ace-editor';
     LandingComponent,
     RegistrationComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,7 @@ import { AceEditorModule } from 'ng2-ace-editor';
     AceEditorModule,
     MaterialModule
   ],
-  providers: [CompileService,AuthorizeService],
+  providers: [CompileService, AuthorizeService, FileStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
