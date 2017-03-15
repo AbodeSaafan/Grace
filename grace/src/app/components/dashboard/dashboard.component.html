@@ -1,16 +1,15 @@
 <app-header [config]='dashHeader'></app-header>
 <md-list>
-  <h2 md-subheader>Folders</h2>
-  <md-list-item *ngFor="let folder of folders">
-    <md-icon md-list-avatar>folder</md-icon>
-    <h4 md-line>{{folder.name}}</h4>
-    <p md-line> {{folder.updated | date}} </p>
-  </md-list-item>
-  <md-divider></md-divider>
-  <h3 md-subheader>Notes</h3>
-  <md-list-item *ngFor="let note of notes">
+  <h2>Files</h2>
+  <md-list-item *ngFor="let file of files">
     <md-icon md-list-avatar>note</md-icon>
-    <h4 md-line>{{note.name}}</h4>
-    <p md-line> {{note.updated | date}} </p>
+    <h4 md-line class="fileName">{{file.name}}</h4>
+    <p md-line class="fileDate"> {{file.updated | date}} </p>
+	<table>
+		<tr>
+			<td><img class="inviteIcon" src="../../assets/close-envelope.svg"></td>
+			<td><img class="metaIcon" src="../../assets/drop-down-arrow.svg"></td>
+		</tr>
+	</table>
   </md-list-item>
 </md-list>
