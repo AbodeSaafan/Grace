@@ -14,7 +14,7 @@
 	</table>
 
 	<p *ngIf="shown == 'NONE'"></p>
-		<div class="register"><app-registration *ngIf="shown == 'REGISTER'"></app-registration></div>
+		<div class="register"><app-registration id="registerForm" *ngIf="shown == 'REGISTER'"></app-registration></div>
 		<app-login *ngIf="shown == 'LOGIN'"></app-login>
 		<app-compiler *ngIf="shown == 'GUESTCODER'"></app-compiler>
 </div>
