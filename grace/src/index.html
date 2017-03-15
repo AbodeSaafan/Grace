@@ -9,9 +9,17 @@
 	<link rel="icon" type="image/x-icon" href="grace.ico">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="node_modules/@angular/material/core/theming/prebuilt/indigo-pink.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet"> 
 </head>
 <body>
 	<base href="/">
-	<app-root></app-root>
+	<app-root>
+		<div class="loadingScreen">
+			<div class="loadingLogoDiv"><img class="loadingLogo" src="http://imgh.us/grace_repl_header_carat_logo.svg"/></div>
+			<div class="loader"></div>
+			<div class="blinking">></div>
+			<div class="loadingQuote"> Convenient coding starts here</div>
+		</div>
+	</app-root>
 </body>
 </html>
