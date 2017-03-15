@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '@angular/material';
 
 
 import { AppComponent } from './app.component';
@@ -32,7 +33,11 @@ import { AceEditorModule } from 'ng2-ace-editor';
     ReactiveFormsModule,
     HttpModule,
     routing,
+<<<<<<< HEAD
     AceEditorModule
+=======
+    MaterialModule
+>>>>>>> origin/master
   ],
   providers: [CompileService],
   bootstrap: [AppComponent]
