@@ -13,7 +13,7 @@ export class AuthorizeService {
 	constructor(private http: Http) { }
 
 	signingUp(fName: string, lName: string, _id: string, salt: string, hashedPass: string){
-		return this.http.put('/register', {
+		return this.http.put("http://localhost:3000/register", {
 			firstName: fName,
 			lastName: lName,
 			_id: _id,
@@ -37,6 +37,21 @@ export class AuthorizeService {
 		}).map(res => res.json());
 
 		// again with the errors... julius required
+	}
+
+	signUp(fName: string, lName: string, _id: string, salt: string, hashedPass: string){
+		var headers = new headers();
+		headers.append('Content-Type','application/json');
+		return this.http.put("http://localhost:3000/reg",{
+			firstName: fName,
+			lastName: lName,
+			_id: _id,
+			salt: salt,
+			hashedPassword: hashedPass
+		}, {headers:headers}).map(res => res.json());
+		// have to find some way to catch errors
+		// Observable<any> gives an error trying to do anything
+		// will have to check that out
 	}
 
 	signIn (email: string, pass: string){

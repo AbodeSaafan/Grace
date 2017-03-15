@@ -1,7 +1,7 @@
 import { Component, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-// import {AuthorizeService} from './../../services/authorize.service';
+import {AuthorizeService} from './../../services/authorize.service';
 
 @Component({
   selector: 'app-registration',
@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
 // ngOnInit?
 export class RegistrationComponent  {
   user: FormGroup;
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private AuthorizeService: AuthorizeService) {}
   ngOnInit() {
     this.user = this.fb.group({
       first: ['', [Validators.required, Validators.minLength(2)]],
@@ -33,6 +33,10 @@ export class RegistrationComponent  {
   } else {
     // if else to check if account already exists (PUT), else POST
         console.log('check');
+        this.AuthorizeService.signingUp(this.user.value.first, this.user.value.last,
+          this.user.value.email, "fake salt", this.user.value.password).subscribe(data => {
+            console.log(data);
+        });
 
     }
 
