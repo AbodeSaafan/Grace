@@ -2,10 +2,11 @@ var express = require('express');
 var router = express.Router();
 var mongojs = require('mongojs');
 var compiler = require('compilex');
-// should we consifer using passport
+var uuid = require('node-uuid');
 
 /******************* Login/Register	*******************/
 var db = mongojs('users');
+
   
 router.get('/signin', function(req,res){
 	db.users.find(function(err,users){
@@ -18,13 +19,23 @@ router.get('/signin', function(req,res){
 	});
 });
 
+router.get('/checkToken', function(req, res){
+	// TODO check token which is at 
+	// req.query.token
+	// return empty if invalid? 
+	// maybe use headers?
+	// return token if works?
+});
+
 router.get('/signin/:id', function(req,res){
 	db.users.findOne({_id: req.params.id},function(err,user){
 		if(err){
 			res.send(err);
 		}
 		else{
-			res.json(user);
+			var token = uuid.v4();
+			// Save token in db
+			res.json(token);
 		}
 	});
 });

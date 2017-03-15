@@ -42,9 +42,10 @@ export class AuthorizeService {
 	// statuses should be based on shared tokens
 	// assuming we'll implement tokens, here are some placeholders
 
-	tokenMake(token: string): void{
-		this.token = token;
+	tokenMake(): void{
+		//this.token = token;
 		this.passed = true;
+		localStorage.setItem('token', this.token);
 	}
 
 	// when we want to log out we have to destroy the token
@@ -68,6 +69,13 @@ export class AuthorizeService {
 		}
 
 		return this.passed;
+	}
+
+	isAuthenticated() : boolean{
+		// make an api request to make sure token stored at 
+		// localStorage.get('token') is a good token
+		// better than using hasAuthenticated (depercate that eventually)
+		return true;
 	}
 
 }

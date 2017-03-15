@@ -27,13 +27,23 @@ export class LandingComponent implements OnInit {
 
 	loginClicked() {
 		console.log("login clicked!!");
-		this.shown = 'LOGIN';
+		if(this.shown == 'LOGIN'){
+			this.shown = 'NONE';
+		} else {
+			this.shown = 'LOGIN';	
+		}
+		
 
 	}
 
 	registerClicked() {
 		console.log("register clicked!!");
-		this.shown = 'REGISTER';
+		if(this.shown == 'REGISTER'){
+			this.shown = 'NONE';
+		} else {
+			this.shown = 'REGISTER';	
+		}
+		
 	}
 
 
