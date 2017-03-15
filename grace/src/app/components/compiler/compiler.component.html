@@ -1,4 +1,10 @@
-<div class="compilerContainer">
-	<textarea class="codeArea inputArea"></textarea>	
-	<textarea class="codeArea outputArea" disabled></textarea>
-</div>
+<div ace-editor
+       [(text)]="text"
+       [mode]="mode"
+       [theme]="theme"
+       [options]="options"
+       [readOnly]="false"
+       [autoUpdateContent]="true"
+       [durationBeforeCallback]="1000"
+       (textChanged)="onChange($event)"
+       class="codeEditor"></div>

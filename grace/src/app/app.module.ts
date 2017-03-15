@@ -13,7 +13,8 @@ import { LandingComponent } from './components/landing/landing.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CompileService } from './services/compile.service';
-import { LoginComponent } from './components/login/login.component'
+import { LoginComponent } from './components/login/login.component';
+import { AceEditorModule } from 'ng2-ace-editor';
 
 @NgModule({
   declarations: [
@@ -24,14 +25,14 @@ import { LoginComponent } from './components/login/login.component'
     RegistrationComponent,
     HeaderComponent,
     LoginComponent
-
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    routing
+    routing,
+    AceEditorModule
   ],
   providers: [CompileService],
   bootstrap: [AppComponent]
