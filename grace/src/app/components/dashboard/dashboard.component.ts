@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
 
 	private filesList : any[];
 	private files : any[];
+	private inviteIconOpen: boolean;
 	dashHeader: HeaderConfig;
 
 	constructor(private fileStorage: FileStorageService) { 
@@ -26,6 +27,11 @@ export class DashboardComponent implements OnInit {
 		}
 		
 	}
+
+	fileInvite(index){
+		console.log(index);
+	}
+
 
 	logoClicked(){
 		alert("logo clicked");
