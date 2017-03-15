@@ -10,13 +10,13 @@ export class AuthorizeService {
 	// placeholder, abode required
 	private token: string = "";
 
-	constructor(@Inject(Http) private http: Http) { }
+	constructor(private http: Http) { }
 
-	signingUp(fName: string, lName: string, email: string, salt: string, hashedPass: string){
+	signingUp(fName: string, lName: string, _id: string, salt: string, hashedPass: string){
 		return this.http.put('/register', {
 			firstName: fName,
 			lastName: lName,
-			email: email,
+			_id: _id,
 			salt: salt,
 			hashedPassword: hashedPass
 		}).map(res => res.json());
@@ -28,7 +28,7 @@ export class AuthorizeService {
 	signingIn (email: string, salt: string, hashedPass: string){
 		let params: URLSearchParams = new URLSearchParams();
 		// need to ask julius about params
-		params.set('email', email);
+		params.set('_id', email);
 		params.set('salt', salt);
 		params.set('hashedPassword', hashedPass);
 		
@@ -39,6 +39,14 @@ export class AuthorizeService {
 		// again with the errors... julius required
 	}
 
+	signIn (email: string, pass: string){
+		let params: URLSearchParams = new URLSearchParams();
+		// need to ask julius about params
+		params.set('_id', email);
+		
+		return this.http.get("http://localhost:3000/signin/"+email).map(res => res.json());
+
+	}
 	// need to find a way to save tokens
 	// and provide statuses
 	// statuses should be based on shared tokens
