@@ -30,8 +30,10 @@ router.get('/signin/:id', function(req,res){
 });
 
 router.put('/reg', function(req,res){
-    var user = req.body;
-    if (!user.id || !(user.pass)){
+   // var user = req.body;
+    console.log(1);
+    console.log(user);
+    /*if (!user.id || !(user.pass)){
         res.status(400);
         res.json({"error":"User not created"});
 
@@ -43,7 +45,7 @@ router.put('/reg', function(req,res){
             }
             res.json(JSON.stringify(user));
         });
-    }
+    }*/
     
 });
 
