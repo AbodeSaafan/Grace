@@ -12,56 +12,30 @@ export class AuthorizeService {
 
 	constructor(private http: Http) { }
 
-	signingUp(fName: string, lName: string, _id: string, salt: string, hashedPass: string){
-		return this.http.put("http://localhost:3000/register", {
-			firstName: fName,
-			lastName: lName,
-			_id: _id,
-			salt: salt,
-			hashedPassword: hashedPass
-		}).map(res => res.json());
-		// have to find some way to catch errors
-		// Observable<any> gives an error trying to do anything
-		// will have to check that out
-	}
-
-	signingIn (email: string, salt: string, hashedPass: string){
+	signingUp(fName: string, lName: string, email: string, salt: string, hashedPass: string){
 		let params: URLSearchParams = new URLSearchParams();
-		// need to ask julius about params
 		params.set('_id', email);
 		params.set('salt', salt);
+		params.set('fName', fName);
+		params.set('lName', lName);
 		params.set('hashedPassword', hashedPass);
-		
-		return this.http.get('/signin', {
-			search: params
-		}).map(res => res.json());
 
-		// again with the errors... julius required
-	}
+console.log(email);
+		return this.http.put("http://localhost:3000/reg/a@gmail.com", JSON.stringify(params))
+						.map(res => res.json());
 
-	signUp(fName: string, lName: string, _id: string, salt: string, hashedPass: string){
-		var headers = new headers();
-		headers.append('Content-Type','application/json');
-		return this.http.put("http://localhost:3000/reg",{
-			firstName: fName,
-			lastName: lName,
-			_id: _id,
-			salt: salt,
-			hashedPassword: hashedPass
-		}, {headers:headers}).map(res => res.json());
 		// have to find some way to catch errors
 		// Observable<any> gives an error trying to do anything
 		// will have to check that out
+		/*return this.http.put("http://localhost:3000/reg", JSON.stringify(params))
+						.map(res => res.json());<-Post*/
 	}
 
 	signIn (email: string, pass: string){
-		let params: URLSearchParams = new URLSearchParams();
-		// need to ask julius about params
-		params.set('_id', email);
-		
 		return this.http.get("http://localhost:3000/signin/"+email).map(res => res.json());
-
 	}
+
+
 	// need to find a way to save tokens
 	// and provide statuses
 	// statuses should be based on shared tokens
