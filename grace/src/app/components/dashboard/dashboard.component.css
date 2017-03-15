@@ -1,2 +1,18 @@
 @import '~https://fonts.googleapis.com/icon?family=Material+Icons';
 @import '~@angular/material/core/theming/prebuilt/indigo-pink.css';
+
+md-list-item:hover{
+	background-color: #d91b5b;
+	cursor: pointer;
+}
+
+.metaIcon, .inviteIcon{
+	height: 100%;
+	width: 18%;
+	float: right;
+}
+
+td {
+	width: 20%;
+	height: 100%;
+}

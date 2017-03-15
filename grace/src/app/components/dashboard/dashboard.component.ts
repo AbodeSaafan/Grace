@@ -11,8 +11,7 @@ import { MaterialModule} from '@angular/material';
 export class DashboardComponent implements OnInit {
 
 	private filesList : any[];
-	private folders : any[];
-	private notes : any[];
+	private files : any[];
 	dashHeader: HeaderConfig;
 
 	constructor(private fileStorage: FileStorageService) { 
@@ -41,21 +40,7 @@ export class DashboardComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.folders = [
-		{
-			name: 'Photos',
-			updated: new Date('1/1/16'),
-		},
-		{
-			name: 'Recipes',
-			updated: new Date('1/17/16'),
-		},
-		{
-			name: 'Work',
-			updated: new Date('1/28/16'),
-		}
-		];
-		this.notes = [
+		this.files = [
 		{
 			name: 'Vacation Itinerary',
 			updated: new Date('2/20/16'),
