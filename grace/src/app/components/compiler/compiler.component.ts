@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { CompileService } from '../../services/compile.service';
+import { AceEditorDirective } from 'ng2-ace-editor';
 
 @Component({
 	selector: 'app-compiler',
@@ -8,12 +9,32 @@ import { CompileService } from '../../services/compile.service';
 })
 export class CompilerComponent implements OnInit {
 
-	constructor(private compileService: CompileService) { }
-	compiledReturn:string = "";
-	codeToCompile:string = "";
-	ngOnInit() {
+	@Input() theme: string;
+	mode: string;
+	text: string;
+	config: any;
+	@ViewChild('editor') editor;
+
+    options:any = {maxLines: 1000, printMargin: false};
+    onChange(code) {
+        //console.log("new code", code);
+    }
+
+    constructor(private compileService: CompileService) {
+    	// setting up compiler config
+    	this.mode = "python";
+    	this.text = "";
+    }
+
+    ngOnInit() {
 	}
 
+	ngAfterViewInit() {
+    }
+
+    compiledReturn:string = "";
+	codeToCompile:string = "";
+	
 	// When compile/run is clicked
 	compileClicked(){
 		this.codeToCompile = "";
