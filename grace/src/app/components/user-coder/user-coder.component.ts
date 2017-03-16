@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 export class UserCoderComponent implements OnInit {
 	
 	userHeader: HeaderConfig;
+	codeText: string;
 
   constructor(private router: Router) {
   	this.userHeader = {
@@ -24,6 +25,7 @@ export class UserCoderComponent implements OnInit {
   }
 
   ngOnInit() {
+  	this.codeText = localStorage.getItem('codeForUser');
   }
 
 
