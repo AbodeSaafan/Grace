@@ -159,6 +159,25 @@ router.get('/compile', function(req, res){
 
 
 
+/******************* Files *******************/
+
+var db = mongojs('files');
+
+router.get('/files', function(req, res){
+
+	db.files.find({owner: req.query.owner},function(err,file){
+		var files = [];
+		if(err|| file===null){
+			res.status(406);
+			res.send(err);
+		} else file.forEach( function(ownedFile) {
+			files.push(ownedFile); 
+		});
+		res.send(files);
+
+	});
+
+
 
 
 
