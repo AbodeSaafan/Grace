@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {Router} from '@angular/router';
 
 import * as $ from 'jquery';
 
@@ -11,19 +12,22 @@ export class HeaderComponent implements OnInit {
 
 	@Input() config: HeaderConfig;
 
-	constructor() {
-
+	constructor(private router: Router) {
 		if (!this.config) {
 			this.config = {
 				leftButtonContent: "",
 				rightButtonContent: "Right",
 				leftButtonSrc: "../../../assets/grace_header_logo.svg",
 				rightButtonSrc: "",
-				logoFunction: this.leftAlert,
+				logoRoute: "/",
 				leftButtonFunction: this.leftAlert,
 				rightButtonFunction: this.rightAlert
 			}
 		}
+	}
+
+	routeLogo() {
+		this.router.navigateByUrl(this.config.logoRoute);
 	}
 
 	leftAlert() {
@@ -50,7 +54,7 @@ export interface HeaderConfig {
 	rightButtonContent: string;
 	leftButtonSrc: string;
 	rightButtonSrc: string;
-	logoFunction: Function;
+	logoRoute: string;
 	leftButtonFunction: Function;
 	rightButtonFunction: Function;
 }

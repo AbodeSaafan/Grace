@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderConfig } from '../header/header.component';
+import { HeaderComponent } from '../header/header.component';
 import {Router} from '@angular/router';
+import * as $ from 'jquery';
+
 
 @Component({
   selector: 'app-user-coder',
@@ -11,6 +14,7 @@ export class UserCoderComponent implements OnInit {
 	
 	userHeader: HeaderConfig;
 	codeText: string;
+  parentRouter;
 
   constructor(private router: Router) {
   	this.userHeader = {
@@ -18,7 +22,7 @@ export class UserCoderComponent implements OnInit {
 			rightButtonContent: "Logout",
 			leftButtonSrc: "",
 			rightButtonSrc: "",
-			logoFunction: this.dashClicked,
+			logoRoute: "/dash",
 			leftButtonFunction: this.settingsClicked,
 			rightButtonFunction: this.logoutClicked
 		}
@@ -26,13 +30,6 @@ export class UserCoderComponent implements OnInit {
 
   ngOnInit() {
   	this.codeText = localStorage.getItem('codeForUser');
-  }
-
-
-  dashClicked() {
-  	// Save file here
-  	this.router.navigateByUrl('../dash');
-
   }
 
   settingsClicked() {
