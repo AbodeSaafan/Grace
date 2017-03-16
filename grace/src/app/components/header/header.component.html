@@ -1,7 +1,7 @@
 <div class="headerBar">
 	<img class="headerLogo logo" 
 		src="../../../assets/grace_header_logo.svg"
-		href="" (click)="config.logoFunction();">
+		href="" (click)="routeLogo();">
 	<div  *ngIf="config.leftButtonContent!='none'" class="headerLeftButton headerButtonStyle" (click)="config.leftButtonFunction();">
 		<img class="headerButtonImg" [src]="config.leftButtonSrc" alt="">{{config.leftButtonContent}}
 	</div>
