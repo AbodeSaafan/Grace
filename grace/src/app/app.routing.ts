@@ -15,9 +15,8 @@ const appRoutes: Routes = [
 		component: GuestCoderComponent
 	},
 	{
-		path: 'files',
+		path: 'dash',
 		component: DashboardComponent
-		// Temp for now for testing
 	}
 ];
 
