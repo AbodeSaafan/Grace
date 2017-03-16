@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FileStorageService } from '../../services/file-storage.service';
 import { HeaderConfig } from '../header/header.component';
-import { MaterialModule} from '@angular/material';
+import { MaterialModule } from '@angular/material';
+import {AuthorizeService } from '../../services/authorize.service';
 
 @Component({
 	selector: 'app-dashboard',
@@ -15,7 +16,7 @@ export class DashboardComponent implements OnInit {
 	private inviteIconOpen: boolean;
 	dashHeader: HeaderConfig;
 
-	constructor(private fileStorage: FileStorageService) { 
+	constructor(private fileStorage: FileStorageService, private authorizeService: AuthorizeService) { 
 		this.dashHeader = {
 			leftButtonContent: "settings",
 			rightButtonContent: "logout",
@@ -46,10 +47,12 @@ export class DashboardComponent implements OnInit {
 
 	settingsClicked() {
 		alert("settings clicked");
+		alert(this.files);
 	}
 
 	logoutClicked() {
 		alert("logout clicked");
+		this.authorizeService.signOut();
 	}
 
 	ngOnInit() {
@@ -68,11 +71,11 @@ export class DashboardComponent implements OnInit {
 		}
 		];
 
-  	/*this.fileStorage.getMyFiles(localStorage.getItem('token'))
-  	.subscribe(output => { this.filesList = output.filesList }
+  	this.fileStorage.getMyFiles(localStorage.getItem('token'))
+  	.subscribe(output => { this.files = output });
 			// Create objects that hold file info and display it
 			// Add object to array that is used to show the list of files
-			// Make sure clicking on file does good stuff;*/
+			// Make sure clicking on file does good stuff;
 			
 		}
 
