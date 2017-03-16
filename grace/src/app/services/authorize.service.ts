@@ -23,9 +23,21 @@ export class AuthorizeService {
 		params.set('fName', fName);
 		params.set('lName', lName);
 		params.set('pass', pass);
+		
+		var youTrash = this.router;
+
 
 		return this.http.post("http://localhost:3000/register", params)
-						.map(res => res.json());
+						.subscribe(token => {
+        	localStorage.setItem('token',JSON.stringify(token));
+        	localStorage.setItem('email',email);
+        	youTrash.navigateByUrl('/guest');
+        },
+    		function(error){
+    			console.log("we fucked up");
+    			alert("Invalid email");
+    		}
+        );
 
 		// have to find some way to catch errors
 		// Observable<any> gives an error trying to do anything
@@ -48,7 +60,7 @@ export class AuthorizeService {
         },
     		function(error){
     			console.log("we fucked up");
-    			alert("Invalid account or password")
+    			alert("Invalid email or password");
     		}
         );
 	}
