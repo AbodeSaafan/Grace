@@ -5,6 +5,7 @@ import {GuestCoderComponent} from './components/guest-coder/guest-coder.componen
 import {LandingComponent} from './components/landing/landing.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {SettingsComponent} from './components/settings/settings.component';
+import {UserCoderComponent} from './components/user-coder/user-coder.component';
 
 const appRoutes: Routes = [
 	{
@@ -22,6 +23,10 @@ const appRoutes: Routes = [
 	{
 		path: 'side',
 		component: SettingsComponent
+	},
+	{
+		path: 'user',
+		component: UserCoderComponent
 	}
 ];
 

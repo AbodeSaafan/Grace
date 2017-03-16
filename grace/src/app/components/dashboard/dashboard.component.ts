@@ -3,6 +3,7 @@ import { FileStorageService } from '../../services/file-storage.service';
 import { HeaderConfig } from '../header/header.component';
 import { MaterialModule } from '@angular/material';
 import {AuthorizeService } from '../../services/authorize.service';
+import {Router} from '@angular/router';
 
 @Component({
 	selector: 'app-dashboard',
@@ -11,12 +12,11 @@ import {AuthorizeService } from '../../services/authorize.service';
 })
 export class DashboardComponent implements OnInit {
 
-	private filesList : any[];
 	private files : any[];
 	private inviteIconOpen: boolean;
 	dashHeader: HeaderConfig;
 
-	constructor(private fileStorage: FileStorageService, private authorizeService: AuthorizeService) { 
+	constructor(private fileStorage: FileStorageService, private authorizeService: AuthorizeService, private router: Router) { 
 		this.dashHeader = {
 			leftButtonContent: "settings",
 			rightButtonContent: "logout",
@@ -29,8 +29,14 @@ export class DashboardComponent implements OnInit {
 		
 	}
 
+	fileOpen(index){
+		console.log("opening " + index);
+		localStorage.setItem('codeForUser', this.files[0].file)
+	}
+
 	fileInvite(index){
 		console.log(index);
+		this.router.navigateByUrl('/user');
 	}
 
 	fileDownload(index){
@@ -56,20 +62,6 @@ export class DashboardComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.files = [
-		{
-			name: 'File',
-			updated: new Date('2,24,14'),
-		},
-		{
-			name: 'Vacation Itinerary',
-			updated: new Date('2/20/16'),
-		},
-		{
-			name: 'Kitchen Remodel',
-			updated: new Date('1/18/16'),
-		}
-		];
 
   	this.fileStorage.getMyFiles(localStorage.getItem('token'))
   	.subscribe(output => { this.files = output });
