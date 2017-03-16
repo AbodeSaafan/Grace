@@ -13,5 +13,15 @@ export class SettingsComponent implements OnInit {
 	constructor(){}
 
   	ngOnInit() {}
- 	
+
+  	changePassword(){
+  		alert("change password");
+  	}
+ 	changeEmail(){
+  		alert("change email");
+  	}
+
+  	changeTheme(){
+  		alert("toggle dark theme");
+  	}
 }

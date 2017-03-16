@@ -3,10 +3,10 @@
   	<h2> Name here </h2>
 
   	<hr>
-  	<button class="settings"> Change password </button>
-   	<button class="settings"> Change email </button>
+  	<button class="settings" (click)="changePassword()"> Change password </button>
+   	<button class="settings" (click)="changeEmail()"> Change email </button>
    	<br>
- 	 <md-slide-toggle color="primary"> Toggle dark theme </md-slide-toggle>
+ 	 <md-slide-toggle (click)="changeTheme()" color="primary"> Toggle dark theme </md-slide-toggle>
 
   </md-sidenav>
   <button md-button (click)="sidenav.open()"> Close </button>
