@@ -12,6 +12,7 @@ export class CompilerComponent implements OnInit {
 
 	// Ace editor options ---------------------------------
 	@Input() theme: string;
+	@Input() saveFunction: Function;
 	mode: string;
 	editorText: string;
 	consoleText: string;
@@ -33,7 +34,19 @@ export class CompilerComponent implements OnInit {
     	this.mode = "python";
     	this.editorText = this.compiledReturn;
     	this.consoleText = "";
+
+    	if(!this.saveFunction){
+    		this.saveFunction = this.defaultSave;
+    	}
     }
+
+    defaultSave() {
+    	alert("No save function was assigned");
+    }
+
+    setEditorText(code){
+	    this.compileEditor.setValue(code);
+	}
 
     ngOnInit() {
     	$("body").css({backgroundColor: "#efefef"});

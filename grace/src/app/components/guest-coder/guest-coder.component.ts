@@ -32,6 +32,10 @@ export class GuestCoderComponent implements OnInit {
 		alert("guest right clicked");
 	}
 
+	mySaveFunction(){
+		alert("You must be a registered user to save online!");
+	}
+
 	ngOnInit() {
 	}
 
