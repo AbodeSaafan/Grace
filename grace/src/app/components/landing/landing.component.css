@@ -104,3 +104,9 @@ table{
 	padding-top: -30px;
 
 }
+
+i{
+	right:10px;
+	animation: blinker 1s linear infinite;
+	/*float: right;*/
+}
