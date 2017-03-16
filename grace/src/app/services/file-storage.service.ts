@@ -14,7 +14,7 @@ export class FileStorageService {
 
 	getMyFiles(token: string){
 		if (!this.authorizeService.isAuthenticated()){
-			this.router.navigateByUrl('/guest');
+			this.router.navigateByUrl('/');
 		} else{
 			// Good to go get the files associated with the email
 			//this.userEmail = this.authorizeService.getEmail();
@@ -22,6 +22,21 @@ export class FileStorageService {
 			let params: URLSearchParams = new URLSearchParams();
 			params.set('owner', this.userEmail);
 			return this.http.get(this.apiURL, {
+				search: params
+			}).map(res => res.json());
+		}
+	}
+
+	addAFile(token: string, fileName: string, email: string, codeFile: string){
+		if (!this.authorizeService.isAuthenticated()){
+			this.router.navigateByUrl('/');
+		} else {
+			let params: URLSearchParams = new URLSearchParams();
+			params.set('owner', email);
+			params.set('fileName', fileName);
+			params.set('file', codeFile);
+			params.set('dateModified', new Date().toLocaleDateString());
+			return this.http.post(this.apiURL, {
 				search: params
 			}).map(res => res.json());
 		}

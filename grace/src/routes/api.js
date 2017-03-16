@@ -177,11 +177,15 @@ router.get('/files', function(req, res){
 	});
 });
 
-
-
-
-
-
+router.post('/files'), function(req, res){
+	var file = req.body;
+	db.files.save(file, function(err, user){
+		if(err){
+			res.status(400);
+			res.send(err);
+		}
+	});
+});
 
 
 module.exports = router;
