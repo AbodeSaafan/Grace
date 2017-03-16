@@ -98,6 +98,13 @@ export class CompilerComponent implements OnInit {
 		});
 	}
 
+	stopCompile() {
+		this.compileService.compileCode("print('stopped')").subscribe(output => {
+			var currentOutput = this.consoleEditor.getValue();
+			this.consoleEditor.setValue(currentOutput + output.output);
+		});
+	}
+
 	downloadFile(){
 		var FileSaver = require('file-saver');
 		var blob = new Blob([this.compileEditor.getValue()], {type: "text/plain;charset=utf-8"});
