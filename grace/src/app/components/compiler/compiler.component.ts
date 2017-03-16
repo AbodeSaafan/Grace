@@ -14,7 +14,7 @@ export class CompilerComponent implements OnInit {
 	@Input() theme: string;
 	@Input() saveFunction: Function;
 	mode: string;
-	editorText: string;
+	@Input() editorText: string;
 	consoleText: string;
 	config: any;
 
@@ -32,16 +32,22 @@ export class CompilerComponent implements OnInit {
     constructor(private compileService: CompileService) {
     	// setting up compiler config
     	this.mode = "python";
-    	this.editorText = this.compiledReturn;
     	this.consoleText = "";
 
+    	if(!this.editorText){
+    		this.editorText = "";
+    	}
     	if(!this.saveFunction){
     		this.saveFunction = this.defaultSave;
     	}
     }
 
+    save() {
+    	this.saveFunction();
+    }
+
     defaultSave() {
-    	alert("No save function was assigned");
+    	alert("no save function found");
     }
 
     setEditorText(code){
@@ -85,7 +91,7 @@ export class CompilerComponent implements OnInit {
 			} else if(output.error) {
 				this.compiledReturn = output.error;
 			} else {
-				this.compiledReturn = "infinite";
+				this.compiledReturn = "infinite\n";
 			}
 			var currentOutput = this.consoleEditor.getValue();
 			this.consoleEditor.setValue(currentOutput + this.compiledReturn);
