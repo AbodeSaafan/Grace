@@ -35,9 +35,7 @@ export class RegistrationComponent  {
         console.log('check');
 
         this.AuthorizeService.signUp(this.user.value.first, this.user.value.last,
-          this.user.value.account.email, this.user.value.account.password).subscribe(data => {
-            console.log(data);
-        });
+          this.user.value.account.email, this.user.value.account.password);
 
     }
 
