@@ -33,9 +33,9 @@ export class RegistrationComponent  {
   } else {
     // if else to check if account already exists (PUT), else POST
         console.log('check');
-        
-        this.AuthorizeService.signingUp(this.user.value.first, this.user.value.last,
-          this.user.value.account.email, "fake salt", this.user.value.account.password).subscribe(data => {
+
+        this.AuthorizeService.signUp(this.user.value.first, this.user.value.last,
+          this.user.value.account.email, this.user.value.account.password).subscribe(data => {
             console.log(data);
         });
 
