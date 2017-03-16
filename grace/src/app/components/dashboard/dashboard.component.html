@@ -6,9 +6,9 @@
     <h4 md-line class="fileName">{{file.name}}</h4>
     <p md-line class="fileDate"> {{file.updated | date}} </p>
 	<div class="fileButtons">
-	<img class="metaIcon" src="../../assets/meta.svg" (click)="fileMeta(i)">
-	<img class="inviteIcon" src="../../assets/invite.svg" (click)="fileInvite(i)">
-	<img class="downloadIcon" src="../../assets/download.svg" (click)="fileDownload(i)">
+	<img class="metaIcon" src="../../assets/meta.svg" (click)="fileMeta(i)" onmouseover="this.src='../../assets/meta-selected.svg';" onmouseout="this.src='../../assets/meta.svg';">
+	<img class="inviteIcon" src="../../assets/invite.svg" (click)="fileInvite(i)" onmouseover="this.src='../../assets/invite-selected.svg';" onmouseout="this.src='../../assets/invite.svg';">
+	<img class="downloadIcon" src="../../assets/download.svg" (click)="fileDownload(i)" onmouseover="this.src='../../assets/download-selected.svg';" onmouseout="this.src='../../assets/download.svg';">
 	</div>
   </md-list-item>
 </md-list>

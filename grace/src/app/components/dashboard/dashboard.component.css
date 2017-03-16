@@ -2,13 +2,19 @@
 @import '~@angular/material/core/theming/prebuilt/indigo-pink.css';
 
 md-list-item:hover{
-	background-color: #d91b5b;
+	background-color: #D4DCFF;
 	cursor: pointer;
 }
 
-.metaIcon, .inviteIcon, .downloadIcon {
+.inviteIcon, .downloadIcon {
 	height: 100%;
 	width: 18%;
+	float: right;
+}
+
+.metaIcon {
+	height: 40%;
+	width: 8%;
 	float: right;
 }
 
