@@ -32,11 +32,11 @@ export class DashboardComponent implements OnInit {
 	fileOpen(index){
 		console.log("opening " + index);
 		localStorage.setItem('codeForUser', this.files[0].file)
+		this.router.navigateByUrl('/user');
 	}
 
 	fileInvite(index){
 		console.log(index);
-		this.router.navigateByUrl('/user');
 	}
 
 	fileDownload(index){
