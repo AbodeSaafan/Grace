@@ -29,16 +29,7 @@ export class LoginComponent  {
   } else {
     // check account exists
         console.log('check for account');
-        this.AuthorizeService.signIn(this.user.value.email, this.user.value.password).subscribe(data => {
-            console.log(data.pass);
-            if (this.user.value.password == data.pass){
-                alert("Login successfull");
-             }
-             else{
-               alert("Login failed");
-             }
-
-        });
+        this.AuthorizeService.signIn(this.user.value.email, this.user.value.password);
         
     }
 

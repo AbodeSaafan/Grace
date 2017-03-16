@@ -1,7 +1,10 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http, URLSearchParams } from '@angular/http';
+import {Router} from '@angular/router';
+import {routerTransition} from '../router.animations';
 import 'rxjs/add/operator/map';
 
+var gt
 @Injectable()
 export class AuthorizeService {
 
@@ -12,18 +15,29 @@ export class AuthorizeService {
 
 	private email: string = "";
 
-	constructor(private http: Http) { }
+	constructor(private http: Http, private router: Router) {}
 
-	signingUp(fName: string, lName: string, email: string, salt: string, hashedPass: string){
+	signUp(fName: string, lName: string, email: string, pass: string){
 		let params: URLSearchParams = new URLSearchParams();
 		params.set('_id', email);
-		params.set('salt', salt);
 		params.set('fName', fName);
 		params.set('lName', lName);
-		params.set('pass', hashedPass);
+		params.set('pass', pass);
+		
+		var youTrash = this.router;
+
 
 		return this.http.post("http://localhost:3000/register", params)
-						.map(res => res.json());
+						.subscribe(token => {
+        	localStorage.setItem('token',JSON.stringify(token));
+        	localStorage.setItem('email',email);
+        	youTrash.navigateByUrl('/guest');
+        },
+    		function(error){
+    			console.log("we fucked up");
+    			alert("Invalid email");
+    		}
+        );
 
 		// have to find some way to catch errors
 		// Observable<any> gives an error trying to do anything
@@ -36,12 +50,22 @@ export class AuthorizeService {
 		let params: URLSearchParams = new URLSearchParams();
 		params.set('_id', email);
 		params.set('pass', pass);
-
+		var youTrash = this.router;
 		return this.http.get("http://localhost:3000/signin", {
 			search: params
-		}).map(res => res.json());
+		}).subscribe(token => {
+        	localStorage.setItem('token',JSON.stringify(token));
+        	localStorage.setItem('email',email);
+        	youTrash.navigateByUrl('/guest');
+        },
+    		function(error){
+    			console.log("we fucked up");
+    			alert("Invalid email or password");
+    		}
+        );
 	}
 
+	signOut (){}
 
 	// need to find a way to save tokens
 	// and provide statuses
