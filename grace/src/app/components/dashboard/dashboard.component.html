@@ -1,13 +1,14 @@
 <app-header [config]='dashHeader'></app-header>
+<div class="filesTableTitle"><h1>Files</h1></div>
 <md-list>
-  <h2>Files</h2>
   <md-list-item *ngFor="let file of files; let i = index;">
     <md-icon md-list-avatar>note</md-icon>
     <h4 md-line class="fileName">{{file.name}}</h4>
     <p md-line class="fileDate"> {{file.updated | date}} </p>
 	<div class="fileButtons">
-	<img class="metaIcon" src="../../assets/drop-down-arrow.svg">
-	<img class="inviteIcon" src="../../assets/close-envelope.svg" (click)="fileInvite(i)">
+	<img class="metaIcon" src="../../assets/meta.svg" (click)="fileMeta(i)">
+	<img class="inviteIcon" src="../../assets/invite.svg" (click)="fileInvite(i)">
+	<img class="downloadIcon" src="../../assets/download.svg" (click)="fileDownload(i)">
 	</div>
   </md-list-item>
 </md-list>
