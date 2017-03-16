@@ -20,7 +20,7 @@ export class FileStorageService {
 			//this.userEmail = this.authorizeService.getEmail();
 			this.userEmail = "abode@gmail.com"
 			let params: URLSearchParams = new URLSearchParams();
-			params.set('email', this.userEmail);
+			params.set('owner', this.userEmail);
 			return this.http.get(this.apiURL, {
 				search: params
 			}).map(res => res.json());

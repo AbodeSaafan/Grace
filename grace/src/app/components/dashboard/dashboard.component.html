@@ -3,8 +3,8 @@
 <md-list>
   <md-list-item *ngFor="let file of files; let i = index;">
     <md-icon md-list-avatar>note</md-icon>
-    <h4 md-line class="fileName">{{file.name}}</h4>
-    <p md-line class="fileDate"> {{file.updated | date}} </p>
+    <h4 md-line class="fileName">{{file.fileName}}</h4>
+    <p md-line class="fileDate"> {{file.dateModified | date}} </p>
 	<div class="fileButtons">
 	<img class="metaIcon" src="../../assets/meta.svg" (click)="fileMeta(i)" onmouseover="this.src='../../assets/meta-selected.svg';" onmouseout="this.src='../../assets/meta.svg';">
 	<img class="inviteIcon" src="../../assets/invite.svg" (click)="fileInvite(i)" onmouseover="this.src='../../assets/invite-selected.svg';" onmouseout="this.src='../../assets/invite.svg';">
