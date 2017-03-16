@@ -21,6 +21,28 @@ router.get('/signinA', function(req,res){
 	});
 });
 
+router.get('/checkToken', function(req, res){
+	// TODO check token which is at 
+	// req.query.token
+	// return empty if invalid? 
+	// maybe use headers?
+	// return token if works?
+	db.users.findOne({_id: req.params.id}, function(err, user){
+		if (err){
+			res.status(400);
+			res.send(err);
+		}
+		else {
+			if (user.token == req.params.token){
+				res.json(users);
+			}
+			else {
+				res.status(400);
+				res.send(err);
+			}
+		}
+	});
+});
 
 router.get('/signin', function(req,res){
 	console.log("get the user "+req.query._id);
@@ -53,46 +75,57 @@ router.get('/signin', function(req,res){
 	});
 });
 
-
-
-
-
-
-
-
-
-
-router.get('/checkToken', function(req, res){
-	// TODO check token which is at 
-	// req.query.token
-	// return empty if invalid? 
-	// maybe use headers?
-	// return token if works?
-});
-
 router.post('/register', function(req,res){
+
     var user = req.body;
     console.log(user._id);
     console.log(user.pass);
+
     if (!user._id || !(user.pass)){
+    	
         res.status(400);
         res.json({"error":"User not created"});
 
     }
+
     else{
-    	user.salt = uuid.v4();
-    	user.pass = user.pass
 
-    	const hash = crypto.createHash('sha256');
-	    hash.update(user.salt+user.pass);
-	    user.pass = hash.digest('hex');
+    	db.users.findOne({_id: user._id}, function(err, user){
+    		
+    		// if no user exists w/same email, we can register
+    		if (users === null){
 
-        db.users.save(user, function(err,user){
-            if(err){
-                res.send(err);
-            }
-            res.json(JSON.stringify(user));
-        });
+    			user.salt = uuid.v4();
+		    	user.pass = user.pass
+
+		    	const hash = crypto.createHash('sha256');
+			    hash.update(user.salt+user.pass);
+			    user.pass = hash.digest('hex');
+
+			    // save
+		        db.users.save(user, function(err,user){
+
+		            if(err){
+		            	res.status(400);
+		                res.send(err);
+		            }
+
+		            // set tokens
+		            var token = uuid.v4();
+					db.users.update({_id: req.query._id},{$set:{token:token}});
+					res.json(token);
+		        
+		        });
+    		}
+
+    		// 
+    		else{
+				res.status(400);
+				res.send(err);
+    		}
+
+    	});	
+    	
     }
     
 });
