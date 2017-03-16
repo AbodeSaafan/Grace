@@ -102,9 +102,20 @@ export class CompilerComponent implements OnInit {
 	compileCode(){
 		this.codeToCompile = this.compileEditor.getValue();
 		this.compileService.compileCode(this.codeToCompile).subscribe(output => {
-			this.compiledReturn = output.output;
-			this.consoleEditor.setValue(this.compiledReturn);
+			if(output.output) {
+				this.compiledReturn = output.output;
+			} else if(output.error) {
+				this.compiledReturn = output.error;
+			} else {
+				this.compiledReturn = "infinite";
+			}
+			var currentOutput = this.consoleEditor.getValue();
+			this.consoleEditor.setValue(currentOutput + this.compiledReturn);
 		});
+	}
+
+	clearConsole(){
+		this.consoleEditor.setValue("");
 	}
 
 }
