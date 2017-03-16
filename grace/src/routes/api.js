@@ -84,57 +84,57 @@ router.post('/deleteToken', function(req,res){
 
 router.post('/register', function(req,res){
 
-    var user = req.body;
-    console.log(user._id);
-    console.log(user.pass);
+	var user = req.body;
+	console.log(user._id);
+	console.log(user.pass);
 
-    if (!user._id || !(user.pass)){
-    	
-        res.status(400);
-        res.json({"error":"User not created"});
+	if (!user._id || !(user.pass)){
 
-    }
+		res.status(400);
+		res.json({"error":"User not created"});
 
-    else{
+	}
 
-    	db.users.findOne({_id: user._id}, function(err, checkUser){
-    		
+	else{
+
+		db.users.findOne({_id: user._id}, function(err, checkUser){
+
     		// if no user exists w/same email, we can register
     		if (checkUser === null){
 
     			user.salt = uuid.v4();
-		    	user.pass = user.pass;
+    			user.pass = user.pass;
 
-		    	const hash = crypto.createHash('sha256');
-			    hash.update(user.salt+user.pass);
-			    user.pass = hash.digest('hex');
+    			const hash = crypto.createHash('sha256');
+    			hash.update(user.salt+user.pass);
+    			user.pass = hash.digest('hex');
 
 			    // save
-		        db.users.save(user, function(err,user){
+			    db.users.save(user, function(err,user){
 
-		            if(err){
-		            	res.status(400);
-		                res.send(err);
-		            }
+			    	if(err){
+			    		res.status(400);
+			    		res.send(err);
+			    	}
 
 		            // set tokens
 		            var token = uuid.v4();
-					db.users.update({_id: req.query._id},{$set:{token:token}});
-					res.json(token);
-		        
+		            db.users.update({_id: req.query._id},{$set:{token:token}});
+		            res.json(token);
+
 		        });
-    		}
+			}
 
     		// 
     		else{
-				res.status(400);
-				res.send(err);
+    			res.status(400);
+    			res.send(err);
     		}
 
     	});	
-    	
-    }
-    
+
+	}
+
 });
 
 router.get('/test', function(req, res){
@@ -174,8 +174,8 @@ router.get('/files', function(req, res){
 			files.push(ownedFile); 
 		});
 		res.send(files);
-
 	});
+});
 
 
 
