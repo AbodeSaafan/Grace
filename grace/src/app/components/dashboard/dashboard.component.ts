@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
 
 	fileOpen(index){
 		console.log("opening " + index);
-		localStorage.setItem('codeForUser', this.files[0].file)
+		localStorage.setItem('codeForUser', this.files[index].file)
 		this.router.navigateByUrl('/user');
 	}
 
