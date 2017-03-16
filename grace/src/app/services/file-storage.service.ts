@@ -13,7 +13,9 @@ export class FileStorageService {
 	constructor(private http: Http, private authorizeService: AuthorizeService, private router: Router) { }
 
 	getMyFiles(token: string){
-		if (this.authorizeService.isAuthenticated()){
+		if (!this.authorizeService.isAuthenticated()){
+			this.router.navigateByUrl('/guest');
+		}
 			// Good to go get the files associated with the email
 			//this.userEmail = this.authorizeService.getEmail();
 			this.userEmail = "abode@gmail.com"
@@ -22,9 +24,7 @@ export class FileStorageService {
 			this.http.get(this.apiURL, {
 				search: params
 			}).map(res => res.json());
-		} else {
-			this.router.navigateByUrl('/guest');
-		}
+		
 	}
 
 }
