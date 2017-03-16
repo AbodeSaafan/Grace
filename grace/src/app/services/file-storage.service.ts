@@ -15,7 +15,8 @@ export class FileStorageService {
 	getMyFiles(token: string){
 		if (this.authorizeService.isAuthenticated()){
 			// Good to go get the files associated with the email
-			this.userEmail = this.authorizeService.getEmail();
+			//this.userEmail = this.authorizeService.getEmail();
+			this.userEmail = "abode@gmail.com"
 			let params: URLSearchParams = new URLSearchParams();
 			params.set('email', this.userEmail);
 			this.http.get(this.apiURL, {
