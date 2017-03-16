@@ -114,6 +114,10 @@ export class CompilerComponent implements OnInit {
 		});
 	}
 
+	downloadFile(){
+		alert("bacon");
+	}
+
 	clearConsole(){
 		this.consoleEditor.setValue("");
 	}
