@@ -32,6 +32,13 @@ export class UserCoderComponent implements OnInit {
   	this.codeText = localStorage.getItem('codeForUser');
   }
 
+  dashClicked() {
+  	// Save file here
+  	this.router.navigateByUrl('/dash');
+  	localStorage.removeItem('codeForUser');
+
+  }
+
   settingsClicked() {
 
   }
