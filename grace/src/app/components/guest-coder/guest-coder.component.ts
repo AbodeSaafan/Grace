@@ -17,8 +17,8 @@ export class GuestCoderComponent implements OnInit {
 			leftButtonContent: "guestL",
 			rightButtonContent: "guestR",
 			leftButtonSrc: "",
+			logoRoute: "/",
 			rightButtonSrc: "",
-			logoFunction: this.guestLeft,
 			leftButtonFunction: this.guestLeft,
 			rightButtonFunction: this.guestRight
 		}

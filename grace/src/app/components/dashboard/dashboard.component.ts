@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
 			rightButtonContent: "logout",
 			leftButtonSrc: "",
 			rightButtonSrc: "",
-			logoFunction: this.logoClicked,
+			logoRoute: "/dash",
 			leftButtonFunction: this.settingsClicked,
 			rightButtonFunction: this.logoutClicked
 		}
