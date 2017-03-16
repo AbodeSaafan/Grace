@@ -37,9 +37,6 @@ export class CompilerComponent implements OnInit {
 
     ngOnInit() {
     	$("body").css({backgroundColor: "#efefef"});
-    	this.animationListeners();
-    	this.clickListeners();
-    	
 
     	var w = $(window);
     	var bar = $(".toolbar");
@@ -56,38 +53,6 @@ export class CompilerComponent implements OnInit {
     		container2.height(w.height() - 52.5 - bar.height());
     		resizer.height(w.height() - 52.5);
     	});
-
-		
-	}
-
-	animationListeners() {
-
-	}
-
-	clickListeners () {
-		$("#downloadButton").click(function(e) {
-		});
-
-		$("#saveButton").click(function() {
-
-		});
-
-		// $("#runButton").click(function() {
-		// 	alert("hi");
-		// 	this.ngAfterViewInit();
-		// })
-
-		$("#stopButton").click(function() {
-
-		});
-
-		$("#clearButton").click(function() {
-
-		});
-	}
-
-	setFullHeight() {
-		
 	}
 
 	ngAfterViewInit() {
@@ -115,7 +80,10 @@ export class CompilerComponent implements OnInit {
 	}
 
 	downloadFile(){
-		alert("bacon");
+		var FileSaver = require('file-saver');
+		var blob = new Blob([this.compileEditor.getValue()], {type: "text/plain;charset=utf-8"});
+		FileSaver.saveAs(blob, "grace" + 
+			Math.floor(new Date().getTime()/500).toString(16) + ".py");
 	}
 
 	clearConsole(){
