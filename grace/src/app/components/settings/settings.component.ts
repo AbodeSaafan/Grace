@@ -22,6 +22,6 @@ export class SettingsComponent implements OnInit {
   	}
 
   	changeTheme(){
-  		alert("toggle dark theme");
+  		
   	}
 }
