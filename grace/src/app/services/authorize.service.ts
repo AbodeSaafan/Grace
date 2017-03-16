@@ -31,7 +31,7 @@ export class AuthorizeService {
 						.subscribe(token => {
         	localStorage.setItem('token',JSON.stringify(token));
         	localStorage.setItem('email',email);
-        	youTrash.navigateByUrl('/guest');
+        	youTrash.navigateByUrl('/dash');
         },
     		function(error){
     			console.log("we fucked up");
@@ -46,43 +46,31 @@ export class AuthorizeService {
 						.map(res => res.json());<-Post*/
 	}
 
-	signIn (email: string, pass: string){
-		let params: URLSearchParams = new URLSearchParams();
-		params.set('_id', email);
-		params.set('pass', pass);
-		var youTrash = this.router;
-		return this.http.get("http://localhost:3000/signin", {
-			search: params
-		}).subscribe(token => {
-        	localStorage.setItem('token',JSON.stringify(token));
-        	localStorage.setItem('email',email);
-        	youTrash.navigateByUrl('/guest');
-        },
-    		function(error){
-    			console.log("we fucked up");
-    			alert("Invalid email or password");
-    		}
-        );
-	}
 
-	signOut (){}
+	signOut (){
+		let params: URLSearchParams = new URLSearchParams();
+		params.set('_id', localStorage.getItem('email'));
+		params.set('token', localStorage.getItem('token'));
+		this.isAuthenticated().subscribe(data=>{
+			this.http.post("http://localhost:3000/deleteToken", params).subscribe(logout => {
+				alert("successful logout");
+			}, function(err) {
+				alert("unsuccessful logout");
+			});
+		},function(err) {
+				alert("unsuccessful logout");
+		});
+
+		localStorage.removeItem('email');
+		localStorage.removeItem('token');
+		this.router.navigateByUrl('/');
+			
+	}
 
 	// need to find a way to save tokens
 	// and provide statuses
 	// statuses should be based on shared tokens
 	// assuming we'll implement tokens, here are some placeholders
-
-	tokenMake(): void{
-		//this.token = token;
-		this.passed = true;
-		localStorage.setItem('token', this.token);
-	}
-
-	// when we want to log out we have to destroy the token
-	tokenUnmake(): void{
-		this.token = "";
-		this.passed = false;
-	}
 
 	getEmail(){
 		return this.email;
@@ -101,11 +89,37 @@ export class AuthorizeService {
 		return this.passed;
 	}
 
-	isAuthenticated() : boolean{
+
+	signIn (email: string, pass: string){
+		let params: URLSearchParams = new URLSearchParams();
+		params.set('_id', email);
+		params.set('pass', pass);
+		var youTrash = this.router;
+		return this.http.get("http://localhost:3000/signin", {
+			search: params
+		}).subscribe(token => {
+        	localStorage.setItem('token',JSON.stringify(token));
+        	localStorage.setItem('email',email);
+        	youTrash.navigateByUrl('/dash');
+        },
+    		function(error){
+    			console.log("we fucked up");
+    			alert("Invalid email or password");
+    		}
+        );
+	}
+
+	isAuthenticated(){
 		// make an api request to make sure token stored at 
 		// localStorage.get('token') is a good token
 		// better than using hasAuthenticated (depercate that eventually)
-		return true;
+		let params: URLSearchParams = new URLSearchParams();
+		params.set('_id', localStorage.getItem('email'));
+		params.set('token', localStorage.getItem('token'));
+
+		return this.http.get("http://localhost:3000/checkToken", {
+			search: params
+		}).map(res => res.json());
 	}
 
 }

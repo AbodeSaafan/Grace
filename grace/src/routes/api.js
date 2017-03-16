@@ -8,19 +8,6 @@ var crypto = require('crypto');
 /******************* Login/Register	*******************/
 var db = mongojs('users');
 
-  
-router.get('/signinA', function(req,res){
-	db.users.find(function(err,users){
-		if(err){
-			res.send(err);
-		}
-		else{
-
-			res.json(users);
-		}
-	});
-});
-
 router.get('/checkToken', function(req, res){
 	// TODO check token which is at 
 	// req.query.token
@@ -28,13 +15,13 @@ router.get('/checkToken', function(req, res){
 	// maybe use headers?
 	// return token if works?
 	db.users.findOne({_id: req.params.id}, function(err, user){
-		if (err){
+		if (err || user === null){
 			res.status(400);
 			res.send(err);
 		}
 		else {
 			if (user.token == req.params.token){
-				res.json(users);
+				res.json(user.token);
 			}
 			else {
 				res.status(400);
@@ -43,6 +30,7 @@ router.get('/checkToken', function(req, res){
 		}
 	});
 });
+
 
 router.get('/signin', function(req,res){
 	console.log("get the user "+req.query._id);
@@ -75,6 +63,25 @@ router.get('/signin', function(req,res){
 	});
 });
 
+router.post('/deleteToken', function(req,res){
+	var user = req.body;
+	if (!user.token || !user._id){
+		res.status(400);
+		res.json({"error":"there's no user with this somehow lol"})
+	}
+	else {
+		db.users.findOne({_id: user._id}, function(err, checkUser){
+			if (checkUser) {
+				db.users.update({_id: req.query._id},{$set:{token:null}});
+			}
+			else {
+				res.status(400);
+				res.json({"error" : "update error"})
+			}
+		});
+	}
+});
+
 router.post('/register', function(req,res){
 
     var user = req.body;
@@ -90,13 +97,13 @@ router.post('/register', function(req,res){
 
     else{
 
-    	db.users.findOne({_id: user._id}, function(err, user){
+    	db.users.findOne({_id: user._id}, function(err, checkUser){
     		
     		// if no user exists w/same email, we can register
-    		if (users === null){
+    		if (checkUser === null){
 
     			user.salt = uuid.v4();
-		    	user.pass = user.pass
+		    	user.pass = user.pass;
 
 		    	const hash = crypto.createHash('sha256');
 			    hash.update(user.salt+user.pass);
