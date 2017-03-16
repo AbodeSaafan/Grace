@@ -32,6 +32,13 @@ export class DashboardComponent implements OnInit {
 		console.log(index);
 	}
 
+	fileDownload(index){
+		console.log(index);
+	}
+
+	fileMeta(index){
+		console.log(index);
+	}
 
 	logoClicked(){
 		alert("logo clicked");
@@ -47,6 +54,10 @@ export class DashboardComponent implements OnInit {
 
 	ngOnInit() {
 		this.files = [
+		{
+			name: 'File',
+			updated: new Date('2,24,14'),
+		},
 		{
 			name: 'Vacation Itinerary',
 			updated: new Date('2/20/16'),

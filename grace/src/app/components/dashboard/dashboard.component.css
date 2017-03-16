@@ -6,7 +6,7 @@ md-list-item:hover{
 	cursor: pointer;
 }
 
-.metaIcon, .inviteIcon{
+.metaIcon, .inviteIcon, .downloadIcon {
 	height: 100%;
 	width: 18%;
 	float: right;
@@ -19,4 +19,8 @@ md-list-item:hover{
 
 img {
 	margin-right: 7%;
+}
+
+.filesTableTitle {  
+	margin-left: 12px;
 }
