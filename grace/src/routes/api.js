@@ -177,13 +177,14 @@ router.get('/files', function(req, res){
 	});
 });
 
-router.post('/files'), function(req, res){
-	var file = req.body;
-	db.files.save(file, function(err, user){
+router.post('/files', function(req, res){
+	var file = {owner: req.query.owner, dateModified: req.query.dateModified, fileName: req.query.fileName, file: req.query.file }
+	db.files.save(file, function(err, file){
 		if(err){
 			res.status(400);
 			res.send(err);
 		}
+		res.json("posted file")
 	});
 });
 
