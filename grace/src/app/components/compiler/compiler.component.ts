@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { CompileService } from '../../services/compile.service';
 import { AceEditorDirective } from 'ng2-ace-editor';
+import * as $ from 'jquery';
 
 @Component({
 	selector: 'app-compiler',
@@ -9,38 +10,100 @@ import { AceEditorDirective } from 'ng2-ace-editor';
 })
 export class CompilerComponent implements OnInit {
 
+	// Ace editor options ---------------------------------
 	@Input() theme: string;
 	mode: string;
-	text: string;
+	editorText: string;
+	consoleText: string;
 	config: any;
-	@ViewChild('editor') editor;
 
-    options:any = {maxLines: 1000, printMargin: false};
-    onChange(code) {
-        //console.log("new code", code);
-    }
+	@ViewChild('editor') editor;
+	@ViewChild('editori') editor2;
+	compileEditor: any;
+	consoleEditor: any;
+
+    editorOptions:any = {printMargin: false};
+    consoleOptions:any  = {printMargin: false,
+    						showGutter: false};
+
+    // Button bar -----------------------------------------
 
     constructor(private compileService: CompileService) {
     	// setting up compiler config
     	this.mode = "python";
-    	this.text = "";
+    	this.editorText = this.compiledReturn;
+    	this.consoleText = "";
     }
 
     ngOnInit() {
+    	$("body").css({backgroundColor: "#efefef"});
+    	this.animationListeners();
+    	this.clickListeners();
+    	
+
+    	var w = $(window);
+    	var bar = $(".toolbar");
+    	var resizer = $("#resizer");
+    	var container1 = $(".container");
+    	var container2 = $(".container2");
+
+    	container1.height(w.height() - 52.5 - bar.height());
+    	container2.height(w.height() - 52.5 - bar.height());
+    	resizer.height(w.height() - 52.5);
+
+    	w.resize(function() {
+    		container1.height(w.height() - 52.5 - bar.height());
+    		container2.height(w.height() - 52.5 - bar.height());
+    		resizer.height(w.height() - 52.5);
+    	});
+
+		
+	}
+
+	animationListeners() {
+
+	}
+
+	clickListeners () {
+		$("#downloadButton").click(function(e) {
+		});
+
+		$("#saveButton").click(function() {
+
+		});
+
+		// $("#runButton").click(function() {
+		// 	alert("hi");
+		// 	this.ngAfterViewInit();
+		// })
+
+		$("#stopButton").click(function() {
+
+		});
+
+		$("#clearButton").click(function() {
+
+		});
+	}
+
+	setFullHeight() {
+		
 	}
 
 	ngAfterViewInit() {
+		this.compileEditor = this.editor.getEditor();
+		this.consoleEditor = this.editor2.getEditor();
     }
 
     compiledReturn:string = "";
 	codeToCompile:string = "";
 	
 	// When compile/run is clicked
-	compileClicked(){
-		this.codeToCompile = "";
+	compileCode(){
+		this.codeToCompile = this.compileEditor.getValue();
 		this.compileService.compileCode(this.codeToCompile).subscribe(output => {
 			this.compiledReturn = output.output;
-			console.log(this.compiledReturn);
+			this.consoleEditor.setValue(this.compiledReturn);
 		});
 	}
 
