@@ -31,7 +31,8 @@ export class UserCoderComponent implements OnInit {
 
   dashClicked() {
   	// Save file here
-  	this.router.navigateByUrl('../dash');
+  	this.router.navigateByUrl('/dash');
+  	localStorage.removeItem('codeForUser');
 
   }
 
