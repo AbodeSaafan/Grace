@@ -18,7 +18,7 @@ export class FileStorageService {
 		} else{
 			// Good to go get the files associated with the email
 			//this.userEmail = this.authorizeService.getEmail();
-			this.userEmail = "abode@gmail.com"
+			this.userEmail = localStorage.getItem('email');
 			let params: URLSearchParams = new URLSearchParams();
 			params.set('owner', this.userEmail);
 			return this.http.get(this.apiURL, {
