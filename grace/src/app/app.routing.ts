@@ -4,6 +4,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {GuestCoderComponent} from './components/guest-coder/guest-coder.component';
 import {LandingComponent} from './components/landing/landing.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
+import {SettingsComponent} from './components/settings/settings.component';
 
 const appRoutes: Routes = [
 	{
@@ -17,6 +18,10 @@ const appRoutes: Routes = [
 	{
 		path: 'dash',
 		component: DashboardComponent
+	},
+	{
+		path: 'side',
+		component: SettingsComponent
 	}
 ];
 

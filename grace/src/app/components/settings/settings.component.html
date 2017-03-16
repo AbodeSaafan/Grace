@@ -1,8 +1,11 @@
-<md-sidenav-container>
-  <md-sidenav mode="over">
+
+  <md-sidenav #sidenav mode="over">
   	<button> Change password </button>
    	<button> Change email </button>
 	<md-slide-toggle> Toggle dark theme </md-slide-toggle>
 
   </md-sidenav>
-</md-sidenav-container>
+  <button md-button (click)="sidenav.open()"></button>
+
+
+
