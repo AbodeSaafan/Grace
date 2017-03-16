@@ -21,6 +21,7 @@ import { AceEditorModule } from 'ng2-ace-editor';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import 'hammerjs';
 import { SettingsComponent } from './components/settings/settings.component';
+import { UserCoderComponent } from './components/user-coder/user-coder.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SettingsComponent } from './components/settings/settings.component';
     HeaderComponent,
     LoginComponent,
     DashboardComponent,
-    SettingsComponent
+    SettingsComponent,
+    UserCoderComponent
   ],
   imports: [
     BrowserModule,
