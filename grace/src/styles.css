@@ -6,6 +6,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: "ubuntu";
+	background-color: #FFF;
 }
 @font-face {
   font-family: "ubuntu";
@@ -79,4 +80,8 @@ html, body, app-root {
 
 @keyframes blinker {  
   50% { opacity: 0; }
+}
+
+button:hover {
+	cursor: pointer;
 }

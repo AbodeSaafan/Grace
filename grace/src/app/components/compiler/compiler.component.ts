@@ -55,7 +55,7 @@ export class CompilerComponent implements OnInit {
 	}
 
     ngOnInit() {
-    	$("body").css({backgroundColor: "#efefef"});
+    	
 
     	var w = $(window);
     	var bar = $(".toolbar");
