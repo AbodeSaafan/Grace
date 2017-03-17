@@ -1,10 +1,17 @@
 *NOTE: System design document underwent no changes this phase. A single paragraph explanation- as the professor required- has been attached to the bottom of the document.*
-
 # SCRUM Retrospective Meeting 2- GRACE uBryte
 
-### March 16, 2017 
-### 7:30 AM - 8:35 PM
-### Present Members: Everyone (Abode Saafan, Julius Barboza, Mohammed Hossain, Shayan Ghazi, Vince Nafrada)
+#### March 16, 2017 
+#### 7:30 PM - 8:30 PM
+---
+### Participants:
+***
+##### Julius Barboza, barboza4
+##### Shayan Ghazi, ghazisha
+##### Mohammed Hossain, hossa170
+##### Vincent Nafrada, nafradav 
+##### Abdulqader Saafan, saafanab
+***
 
 # Unfinished tasks:
 
@@ -18,7 +25,9 @@ As before, these tasks are accordingly represented in PivotalTracker.
 
 In retrospective two the GRACE team continued to note their challenges and errors from Sprint 1. Once more, the entire team held the meeting (from March 16, 2017, 7:30PM - 8:30 PM). 
 
-The meeting primarily consisted of reflecting on our past successes and failures, and getting the entire team up to speed with the overall developmental status of the project. While there remained tasks to complete by the end of sprint 2, our team was much more successful than the previous sprint. As a result, our product backlog remained largely unchanged- minus the removal of completed tasks- and the unfinished user stories did not require any descriptive adjustment. The majority of the difficulties in sprint 2 stemmed from escalation. While we succesfully employed the strategies we wanted to attempt at the end of sprint 1, the immense size of the syntactical work divided in this sprint caught us off guard. For example, code importing seemed to be simple task, but was upgraded once internals about JSON, BSON, and FS were discovered- as files would not always import in the right textual format.
+The meeting primarily consisted of reflecting on our past successes and failures, and getting the entire team up to speed with the overall developmental status of the project. While there remained tasks to complete by the end of sprint 2, our team was much more successful than the previous sprint. As a result, our product backlog remained largely unchanged- minus the removal of completed tasks- and the unfinished user stories did not require any descriptive adjustment. Additionally, our subgroups decided to include some branching tasks on PivotalTracker, for more efficient micro-organization (though these were not user stories per se, and thus do not belong on the PB).
+
+The majority of the difficulties in sprint 2 stemmed from escalation. While we succesfully employed the strategies we wanted to attempt at the end of sprint 1, the immense size of the syntactical work divided in this sprint caught us off guard. For example, code importing seemed to be simple task, but was upgraded once internals about JSON, BSON, and FS were discovered- as files would not always import in the right textual format.
 
 Consequently, we updated our product backlog's weightings, strictly increasing the weight of tasks we initially underestimated- such as code importing. These increases were decided upon through group consensus. Aside from this, the backlog did not require much changing.
 
