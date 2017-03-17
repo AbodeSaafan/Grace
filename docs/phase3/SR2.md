@@ -1,24 +1,20 @@
 *NOTE: System design document underwent no changes this phase. A single paragraph explanation- as the professor required- has been attached to the bottom of the document.*
 
-**SCRUM Retrospective Meeting 2- GRACE uBryte**
+# SCRUM Retrospective Meeting 2- GRACE uBryte
 
-March 16, 2017 
+### March 16, 2017 
+### 7:30 AM - 8:35 PM
+### Present Members: Everyone (Abode Saafan, Julius Barboza, Mohammed Hossain, Shayan Ghazi, Vince Nafrada)
 
-7:30 AM - 8:35 PM
+# Unfinished tasks:
 
-Present Members: Everyone (Abode Saafan, Julius Barboza, Mohammed Hossain, Shayan Ghazi, Vince Nafrada)
-
-**Unfinished tasks:**
-
-Account settings
-
-Code saving
-
-Code importing
+- Account settings
+- Code saving
+- Code importing
 
 As before, these tasks are accordingly represented in PivotalTracker. 
 
-**Meeting Overview:**
+# Meeting Overview:
 
 In retrospective two the GRACE team continued to note their challenges and errors from Sprint 1. Once more, the entire team held the meeting (from March 16, 2017, 7:30PM - 8:30 PM). 
 
@@ -43,10 +39,10 @@ The lack of syntactical checks did indeed result in our worst experience for spr
 
 However, sprint 2 provided us with some of the greatest highlights of the project so far. Seeing the user interface and CSS come together, along with rough code importing, exporting, and the different modes of online compilation, was immensely satisfying. Perhaps the greatest moment of this sprint were the pair programming sessions that the Mongo/user registration team had. Where development slowed to a crawl, pair programming immediately improved and solved many of our issues.
 
-**Meeting Conclusion:**
+# Meeting Conclusion:
 
 GRACE's second SCRUM meeting successfully ensured that the team was on track to complete the assignments. We crafted a strong plan to tackle future developmental issues and are eager to return to the fold.
 
-**SYSTEM DESIGN EXPLANATION:**
+# SYSTEM DESIGN EXPLANATION:
 
 Our system design document underwent no changes. As the majority of this sprint was acting on our previous design, there were scarce few changes made to the underlying project architecture. Instead, our development was mainly based on managing syntax and enacting the CRCs and design of sprint 1. To that end, sprint 1's design document has held up well- we have separated and plan to continue separating our code based on our old design. As we reach code importing and exporting, that may change (as these sections in particular were where our DAO model centered) but for the most part, our objective remains to implement our design idea within the MEAN framework.
