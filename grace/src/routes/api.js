@@ -14,13 +14,18 @@ router.get('/checkToken', function(req, res){
 	// return empty if invalid? 
 	// maybe use headers?
 	// return token if works?
-	db.users.findOne({_id: req.params.id}, function(err, user){
+	console.log(req.query._id);
+	db.users.findOne({_id: req.query._id}, function(err, user){
 		if (err || user === null){
 			res.status(400);
 			res.send(err);
 		}
 		else {
-			if (user.token == req.params.token){
+			console.log(222);
+			console.log(user.token);
+			console.log(req.query.token);
+			if (user.token == req.query.token){
+				console.log(111);
 				res.json(user.token);
 			}
 			else {
@@ -52,7 +57,7 @@ router.get('/signin', function(req,res){
 				var token = uuid.v4();
 				db.users.update({_id: req.query._id},{$set:{token:token}});
 				// Save token in db
-				res.json(token);
+				res.json({'token':token});
 			}
 			else{
 				console.log("Login unsuccessfull");
@@ -71,8 +76,48 @@ router.post('/deleteToken', function(req,res){
 	}
 	else {
 		db.users.findOne({_id: user._id}, function(err, checkUser){
+			console.log(checkUser._id);
 			if (checkUser) {
-				db.users.update({_id: req.query._id},{$set:{token:null}});
+				db.users.update({_id: checkUser._id},{$set:{token:null}});
+			}
+			else {
+				res.status(400);
+				res.json({"error" : "update error"})
+			}
+		});
+	}
+});
+
+router.post('/changeUser', function(req,res){
+	var user = req.body;
+	if (!user._id){
+		res.status(400);
+		res.json({"error":"there's no user with this somehow lol"})
+	}
+	else {
+		db.users.findOne({_id: user._id}, function(err, checkUser){
+			if (checkUser) {
+				const hash = crypto.createHash('sha256');
+				hash.update(user.salt+req.query.pass);
+				var hashHex = hash.digest('hex');
+
+				if (hashHex === user.pass){
+					if (user._newid){
+						db.users.update({_id: user._id},{$set:{_id:user._newid}});
+					}
+					if (user.newpass){
+						db.users.update({_id: user._id},{$set:{pass:user.newpass}});
+					}
+					if (user.fname){
+						db.users.update({_id: user._id},{$set:{fName:user.fName}});
+					}
+					if (user.lname){
+						db.users.update({_id: user._id},{$set:{lname:user.lName}});
+					}
+				}else {
+					res.status(400);
+					res.json({"error" : "incorrect pass"})
+				}
 			}
 			else {
 				res.status(400);

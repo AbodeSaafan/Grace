@@ -46,11 +46,48 @@ export class AuthorizeService {
 						.map(res => res.json());<-Post*/
 	}
 
+	changeUser(fName: string, lName: string, email: string, pass: string, currentpass: string){
+		let params: URLSearchParams = new URLSearchParams();
+		params.set('_id', localStorage.getItem('emai'));
+		params.set('fName', fName);
+		params.set('lName', lName);
+		params.set('pass', currentpass);
+		params.set('_newid',email);
+		params.set('newpass', pass);
+
+		this.isAuthenticated().subscribe(data=>{
+			this.http.post("http://localhost:3000/changeUser", params).subscribe(logout => {
+				alert("Change Successful");
+			}, function(err) {
+				alert("Incorrect Pass");
+			});
+		},function(err) {
+				alert("unsuccessful change");
+		});
+
+	}
+
+	changeEmail(email: string, pass: string){
+		this.changeUser(null,null,email,null,pass);
+	}
+
+	changePass(pass: string, currentpass: string){
+		this.changeUser(null,null,null,pass,currentpass);
+	}
+
+	changeFname(fName: string, pass: string){
+		this.changeUser(fName,null,null,null,pass);
+	}
+
+	changeLname(lName: string, pass: string){
+		this.changeUser(null,lName,null,null,pass);
+	}
 
 	signOut (){
 		let params: URLSearchParams = new URLSearchParams();
 		params.set('_id', localStorage.getItem('email'));
 		params.set('token', localStorage.getItem('token'));
+
 		this.isAuthenticated().subscribe(data=>{
 			this.http.post("http://localhost:3000/deleteToken", params).subscribe(logout => {
 				alert("successful logout");
@@ -98,7 +135,8 @@ export class AuthorizeService {
 		return this.http.get("http://localhost:3000/signin", {
 			search: params
 		}).subscribe(token => {
-        	localStorage.setItem('token',JSON.stringify(token));
+			var x = token.json().token;
+        	localStorage.setItem('token',token.json().token);
         	localStorage.setItem('email',email);
         	youTrash.navigateByUrl('/dash');
         },
@@ -117,6 +155,7 @@ export class AuthorizeService {
 		params.set('_id', localStorage.getItem('email'));
 		params.set('token', localStorage.getItem('token'));
 
+		console.log(localStorage.getItem('token'));
 		return this.http.get("http://localhost:3000/checkToken", {
 			search: params
 		}).map(res => res.json());
