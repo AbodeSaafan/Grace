@@ -29,7 +29,7 @@ The meeting primarily consisted of reflecting on our past successes and failures
 
 The majority of the difficulties in sprint 2 stemmed from escalation. While we succesfully employed the strategies we wanted to attempt at the end of sprint 1, the immense size of the syntactical work divided in this sprint caught us off guard. For example, code importing seemed to be simple task, but was upgraded once internals about JSON, BSON, and FS were discovered- as files would not always import in the right textual format.
 
-Consequently, we updated our product backlog's weightings, strictly increasing the weight of tasks we initially underestimated- such as code importing. These increases were decided upon through group consensus. Aside from this, the backlog did not require much changing.
+Consequently, we updated our product backlog's weightings, strictly increasing the weight of tasks we initially underestimated- such as code importing. These increases were decided upon through group consensus. Aside from this and removal of tasks which we'd completed, the backlog did not require much changing.
 
 Neither, on the other hand, did our CRC model. We are still adhering to the DAO design pattern as it applies to MEAN. However, we may make changes in the next sprint as some of our members have been fostering new ideas for how to model tasks.
 
