@@ -1,8 +1,12 @@
 <!-- Keyword is config, use square bracket to do allocate a variable -->
 
 <!-- Custom Header -->
-<app-header [config]="userHeader"></app-header>
+<app-header [config]="userHeader"
+		(logoClick)="logoClicked()"
+		(leftButtonClick)="settingsClicked()"
+		(rightButtonClick)="logoutClicked()"></app-header>
 
 
 <!-- light -->
-<app-compiler theme="solarized_light" [editorText]="codeText"></app-compiler>
+<app-compiler theme="solarized_light" [editorText]="codeText"
+				(saveClick)="saveClicked()"></app-compiler>

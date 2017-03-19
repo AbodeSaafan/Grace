@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderConfig } from '../header/header.component';
 import { HeaderComponent } from '../header/header.component';
+import {AuthorizeService } from '../../services/authorize.service';
 import {Router} from '@angular/router';
-import * as $ from 'jquery';
 
 
 @Component({
@@ -16,15 +16,12 @@ export class UserCoderComponent implements OnInit {
 	codeText: string;
   parentRouter;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private authorizeService: AuthorizeService) {
   	this.userHeader = {
 			leftButtonContent: "Settings",
 			rightButtonContent: "Logout",
 			leftButtonSrc: "",
-			rightButtonSrc: "",
-			logoRoute: "/dash",
-			leftButtonFunction: this.settingsClicked,
-			rightButtonFunction: this.logoutClicked
+			rightButtonSrc: ""
 		}
   }
 
@@ -32,18 +29,28 @@ export class UserCoderComponent implements OnInit {
   	this.codeText = localStorage.getItem('codeForUser');
   }
 
+  logoClicked(){
+    alert("logo clicked");
+    this.router.navigateByUrl("/dash")
+  }
+
   dashClicked() {
   	// Save file here
   	this.router.navigateByUrl('/dash');
   	localStorage.removeItem('codeForUser');
-
   }
 
   settingsClicked() {
-
+    alert("settings clicked");
   }
 
   logoutClicked() {
-
+    alert("logout clicked");
+    this.authorizeService.signOut();
   }
+
+  saveClicked() {
+    alert("save clicked")
+  }
+
 }

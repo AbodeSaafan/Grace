@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {AuthorizeService } from '../../services/authorize.service';
 
 import * as $ from 'jquery';
 

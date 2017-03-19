@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { CompileService } from '../../services/compile.service';
 import { AceEditorDirective } from 'ng2-ace-editor';
 import * as $ from 'jquery';
@@ -12,9 +12,9 @@ export class CompilerComponent implements OnInit {
 
 	// Ace editor options ---------------------------------
 	@Input() theme: string;
-	@Input() saveFunction: Function;
-	mode: string;
 	@Input() editorText: string;
+	@Output() saveClick: EventEmitter<any> = new EventEmitter();
+	mode: string;
 	consoleText: string;
 	config: any;
 
@@ -37,22 +37,7 @@ export class CompilerComponent implements OnInit {
     	if(!this.editorText){
     		this.editorText = "";
     	}
-    	if(!this.saveFunction){
-    		this.saveFunction = this.defaultSave;
-    	}
     }
-
-    save() {
-    	this.saveFunction();
-    }
-
-    defaultSave() {
-    	alert("no save function found");
-    }
-
-    setEditorText(code){
-	    this.compileEditor.setValue(code);
-	}
 
     ngOnInit() {
     	

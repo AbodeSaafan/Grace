@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderConfig } from '../header/header.component';
+import {Router} from '@angular/router';
 
 @Component({
 	selector: 'app-guest-coder',
@@ -10,30 +11,23 @@ export class GuestCoderComponent implements OnInit {
 
 	guestHeader: HeaderConfig;
 
-	constructor() {
+	constructor(private router: Router) {
 		// If left content  == 'none', the button will not show
 		// likewise for right content
 		this.guestHeader = {
 			leftButtonContent: "guestL",
 			rightButtonContent: "guestR",
 			leftButtonSrc: "",
-			logoRoute: "/",
-			rightButtonSrc: "",
-			leftButtonFunction: this.guestLeft,
-			rightButtonFunction: this.guestRight
+			rightButtonSrc: ""
 		}
-	}
-	
-	guestLeft() {
-		alert("guest left clicked");
-	}
-
-	guestRight() {
-		alert("guest right clicked");
 	}
 
 	mySaveFunction(){
 		alert("You must be a registered user to save online!");
+	}
+
+	logoClicked(){
+		this.router.navigateByUrl("/");
 	}
 
 	ngOnInit() {
