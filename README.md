@@ -12,11 +12,11 @@ GRACE is an online system where you can create and share python programs. GRACE 
 Some information about the team developing this project can be found here at [uBryte](http://ubryte.com/).
 
 
-#### Name Siginifigance 
+#### Name Significance 
 
 The name, GRACE, is inspired by Grace Hopper who invented the first compiler for a programming language. 
 
 
 ### Setup
 
-Read the setup.md file included to set up the grace web app 
+Read the setup.md file included to set up the Grace web app 
