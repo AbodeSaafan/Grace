@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {Router} from '@angular/router';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {AuthorizeService } from '../../services/authorize.service';
 
 import * as $ from 'jquery';
 
@@ -11,31 +11,19 @@ import * as $ from 'jquery';
 export class HeaderComponent implements OnInit {
 
 	@Input() config: HeaderConfig;
+	@Output() rightButtonClick: EventEmitter<any> = new EventEmitter();
+	@Output() leftButtonClick: EventEmitter<any> = new EventEmitter();
+	@Output() logoClick: EventEmitter<any> = new EventEmitter();
 
-	constructor(private router: Router) {
+	constructor() {
 		if (!this.config) {
 			this.config = {
-				leftButtonContent: "",
+				leftButtonContent: "Left",
 				rightButtonContent: "Right",
-				leftButtonSrc: "../../../assets/grace_header_logo.svg",
-				rightButtonSrc: "",
-				logoRoute: "/",
-				leftButtonFunction: this.leftAlert,
-				rightButtonFunction: this.rightAlert
+				leftButtonSrc: "",
+				rightButtonSrc: ""
 			}
 		}
-	}
-
-	routeLogo() {
-		this.router.navigateByUrl(this.config.logoRoute);
-	}
-
-	leftAlert() {
-		alert("grace clicked");
-	}
-
-	rightAlert() {
-		alert("right clicked");
 	}
 
 	ngOnInit() {
@@ -54,7 +42,4 @@ export interface HeaderConfig {
 	rightButtonContent: string;
 	leftButtonSrc: string;
 	rightButtonSrc: string;
-	logoRoute: string;
-	leftButtonFunction: Function;
-	rightButtonFunction: Function;
 }

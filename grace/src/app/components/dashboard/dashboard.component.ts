@@ -21,10 +21,7 @@ export class DashboardComponent implements OnInit {
 			leftButtonContent: "settings",
 			rightButtonContent: "logout",
 			leftButtonSrc: "",
-			rightButtonSrc: "",
-			logoRoute: "/dash",
-			leftButtonFunction: this.settingsClicked,
-			rightButtonFunction: this.logoutClicked
+			rightButtonSrc: ""
 		}
 		
 	}
@@ -49,6 +46,7 @@ export class DashboardComponent implements OnInit {
 
 	logoClicked(){
 		alert("logo clicked");
+		this.router.navigateByUrl("/dash");
 	}
 
 	settingsClicked() {
@@ -57,7 +55,7 @@ export class DashboardComponent implements OnInit {
 	}
 
 	logoutClicked() {
-		alert("logout clicked");
+		alert("toaster strudel");
 		this.authorizeService.signOut();
 	}
 

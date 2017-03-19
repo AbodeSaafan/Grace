@@ -1,4 +1,7 @@
-<app-header [config]='dashHeader'></app-header>
+<app-header [config]='dashHeader' 
+		(rightButtonClick)="logoutClicked()"
+		(leftButtonClick)="settingsClicked()"
+		(logoClick)="logoClicked()"></app-header>
 <div class="filesTableTitle"><h1>Files</h1></div>
 <md-list>
   <md-list-item *ngFor="let file of files; let i = index;">

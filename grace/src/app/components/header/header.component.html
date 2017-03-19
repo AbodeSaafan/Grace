@@ -1,12 +1,14 @@
 <div class="headerBar">
 	<img class="headerLogo logo" 
 		src="../../../assets/grace_header_logo.svg"
-		href="" (click)="routeLogo();">
-	<div  *ngIf="config.leftButtonContent!='none'" class="headerLeftButton headerButtonStyle" (click)="config.leftButtonFunction();">
+		href="" (click)="logoClick.emit()">
+	<div  *ngIf="config.leftButtonContent!='none'" class="headerLeftButton headerButtonStyle" 
+	(click)="leftButtonClick.emit()">
 		<img class="headerButtonImg" [src]="config.leftButtonSrc" alt="">{{config.leftButtonContent}}
 	</div>
 
-	<div *ngIf="config.rightButtonContent!='none'" class="headerRightButton headerButtonStyle" (click)="config.rightButtonFunction();">
+	<div *ngIf="config.rightButtonContent!='none'" class="headerRightButton headerButtonStyle" 
+	(click)="rightButtonClick.emit()">
 		<img class="headerButtonImg" [src]="config.rightButtonSrc" alt="">{{config.rightButtonContent}}
 	</div>
 </div>
