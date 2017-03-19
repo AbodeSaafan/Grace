@@ -5,175 +5,171 @@ var compiler = require('compilex');
 var uuid = require('node-uuid');
 var crypto = require('crypto');
 
-/******************* Login/Register	*******************/
+/******************* Token *******************/
 var db = mongojs('users');
 
+/* Checks if user token matches the database*/
 router.get('/checkToken', function(req, res){
-	// TODO check token which is at 
-	// req.query.token
-	// return empty if invalid? 
-	// maybe use headers?
-	// return token if works?
-	console.log(req.query._id);
+
+	/* Find the user in the database*/
 	db.users.findOne({_id: req.query._id}, function(err, user){
+		/* user found in the database*/
 		if (err || user === null){
 			res.status(400);
-			res.send(err);
-		}
-		else {
-			console.log(222);
-			console.log(user.token);
-			console.log(req.query.token);
-			if (user.token == req.query.token){
-				console.log(111);
-				res.json(user.token);
-			}
-			else {
+			res.json({'status':false, 
+					  'message':"Failed to connect: this user " + 
+					  "does not exist"});
+
+		/* user not found in database*/
+		}else {
+
+			/* Check if the user token matches with the database*/
+			if (user.token === req.query.token){
+				res.json({'token':user.token, 'status':true});
+
+			}else {
 				res.status(400);
-				res.send(err);
+				res.json({'status':false, 
+					      'message':"Failed to connect: the user " + 
+					      "token does not match"});
 			}
 		}
 	});
 });
 
-
-router.get('/signin', function(req,res){
-	console.log("get the user "+req.query._id);
-	db.users.findOne({_id: req.query._id},function(err,user){
-		if(err|| user===null){
-			console.log("Account does not exist");
-			res.status(400);
-			res.send(err);
-		}
-		else{
-			console.log("working user "+req.query._id);
-			const hash = crypto.createHash('sha256');
-			hash.update(user.salt+req.query.pass);
-
-			console.log("Account exists");
-			//console.log(hash.digest('hex'));
-			var hashHex = hash.digest('hex');
-			if (hashHex === user.pass){
-				var token = uuid.v4();
-				db.users.update({_id: req.query._id},{$set:{token:token}});
-				// Save token in db
-				res.json({'token':token});
-			}
-			else{
-				console.log("Login unsuccessfull");
-				res.status(400);
-				res.send("Page access denied.");
-			}
-		}
-	});
-});
-
+/* Delete the user token in the database*/
 router.post('/deleteToken', function(req,res){
+
 	var user = req.body;
+
+	/* Check if the user is a valid user with a token*/
 	if (!user.token || !user._id){
 		res.status(400);
-		res.json({"error":"there's no user with this somehow lol"})
+		res.json({'status':false, 
+				  'message':"Failed to connect: this user " + 
+				  "is not a valid user"});
 	}
 	else {
+
+		/* Find the user in the database*/
 		db.users.findOne({_id: user._id}, function(err, checkUser){
-			console.log(checkUser._id);
+
+			/* Check if user exists in the database*/
 			if (checkUser) {
+
+				/* Delete the token from the database*/
 				db.users.update({_id: checkUser._id},{$set:{token:null}});
-			}
-			else {
+				res.json({'status':true});
+
+			}else {
 				res.status(400);
-				res.json({"error" : "update error"})
+				res.json({'status':false, 
+					      'message':"Failed to connect: this user " + 
+					      "does not exist"});
 			}
 		});
 	}
 });
 
-router.post('/changeUser', function(req,res){
-	var user = req.body;
-	if (!user._id){
-		res.status(400);
-		res.json({"error":"there's no user with this somehow lol"})
-	}
-	else {
-		db.users.findOne({_id: user._id}, function(err, checkUser){
-			if (checkUser) {
-				const hash = crypto.createHash('sha256');
-				hash.update(user.salt+req.query.pass);
-				var hashHex = hash.digest('hex');
+/******************* Login/Register	*******************/
 
-				if (hashHex === user.pass){
-					if (user._newid){
-						db.users.update({_id: user._id},{$set:{_id:user._newid}});
-					}
-					if (user.newpass){
-						db.users.update({_id: user._id},{$set:{pass:user.newpass}});
-					}
-					if (user.fname){
-						db.users.update({_id: user._id},{$set:{fName:user.fName}});
-					}
-					if (user.lname){
-						db.users.update({_id: user._id},{$set:{lname:user.lName}});
-					}
-				}else {
-					res.status(400);
-					res.json({"error" : "incorrect pass"})
-				}
-			}
-			else {
+/* Logs the user in*/
+router.get('/signin', function(req,res){
+
+	/* Find the user in the database*/
+	db.users.findOne({_id: req.query._id},function(err,user){
+
+		/* Check if user exists in the database*/
+		if(err|| user === null){
+			res.status(400);
+			res.json({'status':false, 
+					  'message':"Failed to connect: this user " + 
+					  "does not exist"});
+		
+		}else{
+			
+			/* Creates a new hash using the pass sent by user*/
+			const hash = crypto.createHash('sha256');
+			hash.update(user.salt+req.query.pass);
+			var hashHex = hash.digest('hex');
+
+			/* Check if the hash matches the user hash in database*/
+			if (hashHex === user.pass){
+
+				/* Create a new token for the login*/
+				var token = uuid.v4();
+
+				/* Update the new token for the user in the database*/
+				db.users.update({_id: req.query._id},{$set:{token:token}});
+				
+				res.json({'token':token, 'fname':user.fName, 
+					      'lname':user.lName, 'email':user._id, 
+					      'status':true});
+			
+			}else{
 				res.status(400);
-				res.json({"error" : "update error"})
+				res.json({'status':false, 
+					      'message':"Failed to connect: the password " + 
+					      "is incorrect"});
 			}
-		});
-	}
+		}
+	});
 });
 
+/* Registers the user*/
 router.post('/register', function(req,res){
 
 	var user = req.body;
-	console.log(user._id);
-	console.log(user.pass);
-
-	if (!user._id || !(user.pass)){
-
+	
+	/* Check if the user is a valid user with a valid password*/
+	if (!user._id || !user.pass){
 		res.status(400);
-		res.json({"error":"User not created"});
+		res.json({'status':false, 
+				  'message':"Failed to connect: this user " + 
+				  "is not a valid user"});
 
-	}
+	}else{
 
-	else{
-
+		/* Find the user in the database*/
 		db.users.findOne({_id: user._id}, function(err, checkUser){
 
-    		// if no user exists w/same email, we can register
+    		/* Check if the user does not already exist*/
     		if (checkUser === null){
 
+    			/* Create a new salt for the new user*/
     			user.salt = uuid.v4();
-    			user.pass = user.pass;
 
+    			/* Creates a new hash using the pass sent by user*/
     			const hash = crypto.createHash('sha256');
     			hash.update(user.salt+user.pass);
     			user.pass = hash.digest('hex');
 
-			    // save
+    			/* Create a new token for the login*/
+    			user.token = uuid.v4();
+
+			    /* Creates the new user in the database*/
 			    db.users.save(user, function(err,user){
 
-			    	if(err){
+			    	/* Check if user created in the database*/
+					if(err|| user === null){
 			    		res.status(400);
-			    		res.send(err);
+			    		res.json({'status':false, 
+					              'message':"Failed to connect: the user " + 
+					              "was not successfully created"});
+
+			    	}else{
+
+			    		res.json({'token':user.token, 'fname':user.fName, 
+					              'lname':user.lName, 'email':user._id, 
+					              'status':true});
 			    	}
-
-		            // set tokens
-		            var token = uuid.v4();
-		            db.users.update({_id: req.query._id},{$set:{token:token}});
-		            res.json(token);
-
 		        });
-			}
-
-    		// 
-    		else{
+			
+			}else{
     			res.status(400);
-    			res.send(err);
+    			res.json({'status':false, 
+					      'message':"Failed to connect: this user " + 
+					      "already exists"});
     		}
 
     	});	
@@ -182,10 +178,74 @@ router.post('/register', function(req,res){
 
 });
 
-router.get('/test', function(req, res){
-	res.send(req.query.id);
-	// Test this by going to http://localhost:3000/test?id="abode"
+/******************* User Settings *******************/
+
+/* Changes the user settings*/
+router.post('/changeUser', function(req,res){
+
+	var user = req.body;
+
+	/* Check if the user is a valid user with a valid password*/
+	if (!user._id || !user.pass){
+		res.status(400);
+		res.json({'status':false, 
+				  'message':"Failed to connect: this user " + 
+				  "is not a valid user"});
+	
+	}else {
+
+		/* Find the user in the database*/
+		db.users.findOne({_id: user._id}, function(err, checkUser){
+
+			/* Check if the user exist in the database*/
+			if (checkUser) {
+
+				/* Creates a new hash using the pass sent by user*/
+				const hash = crypto.createHash('sha256');
+				hash.update(checkUser.salt+user.pass);
+				var hashHex = hash.digest('hex');
+
+				/* Check if the hash matches the user hash in database*/
+				if (hashHex === checkUser.pass){
+					
+					/* Change user settings*/
+					if (user._newid){
+						db.users.update({_id: user._id},{$set:{_id:user._newid}});
+						checkUser._id = user._newid;
+					}
+					if (user.newpass){
+						db.users.update({_id: user._id},{$set:{pass:user.newpass}});
+					}
+					if (user.fName){
+						db.users.update({_id: user._id},{$set:{fName:user.fName}});
+						checkUser.fName = user.fName;
+					}
+					if (user.lName){
+						db.users.update({_id: user._id},{$set:{lname:user.lName}});
+						checkUser.lName = user.lName;
+					}
+
+					res.json({'token':checkUser.token, 'fname':checkUser.fName, 
+					          'lname':checkUser.lName, 'email':checkUser._id, 
+					          'status':true});
+
+				}else {
+					res.status(400);
+					res.json({'status':false, 
+					          'message':"Failed to connect: the password " + 
+					          "is incorrect"});
+				}
+
+			}else {
+				res.status(400);
+				res.json({'status':false, 
+					      'message':"Failed to connect: this user " + 
+					      "does not exist"});
+			}
+		});
+	}
 });
+
 
 /******************* Compiler *******************/
 
