@@ -282,18 +282,32 @@ router.get('/files', function(req, res){
 	});
 });
 
-router.post('/files', function(req, res){
+router.post('/files/add', function(req, res){
 	var userInput = req.body;
 	var file = {owner: userInput.owner, 
 				dateModified: userInput.dateModified, 
-				fileName: userInput.fileName, file: userInput.file }
-	console.log(file);
+				fileName: userInput.fileName, file: decodeURIComponent(userInput.file) }
 	db.files.save(file, function(err, file){
 		if(err){
 			res.status(400);
 			res.send(err);
 		}
 		res.json({'status': true})
+	});
+});
+
+router.post('/files/save', function(req, res){
+	console.log("got to start of save")
+	var userInput = req.body;
+	var file = {dateModified: userInput.dateModified, file: decodeURIComponent(userInput.file) }
+	db.files.update({owner: userInput.owner, fileName:userInput.fileName}, {$set:file}, function(err, file){
+		if(err){
+			console.log("got to error of db")
+			res.status(400);
+			res.send(err);
+		}
+		res.json({'status': true})
+		console.log("got to end of save")
 	});
 });
 

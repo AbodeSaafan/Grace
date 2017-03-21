@@ -24,12 +24,13 @@ export class FileStorageService {
 	}
 
 	addAFile(fileName: string, email: string, codeFile: string){
+		codeFile = encodeURIComponent(codeFile);
 		let params: URLSearchParams = new URLSearchParams();
 		params.set('owner', email);
 		params.set('fileName', fileName);
 		params.set('file', codeFile);
 		params.set('dateModified', new Date().toLocaleDateString());
-		return this.http.post(this.apiURL,params).map(res => res.json());
+		return this.http.post(this.apiURL+"/add",params).map(res => res.json());
 	}
 
 	deleteFile(fileName: string, email: string){
@@ -37,6 +38,16 @@ export class FileStorageService {
 		params.set('owner', email);
 		params.set('fileName', fileName);
 		return this.http.post(this.apiURL+"/delete",params).map(res => res.json());
+	}
+
+	saveFile(fileName: string, email: string, codeFile: string){
+		codeFile = encodeURIComponent(codeFile);
+		let params: URLSearchParams = new URLSearchParams();
+		params.set('owner', email);
+		params.set('fileName', fileName);
+		params.set('file', codeFile);
+		params.set('dateModified', new Date().toLocaleDateString());
+		return this.http.post(this.apiURL+"/save",params).map(res => res.json());
 	}
 
 }
