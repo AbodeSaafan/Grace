@@ -38,28 +38,23 @@ export class DashboardComponent implements OnInit {
 	}
 
 	fileDownload(index){
-		console.log(index);
+		console.log("downloading" + index);
+		var FileSaver = require('file-saver');
+		var blob = new Blob([this.files[index].file], {type: "text/plain;charset=utf-8"});
+		FileSaver.saveAs(blob, this.files[index].fileName);
+		
 	}
 
 
 	logoClicked(){
-		alert("logo clicked");
 		this.router.navigateByUrl("/dash");
 	}
 
-	settingsClicked() {
-		alert("settings clicked");
-		alert(this.files);
-	}
-
 	logoutClicked() {
-		alert("toaster strudel");
 		this.authorizeService.signOut();
 	}
 
 	ngOnInit() {
-
-
 		this.authorizeService.isAuthenticated().subscribe(data => {
 			this.fileStorage.getMyFiles()
 			.subscribe(output => { this.files = output });
@@ -68,8 +63,6 @@ export class DashboardComponent implements OnInit {
 			alert('Request Failed');
 			this.router.navigateByUrl('/');
 		});
-
-
 	}
 
 	fileCreate(){
