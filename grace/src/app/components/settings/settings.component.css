@@ -1,10 +1,10 @@
 @import '~https://fonts.googleapis.com/icon?family=Material+Icons';
 @import '~@angular/material/core/theming/prebuilt/indigo-pink.css';
-
+/*
 md-sidenav {
-    width: 100px;
+    width: 300px;
     top: 120px;
-}
+}*/
 
 md-slide-toggle{
     margin-top: 20px;
@@ -13,13 +13,16 @@ md-slide-toggle{
     }
 
 .sideNav{
-    position: relative;
+    position: absolute;
     margin: 0 auto;
-    width: 300px;
+    width: 500px;
     height: 100%;
-    background-color: #fff;
-    background-color: rgba(0,0,0,0.1);
+    /*background-color: #fff;*/
+    /*background-color: rgba(0,0,0,0.1);*/
+        background-color: rgba(0,0,0,0.0);
+
     float: left;
+    top: 52px;
 }
 
 .settings{
@@ -44,12 +47,9 @@ md-slide-toggle{
 
 .settings:hover{
     background-color: #d91b5b;
-    /*width: 100%;*/
+    width: 100%;
     color: black;
     /*width: 100%;*/
 
 }
 
-button{
-    padding-top: 30px;    
-}
