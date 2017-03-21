@@ -256,7 +256,7 @@ router.get('/compile', function(req, res){
 	compiler.init(options);
 	var envData = { OS : "linux" };
 
-	compiler.compilePython( envData , req.query.code , 
+	compiler.compilePython( envData , decodeURIComponent(req.query.code) , 
 		function(data){ res.send(data); });
 
 
@@ -283,14 +283,23 @@ router.get('/files', function(req, res){
 });
 
 router.post('/files', function(req, res){
-	var file = {owner: req.query.owner, dateModified: req.query.dateModified, fileName: req.query.fileName, file: req.query.file }
+	var userInput = req.body;
+	var file = {owner: userInput.owner, 
+				dateModified: userInput.dateModified, 
+				fileName: userInput.fileName, file: userInput.file }
+	console.log(file);
 	db.files.save(file, function(err, file){
 		if(err){
 			res.status(400);
 			res.send(err);
 		}
-		res.json("posted file")
+		res.json({'status': true})
 	});
+});
+
+router.post('/files/delete', function(req, res){
+	var userInput = req.body;
+	db.files.remove({owner: userInput.owner, fileName: userInput.fileName});
 });
 
 

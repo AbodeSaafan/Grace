@@ -40,9 +40,6 @@ export class DashboardComponent implements OnInit {
 		console.log(index);
 	}
 
-	fileMeta(index){
-		console.log(index);
-	}
 
 	logoClicked(){
 		alert("logo clicked");
@@ -61,12 +58,71 @@ export class DashboardComponent implements OnInit {
 
 	ngOnInit() {
 
-  	this.fileStorage.getMyFiles(localStorage.getItem('token'))
-  	.subscribe(output => { this.files = output });
-			// Create objects that hold file info and display it
-			// Add object to array that is used to show the list of files
-			// Make sure clicking on file does good stuff;
-			
-		}
+
+		this.authorizeService.isAuthenticated().subscribe(data => {
+			this.fileStorage.getMyFiles()
+			.subscribe(output => { this.files = output });
+		},
+		function(error){
+			alert('Request Failed');
+			this.router.navigateByUrl('/');
+		});
+
 
 	}
+
+	fileCreate(){
+		var newFileName = prompt("Please enter your name", ".py");
+		if (newFileName != null){
+			for (let file of this.files){
+				if( newFileName == file.fileName){
+					alert("Sorry your file name must be unique, try again")
+					return false;
+				}
+			}
+
+
+			this.authorizeService.isAuthenticated().subscribe(data => {
+				var email = localStorage.getItem('email');
+
+				// File name is good we can create it
+				this.fileStorage.addAFile(newFileName,email,"# Write your code here")
+				.subscribe(output => { })
+
+				this.fileStorage.getMyFiles()
+				.subscribe(output => { this.files = output });
+			},
+			function(error){
+				alert('Request Failed');
+				this.router.navigateByUrl('/');
+			});
+
+		}
+	}
+
+	fileDelete(index){
+		var r = confirm("Are you sure you want to delete your file?");
+		if (r == true) {
+			var deleteFileName = this.files[index];
+			this.authorizeService.isAuthenticated().subscribe(data => {
+				var email = localStorage.getItem('email');
+
+				// File name is good we can create it
+				this.fileStorage.deleteFile(deleteFileName,email)
+				.subscribe(output => { })
+
+				this.fileStorage.getMyFiles()
+				.subscribe(output => { this.files = output });
+			},
+			function(error){
+				alert('Request Failed');
+				this.router.navigateByUrl('/');
+			});
+		} else {
+			return;
+		} 
+
+	}
+
+
+}

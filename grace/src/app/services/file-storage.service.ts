@@ -12,34 +12,31 @@ export class FileStorageService {
 
 	constructor(private http: Http, private authorizeService: AuthorizeService, private router: Router) { }
 
-	getMyFiles(token: string){
-		if (!this.authorizeService.isAuthenticated()){
-			this.router.navigateByUrl('/');
-		} else{
-			// Good to go get the files associated with the email
-			//this.userEmail = this.authorizeService.getEmail();
-			this.userEmail = localStorage.getItem('email');
-			let params: URLSearchParams = new URLSearchParams();
-			params.set('owner', this.userEmail);
-			return this.http.get(this.apiURL, {
-				search: params
-			}).map(res => res.json());
-		}
+	getMyFiles(){
+		// Good to go get the files associated with the email
+		//this.userEmail = this.authorizeService.getEmail();
+		this.userEmail = localStorage.getItem('email');
+		let params: URLSearchParams = new URLSearchParams();
+		params.set('owner', this.userEmail);
+		return this.http.get(this.apiURL, {
+			search: params
+		}).map(res => res.json());
 	}
 
-	addAFile(token: string, fileName: string, email: string, codeFile: string){
-		if (!this.authorizeService.isAuthenticated()){
-			this.router.navigateByUrl('/');
-		} else {
-			let params: URLSearchParams = new URLSearchParams();
-			params.set('owner', email);
-			params.set('fileName', fileName);
-			params.set('file', codeFile);
-			params.set('dateModified', new Date().toLocaleDateString());
-			return this.http.post(this.apiURL, {
-				search: params
-			}).map(res => res.json());
-		}
+	addAFile(fileName: string, email: string, codeFile: string){
+		let params: URLSearchParams = new URLSearchParams();
+		params.set('owner', email);
+		params.set('fileName', fileName);
+		params.set('file', codeFile);
+		params.set('dateModified', new Date().toLocaleDateString());
+		return this.http.post(this.apiURL,params).map(res => res.json());
+	}
+
+	deleteFile(fileName: string, email: string){
+		let params: URLSearchParams = new URLSearchParams();
+		params.set('owner', email);
+		params.set('fileName', fileName);
+		return this.http.post(this.apiURL+"/delete",params).map(res => res.json());
 	}
 
 }

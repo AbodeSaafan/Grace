@@ -9,9 +9,15 @@
     <h4 md-line class="fileName" (click)="fileOpen(i)">{{file.fileName}}</h4>
     <p md-line class="fileDate"> {{file.dateModified | date}} </p>
 	<div class="fileButtons">
-	<img class="metaIcon" src="../../assets/meta.svg" (click)="fileMeta(i)" onmouseover="this.src='../../assets/meta-selected.svg';" onmouseout="this.src='../../assets/meta.svg';">
 	<img class="inviteIcon" src="../../assets/invite.svg" (click)="fileInvite(i)" onmouseover="this.src='../../assets/invite-selected.svg';" onmouseout="this.src='../../assets/invite.svg';">
 	<img class="downloadIcon" src="../../assets/download.svg" (click)="fileDownload(i)" onmouseover="this.src='../../assets/download-selected.svg';" onmouseout="this.src='../../assets/download.svg';">
+	<img class="deleteIcon" src="../../assets/delete.svg" (click)="fileDelete(i)" onmouseover="this.src='../../assets/delete-selected.svg';" onmouseout="this.src='../../assets/delete.svg';">
+
 	</div>
+  </md-list-item>
+  <md-list-item class="create" (click)="fileCreate()">
+  <h4 md-line class="createFile">Create a new file</h4>
+  <p md-line class="fileDate">Click here</p>
+  <md-icon md-list-avatar>add_box</md-icon>
   </md-list-item>
 </md-list>
