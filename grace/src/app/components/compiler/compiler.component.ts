@@ -13,6 +13,7 @@ export class CompilerComponent implements OnInit {
 	// Ace editor options ---------------------------------
 	@Input() theme: string;
 	@Input() editorText: string;
+	@Input() editorFileName: string;
 	@Output() saveClick: EventEmitter<any> = new EventEmitter();
 	mode: string;
 	consoleText: string;
@@ -99,8 +100,13 @@ export class CompilerComponent implements OnInit {
 	downloadFile(){
 		var FileSaver = require('file-saver');
 		var blob = new Blob([this.compileEditor.getValue()], {type: "text/plain;charset=utf-8"});
-		FileSaver.saveAs(blob, "grace" + 
-			Math.floor(new Date().getTime()/500).toString(16) + ".py");
+		if(this.editorFileName){ // if there is a file name
+			FileSaver.saveAs(blob, this.editorFileName);
+		} else {
+			FileSaver.saveAs(blob, "grace" + 
+			Math.floor(new Date().getTime()/500).toString(16) + ".py");	
+		}
+		
 	}
 
 	clearConsole(){

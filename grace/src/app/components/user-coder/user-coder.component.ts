@@ -14,6 +14,7 @@ export class UserCoderComponent implements OnInit {
 	
 	userHeader: HeaderConfig;
 	codeText: string;
+  codeFileName : string;
   parentRouter;
 
   constructor(private router: Router, private authorizeService: AuthorizeService) {
@@ -27,25 +28,18 @@ export class UserCoderComponent implements OnInit {
 
   ngOnInit() {
   	this.codeText = localStorage.getItem('codeForUser');
+    this.codeFileName = localStorage.getItem('fileNameForUser');
   }
 
   logoClicked(){
-    alert("logo clicked");
+    // Auto Save file here
+    this.router.navigateByUrl('/dash');
+    localStorage.removeItem('codeForUser');
+    localStorage.removeItem('fileNameForUser');
     this.router.navigateByUrl("/dash")
   }
-
-  dashClicked() {
-  	// Save file here
-  	this.router.navigateByUrl('/dash');
-  	localStorage.removeItem('codeForUser');
-  }
-
-  settingsClicked() {
-    alert("settings clicked");
-  }
-
+  
   logoutClicked() {
-    alert("logout clicked");
     this.authorizeService.signOut();
   }
 
