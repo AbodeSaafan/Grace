@@ -10,6 +10,7 @@ export class CompileService {
 	constructor(private http: Http) { }
 
 	compileCode(code: string) {
+		code = encodeURIComponent(code);
 		let params: URLSearchParams = new URLSearchParams();
 		params.set('user', 'guest');
 		params.set('code', code);

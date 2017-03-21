@@ -39,6 +39,10 @@ export class CompilerComponent implements OnInit {
     	}
     }
 
+    sendSaveClick(){
+    	this.saveClick.emit(this.compileEditor.getValue());
+    }
+
     ngOnInit() {
     	
 
@@ -70,7 +74,9 @@ export class CompilerComponent implements OnInit {
 	// When compile/run is clicked
 	compileCode(){
 		this.codeToCompile = this.compileEditor.getValue();
+
 		this.compileService.compileCode(this.codeToCompile).subscribe(output => {
+
 			if(output.output) {
 				this.compiledReturn = output.output;
 			} else if(output.error) {

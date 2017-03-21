@@ -49,8 +49,8 @@ export class UserCoderComponent implements OnInit {
     this.authorizeService.signOut();
   }
 
-  saveClicked() {
-    alert("save clicked")
+  saveClicked(data) {
+    alert(data)
   }
 
 }
