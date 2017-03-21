@@ -17,6 +17,7 @@ export class UserCoderComponent implements OnInit {
 	codeText: string;
   codeFileName : string;
   email: string;
+  exiting: boolean;
   parentRouter;
   @ViewChild ('compilerComp') compilerComp: any;
 
@@ -41,10 +42,13 @@ export class UserCoderComponent implements OnInit {
   }
 
   logoClicked(){
+    this.exiting = true;
     this.compilerComp.sendSaveClick();
+    
+    this.router.navigateByUrl("/dash")
+
     localStorage.removeItem('codeForUser');
     localStorage.removeItem('fileNameForUser');
-    this.router.navigateByUrl("/dash")
   }
 
   logoutClicked() {
@@ -53,12 +57,15 @@ export class UserCoderComponent implements OnInit {
 
   saveClicked(fileCode) {
     var comp = this;
+
     this.authorizeService.isAuthenticated().subscribe(data => {
 
       // File name is good we can create it
       this.fileStorage.saveFile(this.codeFileName, this.email, fileCode)
       .subscribe(output => {
-        localStorage.setItem('codeForUser', fileCode);
+        if(!comp.exiting){
+          localStorage.setItem('codeForUser', fileCode);
+        }
         comp.codeText = fileCode;
 
         comp.snackBar.open("File Saved", 'Okay' ,{duration: 5000});
