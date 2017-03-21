@@ -1,7 +1,10 @@
 <app-header [config]='dashHeader' 
 		(rightButtonClick)="logoutClicked()"
-		(leftButtonClick)="settingsClicked()"
+		(leftButtonClick)="sidePanel.toggleSettings()"
 		(logoClick)="logoClicked()"></app-header>
+
+<app-settings #sidePanel ></app-settings>
+
 <div class="filesTableTitle"><h1>Files</h1></div>
 <md-list>
   <md-list-item *ngFor="let file of files; let i = index;">

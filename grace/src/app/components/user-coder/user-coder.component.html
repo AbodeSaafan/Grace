@@ -3,8 +3,10 @@
 <!-- Custom Header -->
 <app-header [config]="userHeader"
 		(logoClick)="logoClicked()"
-		(leftButtonClick)="settingsClicked()"
+		(leftButtonClick)="sidePanel.toggleSettings()"
 		(rightButtonClick)="logoutClicked()"></app-header>
+
+<app-settings #sidePanel></app-settings>
 
 
 <!-- light -->

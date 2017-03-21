@@ -1,5 +1,5 @@
-<md-sidenav-container class="sideNav">
-  <md-sidenav #sidenav id="sidenav" mode="over">
+<md-sidenav-container class="sideNav" id="navContainer" (click)="toggleSettings($event)">
+  <md-sidenav #settingsPanel mode="over">
   	<h2> Name here </h2>
 
   	<hr>
@@ -9,8 +9,6 @@
  	 <md-slide-toggle (click)="changeTheme()" color="primary"> Toggle dark theme </md-slide-toggle>
 
   </md-sidenav>
-<button md-button (click)="openSide(sidenav)"> open </button>
-
 </md-sidenav-container>
 
 

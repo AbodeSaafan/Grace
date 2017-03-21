@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef, Renderer } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { FileStorageService } from '../../services/file-storage.service';
 import { HeaderConfig } from '../header/header.component';
 import { MaterialModule} from '@angular/material';
-
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-settings',
@@ -10,12 +10,15 @@ import { MaterialModule} from '@angular/material';
   styleUrls: ['./settings.component.css']
 })
 
-export class SettingsComponent implements OnInit {
-  @ViewChild('sidenav') el:ElementRef;
+export class SettingsComponent implements OnInit, AfterViewInit {
+  @ViewChild('settingsPanel') settingsPanel;
 
-	constructor(private rd: Renderer){}
+	constructor(){}
 
-  	ngOnInit() {}
+  	ngOnInit() {
+      $('#navContainer').height($(window).height() - 52);
+      $('#navContainer').css({'z-index': -5});
+    }
 
   	changePassword(){
   		alert("change password");
@@ -28,14 +31,32 @@ export class SettingsComponent implements OnInit {
   		
   	}
     ngAfterViewInit(){
-      // alert("works");
-      //this.rd.invokeElementMethod(this.el.nativeElement,'open');
-      // this.el.open();
-      //sidenav.open();
+      console.log(this.settingsPanel);
+      //this.settingsPanel.open();
     }
 
-    openSide(sidenav: any){
-      sidenav.open();
+    toggleSettings(e){
+      if(e){
+        e.preventDefault();
+      } else {
+        this.settingsPanel.toggle();
+      }
+
+      var navContainer = $('#navContainer');
+      var zVal = parseInt(navContainer.css('z-index'));
+      var newZ = zVal*-1;
+
+      var timeoutVal = newZ > 0? 0: 400;
+
+      setTimeout(function(){
+        navContainer.css({'z-index': newZ });
+      }, timeoutVal);
+      
     }
     
 }
+
+
+
+
+
