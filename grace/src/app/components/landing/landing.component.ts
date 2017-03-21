@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router'
 import { routerTransition } from '../../router.animations';
 import * as $ from 'jquery';
+import {AuthorizeService} from '../../services/authorize.service';
 
 @Component({
   selector: 'app-landing',
@@ -13,11 +14,19 @@ import * as $ from 'jquery';
 })
 export class LandingComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private authService: AuthorizeService) {
    }
 
   ngOnInit() {
-     }
+    // Auto-login
+    this.authService.isAuthenticated().subscribe(data => {
+      this.router.navigateByUrl('/dash');
+    },
+    function(error){
+
+    });
+
+   }
 
   private shown: string = 'NONE';
   guestClicked() {
