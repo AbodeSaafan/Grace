@@ -4,11 +4,11 @@
 	<h6 id="motto">>  Convenient coding starts here<i class="loading ">_ </i></h6>
 	<table id="landingChoicesTable">
 		<tr>
-			<td><button id="registerButton" (click)="registerClicked()">Register</button></td>
-			<td><button class="logButton" id="loginButton" (click)="loginClicked()">Login</button></td>
+			<td><button md-raised-button class="normalButton" (click)="registerClicked()">Register</button></td>
+			<td><button md-raised-button class="selectedButton normalButton" id="loginButton" (click)="loginClicked()">Login</button></td>
 		</tr>
 		<tr>
-			<td colspan="2"><button id="codeAsGuest" (click)="guestClicked()">Code as guest</button></td>
+			<td colspan="2"><button md-raised-button class="normalButton" (click)="guestClicked()">Code as guest</button></td>
 		</tr>
 		
 	</table>

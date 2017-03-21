@@ -36,23 +36,25 @@ export class LandingComponent implements OnInit {
 	}
 
 	loginClicked() {
-		console.log("login clicked!!");
-		if (this.shown == 'LOGIN'){
-      this.shown = 'NONE';
-    } else{
-      this.shown = 'LOGIN';
-    }
+    alert("sdfds");
+    $("#registerForm").slideToggle();
+		// console.log("login clicked!!");
+		// if (this.shown == 'LOGIN'){
+  //     this.shown = 'NONE';
+  //   } else{
+  //     this.shown = 'LOGIN';
+  //   }
 		
 
 	}
 
 	registerClicked() {
-		console.log("register clicked!!");
-    if (this.shown == 'REGISTER'){
-		  this.shown = 'NONE';
-    } else{
-      this.shown = 'REGISTER';
-    }
+		// console.log("register clicked!!");
+  //   if (this.shown == 'REGISTER'){
+		//   this.shown = 'NONE';
+  //   } else{
+  //     this.shown = 'REGISTER';
+  //   }
 
 	}
 }
