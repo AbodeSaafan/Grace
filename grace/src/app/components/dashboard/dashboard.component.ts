@@ -103,7 +103,7 @@ export class DashboardComponent implements OnInit {
 	fileDelete(index){
 		var r = confirm("Are you sure you want to delete your file?");
 		if (r == true) {
-			var deleteFileName = this.files[index];
+			var deleteFileName = this.files[index].fileName;
 			this.authorizeService.isAuthenticated().subscribe(data => {
 				var email = localStorage.getItem('email');
 
