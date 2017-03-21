@@ -113,6 +113,7 @@ export class AuthorizeService {
 		localStorage.removeItem('token');
 		localStorage.removeItem('fname');
 		localStorage.removeItem('lname');
+		localStorage.removeItem('codeForUser');
 
 		/* take user to main page*/
 		this.router.navigateByUrl('/');
