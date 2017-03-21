@@ -12,12 +12,22 @@ import * as $ from 'jquery';
 
 export class SettingsComponent implements OnInit, AfterViewInit {
   @ViewChild('settingsPanel') settingsPanel;
+  container: any;
 
 	constructor(){}
 
   	ngOnInit() {
-      $('#navContainer').height($(window).height() - 52);
-      $('#navContainer').css({'z-index': -5});
+      var container = $("#navContainer");
+      container.css({'z-index': -5});
+
+      container.height($(window).height() - 52);
+
+      $(window).resize(function(){
+        container.height($(window).height() - 52);
+      })
+
+      this.container = container;
+      
     }
 
   	changePassword(){
@@ -35,23 +45,16 @@ export class SettingsComponent implements OnInit, AfterViewInit {
       //this.settingsPanel.open();
     }
 
-    toggleSettings(e){
-      if(e){
-        e.preventDefault();
-      } else {
-        this.settingsPanel.toggle();
-      }
+    sendToBack() {
+      this.container.css({'z-index': -5 });
+    }
 
-      var navContainer = $('#navContainer');
-      var zVal = parseInt(navContainer.css('z-index'));
-      var newZ = zVal*-1;
+    sendToFront(){
+      this.container.css({'z-index': 5 });
+    }
 
-      var timeoutVal = newZ > 0? 0: 400;
-
-      setTimeout(function(){
-        navContainer.css({'z-index': newZ });
-      }, timeoutVal);
-      
+    toggleSettings(){
+      this.settingsPanel.toggle();
     }
     
 }

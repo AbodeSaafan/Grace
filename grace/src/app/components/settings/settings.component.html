@@ -1,10 +1,11 @@
-<md-sidenav-container class="sideNav" id="navContainer" (click)="toggleSettings($event)">
-  <md-sidenav #settingsPanel mode="over">
+<md-sidenav-container class="sideNav" id="navContainer">
+  <md-sidenav class="nav" #settingsPanel mode="over" (close)="sendToBack();" (open-start)="sendToFront();">
   	<h2> Name here </h2>
 
   	<hr>
-  	<button class="settings" (click)="changePassword()"> Change password </button>
-   	<button class="settings" (click)="changeEmail()"> Change email </button>
+  	<button  id="disabler"></button>
+  	<button class="settings" (click)="changePassword()" > Change password </button>
+   	<button class="settings" (click)="changeEmail()" > Change email </button>
    	<br>
  	 <md-slide-toggle (click)="changeTheme()" color="primary"> Toggle dark theme </md-slide-toggle>
 
