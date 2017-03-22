@@ -14,6 +14,7 @@ export class SharedViewComponent implements OnInit {
 	sharedHeader: HeaderConfig;
 	@Input() fileIDFromURL: string;
 	fileCode: string;
+	fileName: string;
 	id: any;
 	paramsSub: any;
 
@@ -37,6 +38,7 @@ export class SharedViewComponent implements OnInit {
     	localStorage.setItem('shareID',this.id);
     	localStorage.setItem('sharedFileName', data.fileName);
     	localStorage.setItem('sharedFileCode', data.file);
+    	comp.fileName = data.fileName;
     	comp.fileCode = data.file;
     },
     function(error){

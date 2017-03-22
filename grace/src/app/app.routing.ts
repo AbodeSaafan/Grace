@@ -23,15 +23,11 @@ const appRoutes: Routes = [
 		component: DashboardComponent
 	},
 	{
-		path: 'side',
-		component: SettingsComponent
-	},
-	{
 		path: 'user',
 		component: UserCoderComponent
 	},
 	{
-		path: 'share/:id',
+		path: 'file/:id',
 		component:  SharedViewComponent
 	},
 	{
