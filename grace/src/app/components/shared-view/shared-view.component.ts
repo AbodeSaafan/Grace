@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FileStorageService } from '../../services/file-storage.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { HeaderConfig, HeaderComponent } from '../header/header.component';
 import { MdSnackBar } from '@angular/material';
 
@@ -14,9 +14,11 @@ export class SharedViewComponent implements OnInit {
 	sharedHeader: HeaderConfig;
 	@Input() fileIDFromURL: string;
 	fileCode: string;
+	id: any;
+	paramsSub: any;
 
   constructor(private router: Router, private fileStorage: FileStorageService, 
-  			  public snackBar: MdSnackBar) {
+  			  public snackBar: MdSnackBar, private activatedRoute: ActivatedRoute) {
   	this.sharedHeader = {
       leftButtonContent: "none",
       rightButtonContent: "Sign Up",
@@ -28,8 +30,18 @@ export class SharedViewComponent implements OnInit {
   }
 
   ngOnInit() {
-  	// Set fileCode in localstorage and make sure name is in there too
+  	var comp = this;
     this.fileCode = this.fileIDFromURL;
+    this.paramsSub = this.activatedRoute.params.subscribe(params => this.id = params['id']);
+    this.fileStorage.getSharedFile(this.id).subscribe(data => {
+    	localStorage.setItem('shareID',this.id);
+    	localStorage.setItem('sharedFileName', data.fileName);
+    	localStorage.setItem('sharedFileCode', data.file);
+    	comp.fileCode = data.file;
+    },
+    function(error){
+    	comp.router.navigateByUrl('/404');
+    });
   }
 
   signUpClicked(){

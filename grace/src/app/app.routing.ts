@@ -6,7 +6,8 @@ import {LandingComponent} from './components/landing/landing.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {SettingsComponent} from './components/settings/settings.component';
 import {UserCoderComponent} from './components/user-coder/user-coder.component';
-import { SharedViewComponent } from './components/shared-view/shared-view.component';
+import {SharedViewComponent} from './components/shared-view/shared-view.component';
+import {NotFoundComponent} from './components/not-found/not-found.component';
 
 const appRoutes: Routes = [
 	{
@@ -30,8 +31,12 @@ const appRoutes: Routes = [
 		component: UserCoderComponent
 	},
 	{
-		path: 'share',
+		path: 'share/:id',
 		component:  SharedViewComponent
+	},
+	{
+		path: '404',
+		component: NotFoundComponent
 	}
 ];
 

@@ -23,6 +23,7 @@ import 'hammerjs';
 import { SettingsComponent } from './components/settings/settings.component';
 import { UserCoderComponent } from './components/user-coder/user-coder.component';
 import { SharedViewComponent } from './components/shared-view/shared-view.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { SharedViewComponent } from './components/shared-view/shared-view.compon
     DashboardComponent,
     SettingsComponent,
     UserCoderComponent,
-    SharedViewComponent
+    SharedViewComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
