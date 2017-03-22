@@ -64,5 +64,9 @@ button{
 	float: right;
 	position: absolute;
 	right: 11%;
-	font-size: 50;
+	font-size: 15px;
+	width: 22%;
+	border: solid 1px #404041;
+	padding: 3px;
+	height: 3%;
 }

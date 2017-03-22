@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FileStorageService } from '../../services/file-storage.service';
 import { HeaderConfig } from '../header/header.component';
 import { MaterialModule, MdSnackBar } from '@angular/material';
-import {AuthorizeService } from '../../services/authorize.service';
-import {Router} from '@angular/router';
+import { AuthorizeService } from '../../services/authorize.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-dashboard',
@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
 	@ViewChild('linkCopy') linkCopy:ElementRef;
 
 	constructor(private fileStorage: FileStorageService, private authorizeService: AuthorizeService, 
-				private router: Router, public snackBar: MdSnackBar) { 
+		private router: Router, public snackBar: MdSnackBar) { 
 		this.dashHeader = {
 			leftButtonContent: "settings",
 			rightButtonContent: "logout",
@@ -26,6 +26,22 @@ export class DashboardComponent implements OnInit {
 			rightButtonSrc: ""
 		}
 		
+	}
+
+	refreshFiles(){
+		var comp = this;
+		this.authorizeService.isAuthenticated().subscribe(data => {
+			this.fileStorage.getMyFiles()
+			.subscribe(output => { this.files = output });
+		},
+		function(error){
+			alert('Request Failed');
+			comp.router.navigateByUrl('/');
+		});
+	}
+
+	ngOnInit() {
+		this.refreshFiles();
 	}
 
 	fileOpen(index){
@@ -36,20 +52,30 @@ export class DashboardComponent implements OnInit {
 	}
 
 	fileInvite(index){
-		console.log(index);
 		if (!this.files[index].shareID) {
-			var shareAns = confirm("Your file is currently private, are you sure you would like to share this file?"+
+			var startShareAns = confirm("Your file is currently private, are you sure you would like to share this file?"+
 				"\nNote: The file link will be unlisted meaning it will not show up on search engines "+
 				"but anyone with the link will be able to access it");
-			if (shareAns){
+			if (startShareAns){
 				// Share file
-				alert("shared");
 				// Generate shareid and display it
+				this.fileStorage.createAShare(this.files[index].fileName, localStorage.getItem('email'))
+				.subscribe(data => {this.refreshFiles();});
 			} else {
 				// Don't do anything
 			}
 		} else {
-			// Show the shared link
+			var stopShareAns = confirm("Your file is currently shared, are you sure you would like make this file private?"+
+				"\nNote: No one will be able to access the file at the current link. If you share the file again later "+
+				"the share link will differ.");
+			if (stopShareAns){
+				// Unshare file
+				// Generate shareid and display it
+				this.fileStorage.deleteAShare(this.files[index].fileName, localStorage.getItem('email'))
+				.subscribe(data => {this.refreshFiles();});
+			} else {
+				// Don't do anything
+			}
 
 		}
 	}
@@ -75,7 +101,7 @@ export class DashboardComponent implements OnInit {
 
 		this.snackBar.open("Link copied to clipboard", '' ,{duration: 2000});
 	}
- 
+
 
 	logoClicked(){
 		this.router.navigateByUrl("/dash");
@@ -83,17 +109,6 @@ export class DashboardComponent implements OnInit {
 
 	logoutClicked() {
 		this.authorizeService.signOut();
-	}
-
-	ngOnInit() {
-		this.authorizeService.isAuthenticated().subscribe(data => {
-			this.fileStorage.getMyFiles()
-			.subscribe(output => { this.files = output });
-		},
-		function(error){
-			alert('Request Failed');
-			this.router.navigateByUrl('/');
-		});
 	}
 
 	fileCreate(){

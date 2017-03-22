@@ -12,7 +12,7 @@
     <h4 md-line class="fileName" (click)="fileOpen(i)">{{file.fileName}}</h4>
     <p md-line class="fileDate"> {{file.dateModified | date}} </p>
 
-    <input *ngIf="file.shareID" mdTooltip="Double click to copy!" class="sharedLink" (dblclick)="copyLink($event);" placeholder="Share Link" readonly value="www.grace.com/file/{{file.shareID}}">
+    <input *ngIf="file.shareID" mdInput mdTooltip="Double click to copy!" class="sharedLink" (dblclick)="copyLink($event);" placeholder="Share Link" readonly value="www.grace.com/file/{{file.shareID}}">
     
     <div class="fileButtons">
 
