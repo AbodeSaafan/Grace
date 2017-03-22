@@ -337,7 +337,7 @@ router.get('/share', function(req, res){
 
 		}else{
 			file.status = true;
-			res.send(file);
+			res.send(file[0]);
 		}
 
 	});
