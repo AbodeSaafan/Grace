@@ -18,8 +18,25 @@ export class LandingComponent {
    }
 
   ngOnInit() {
-    $("#loginForm").hide();
-    $("#registerForm").hide();
+    var formDivs = $(".formDiv");
+    var leftSpace = $(window).width()/2 - formDivs.width()/1.7;
+    var topSpace = $(window).height()/2 - formDivs.height()/1.4;
+
+    formDivs.hide();
+    formDivs.css({opacity: 0.0, top: topSpace, left: leftSpace});
+
+    var backdrop = $("#backdrop");
+    backdrop.css({opacity: 0.0});
+    backdrop.hide();
+
+
+
+
+    $(window).resize(function() {
+      var leftSpace = $(window).width()/2 - $(".formDiv").width()/1.7;
+      formDivs.css({left: leftSpace});
+    });
+
     // Auto-login
     this.authService.isAuthenticated().subscribe(data => {
       this.router.navigateByUrl('/dash');
@@ -30,35 +47,54 @@ export class LandingComponent {
 
    }
 
-  private shown: string = 'NONE';
   guestClicked() {
 		console.log("guest clicked!!");
-		this.shown = 'GUESTCODER';
 		this.router.navigateByUrl('/guest');
 	}
 
+  backdropIn(){
+    $("#backdrop").show();
+    $("#backdrop").animate({opacity: 0.7}, 200, function() {
+
+    });
+  }
+
 	loginClicked() {
     $("#registerForm").hide();
-    $("#loginForm").slideToggle();
-		// console.log("login clicked!!");
-		// if (this.shown == 'LOGIN'){
-  //     this.shown = 'NONE';
-  //   } else{
-  //     this.shown = 'LOGIN';
-  //   }
-		
+    this.backdropIn();
 
+    $("#loginForm").show();
+    $("#loginForm").animate({opacity: 1.0}, 200, function() {
+
+    });
 	}
 
 	registerClicked() {
     $("#loginForm").hide();
-    $("#registerForm").slideToggle();
-		// console.log("register clicked!!");
-  //   if (this.shown == 'REGISTER'){
-		//   this.shown = 'NONE';
-  //   } else{
-  //     this.shown = 'REGISTER';
-  //   }
+    this.backdropIn();
 
+    $("#registerForm").show();
+    $("#registerForm").animate({opacity: 1.0}, 200, function() {
+
+    });
 	}
+
+  bgClicked() {
+    $(".formDiv").animate({opacity: 0.0}, 200,function(){
+      $(this).hide();
+    })
+    $("#backdrop").animate({opacity: 0.0}, 200,function(){
+      $(this).hide();
+    })
+  }
+
+
+
+
 }
+
+
+
+
+
+

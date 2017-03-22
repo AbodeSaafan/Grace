@@ -13,14 +13,12 @@
 		
 	</table>
 
-	<!-- <app-registration id="registerForm" *ngIf="shown == 'REGISTER'"></app-registration>
-	<app-login *ngIf="shown == 'LOGIN'"></app-login>
-	<app-compiler *ngIf="shown == 'GUEST'"></app-compiler> -->
-	<div id="loginForm" style="width:100%;">
+	<div id="backdrop" class="backdropDiv" (click)="bgClicked()"></div>
+	<div id="loginForm" class="formDiv">
 		<app-login ></app-login>
 	</div>
 
-	<div id="registerForm" style="width:100%;">
+	<div id="registerForm" class="formDiv">
 		<app-registration></app-registration>
 	</div>
 	
