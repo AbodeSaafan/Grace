@@ -123,7 +123,7 @@ export class SettingsComponent implements OnInit, AfterViewInit {
             });
     }
     else{
-      alert("wrong password");
+       alert("Passwords don't match.")
     }
     }
 
