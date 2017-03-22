@@ -137,7 +137,7 @@ export class AuthorizeService {
 		/* Check user account for token match before changing user settings*/
 		this.isAuthenticated()
 			.subscribe(data=>{
-
+				console.log(1111);
 				/* makes a changeUser call to api*/
 				this.http.post(this.apiConnection + "/changeUser", params)
 					.subscribe(logout => {
@@ -191,6 +191,46 @@ export class AuthorizeService {
 		this.changeUser(null,lName,null,null,pass);
 	}
 
+	/* Deletes the account*/
+	deleteEmail(pass: string){
+
+		/* Set params to be sent to api*/
+		let params: URLSearchParams = new URLSearchParams();
+		params.set('_id', localStorage.getItem('email'));
+		params.set('pass', pass);
+
+		this.isAuthenticated()
+			.subscribe(data=>{
+
+				/* makes a changeUser call to api*/
+				this.http.post(this.apiConnection + "/deleteAccount", params)
+					.subscribe(logout => {
+						alert("Your account has been successfully deleted.\n" +
+							  "Thanks for considering Grace REPL for your " +
+							  " online compling application!!!");
+
+						/* Remove credentials of the user before signout*/
+						localStorage.removeItem('email');
+						localStorage.removeItem('token');
+						localStorage.removeItem('fname');
+						localStorage.removeItem('lname');
+						localStorage.removeItem('codeForUser');
+
+
+					/* Failed to change settings due to incorrect password*/
+					}, function(err) {
+						alert("Account deletion failed:\n"+
+							  "Looks like you will be sticking around for "+
+							  "a little longer.");
+					});
+
+				/* Failed to change settings due to incorrect token*/
+				},function(err) {
+					alert("This is unusual:\n"+
+					 	  "It seems that this account does "+
+					 	  "not belong to you");
+			});
+	}
 
 	/**** Set of Get methods ****/
 
