@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FileStorageService } from '../../services/file-storage.service';
 import { HeaderConfig } from '../header/header.component';
-import { MaterialModule } from '@angular/material';
+import { MaterialModule, MdSnackBar } from '@angular/material';
 import {AuthorizeService } from '../../services/authorize.service';
 import {Router} from '@angular/router';
 
@@ -15,8 +15,10 @@ export class DashboardComponent implements OnInit {
 	private files : any[];
 	private inviteIconOpen: boolean;
 	dashHeader: HeaderConfig;
+	@ViewChild('linkCopy') linkCopy:ElementRef;
 
-	constructor(private fileStorage: FileStorageService, private authorizeService: AuthorizeService, private router: Router) { 
+	constructor(private fileStorage: FileStorageService, private authorizeService: AuthorizeService, 
+				private router: Router, public snackBar: MdSnackBar) { 
 		this.dashHeader = {
 			leftButtonContent: "settings",
 			rightButtonContent: "logout",
@@ -35,6 +37,21 @@ export class DashboardComponent implements OnInit {
 
 	fileInvite(index){
 		console.log(index);
+		if (!this.files[index].shareID) {
+			var shareAns = confirm("Your file is currently private, are you sure you would like to share this file?"+
+				"\nNote: The file link will be unlisted meaning it will not show up on search engines "+
+				"but anyone with the link will be able to access it");
+			if (shareAns){
+				// Share file
+				alert("shared");
+				// Generate shareid and display it
+			} else {
+				// Don't do anything
+			}
+		} else {
+			// Show the shared link
+
+		}
 	}
 
 	fileDownload(index){
@@ -45,6 +62,20 @@ export class DashboardComponent implements OnInit {
 		
 	}
 
+	copyLink(event){
+		var target = event.target || event.srcElement || event.currentTarget;
+		target.setSelectionRange(0, target.value.length)
+		const selection = getSelection();
+		const range = document.createRange();
+
+		range.selectNodeContents(target);
+		selection.removeAllRanges();
+		selection.addRange(range);
+		document.execCommand('copy');
+
+		this.snackBar.open("Link copied to clipboard", '' ,{duration: 2000});
+	}
+ 
 
 	logoClicked(){
 		this.router.navigateByUrl("/dash");

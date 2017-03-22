@@ -26,6 +26,7 @@ md-list-item:hover{
 .fileButtons {
 	width: 15%;
 	height: 100%;
+	float: right;
 }
 
 img {
@@ -57,4 +58,11 @@ button{
 .example-sidenav {
   padding: 20px;
   width: 300px;
+}
+
+.sharedLink, .sharedLinkContainer {
+	float: right;
+	position: absolute;
+	right: 11%;
+	font-size: 50;
 }
