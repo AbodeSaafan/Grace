@@ -1,3 +1,10 @@
-<p>
-  shared-view works!
-</p>
+<!-- Keyword is config, use square bracket to do allocate a variable -->
+
+<!-- Custom Header -->
+<app-header [config]="sharedHeader" (rightButtonClick)="signUpClicked()" (logoClick)="logoClicked()"></app-header>
+
+
+<!-- light -->
+<app-compiler theme="solarized_light" [editorText]="fileCode" disabled=true
+		(saveClick)="saveClicked()"></app-compiler>
+<!--  Use square brackets for assigning a component variable  -->
