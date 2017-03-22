@@ -21,7 +21,8 @@ export class RegistrationComponent  {
 
       account: this.fb.group({
         email: ['', Validators.required],
-        password: ['', Validators.required]
+        password: ['', Validators.required], 
+        confirmPass: ['', Validators.required]
       })
     });
   }
@@ -32,10 +33,12 @@ export class RegistrationComponent  {
 
   } else {
     // if else to check if account already exists (PUT), else POST
-        console.log('check');
-
-        this.AuthorizeService.signUp(this.user.value.first, this.user.value.last,
-          this.user.value.account.email, this.user.value.account.password);
+      if (this.user.value.account.password == this.user.value.account.confirmPass) {
+        this.AuthorizeService.signUp(this.user.value.first, this.user.value.last, this.user.value.account.email, this.user.value.account.password);
+       }
+      else{
+        alert("Passwords don't match.")
+       }
 
     }
 
