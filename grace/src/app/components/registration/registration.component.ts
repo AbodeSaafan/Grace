@@ -2,6 +2,7 @@ import { Component, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthorizeService} from './../../services/authorize.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-registration',
@@ -15,6 +16,17 @@ export class RegistrationComponent  {
   constructor(private fb: FormBuilder, private AuthorizeService: AuthorizeService) {}
   
   ngOnInit() {
+    // $("input").focusin(function() {
+    //   $(this).removeClass("inputItem");
+    // })
+
+    // $("input").focusout(function() {
+    //   var temp = $(this);
+    //   setTimeout(function() {
+    //     temp.addClass("inputItem");
+    //   }, 200);
+    // });
+
     this.user = this.fb.group({
       first: ['', [Validators.required, Validators.minLength(2)]],
       last: ['', [Validators.required, Validators.minLength(2)]],
