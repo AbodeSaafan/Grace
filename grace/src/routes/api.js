@@ -210,11 +210,63 @@ router.post('/changeUser', function(req,res){
 					
 					/* Change user settings*/
 					if (user._newid){
-						db.users.update({_id: user._id},{$set:{_id:user._newid}});
-						checkUser._id = user._newid;
+
+						oldID = checkUser._id;
+
+						db.users.remove({_id: oldID});
+
+						checkUser._id = user._newid
+
+					/* Find the user in the database*/
+						db.users.findOne({_id: user._newid}, 
+							function(err, checkUser){
+
+				    		/* Check if the user does not already exist*/
+				    		if (checkUser === null){
+
+				    			/* Update new user email */
+				    			db.users.save(checkUser, function(err,user){
+									/* Check if user created in the database*/
+									if(err|| user === null){
+							    		res.status(400);
+							    		res.json({'status':false, 
+									              'message':"Failed to connect: the "+ 
+									              "user was not successfully created"});
+
+					    			}
+				        		});
+
+				    			/* Update new file owner*/
+								db.files.update({owner: oldID}, 
+								{$set:{owner:user._newid}},{multi:true}, 
+								function(err, file){
+									if(err){
+										res.status(400);
+										res.json({'status':false, 
+								      			  'message':"Failed to connect: this " +
+								      			  " file does not exist"});
+									}
+								});
+				    			
+							
+							}else{
+				    			res.status(400);
+				    			res.json({'status':false, 
+									      'message':"Failed to connect: this "+
+									      "user already exists",
+									      'userlog':"The email enter is already in "+
+									      "use. Please try another email."});
+				    		}
+				    	});
 					}
 					if (user.newpass){
-						db.users.update({_id: user._id},{$set:{pass:user.newpass}});
+				
+						/* Creates a new hash using the pass sent by user*/
+    					const hash = crypto.createHash('sha256');
+    					hash.update(checkUser.salt + user.newpass);
+    					saltedNewPass = hash.digest('hex');
+
+						db.users.update({_id: user._id},{$set:{pass:saltedNewPass}});
 					}
 					if (user.fName){
 						db.users.update({_id: user._id},{$set:{fName:user.fName}});

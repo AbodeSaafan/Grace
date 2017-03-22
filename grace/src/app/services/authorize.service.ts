@@ -152,16 +152,21 @@ export class AuthorizeService {
 
 					/* Failed to change settings due to incorrect password*/
 					}, function(err) {
-						alert("Failed to change settings:\n"+
-							  "Please enter the correct password to make"+
-							  "changes.");
+						if (err.json().userlog === null){
+							alert("Failed to change settings:\n"+
+								  "Please enter the correct password to make"+
+								  "changes.");
+						}else{
+							alert("Failed to change settings:\n"+
+								  err.json().userlog);
+						}
 					});
 
 					/* Failed to change settings due to incorrect token*/
-					},function(err) {
-						alert("This is unusual:\n"+
-					 		  "It seems that this account does "+
-					 		  "not belong to you");
+				},function(err) {
+					alert("This is unusual:\n"+
+					 	  "It seems that this account does "+
+					 	  "not belong to you");
 			});
 
 	}
