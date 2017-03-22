@@ -316,5 +316,76 @@ router.post('/files/delete', function(req, res){
 	db.files.remove({owner: userInput.owner, fileName: userInput.fileName});
 });
 
+/******************* File Sharing *******************/
+
+router.get('/share', function(req, res){
+
+	findShareID = req.query.shareID;
+
+	if (findShareID === null){
+		res.status(400);
+			res.json({'status':false, 
+					      'message':"Failed to connect: there is no file " + 
+					      "with this link"});
+	}else{
+		db.files.find({shareID: req.query.shareID},function(err,file){
+		if(err|| file===null){
+			res.status(400);
+			res.json({'status':false, 
+					      'message':"Failed to connect: this file " + 
+					      "does not exist"});
+
+		}else{
+			file.status = true;
+			res.send(file);
+		}
+
+	});
+	}
+});
+
+
+router.post('/share/create', function(req, res){
+
+	var shareFile = req.body;
+
+	var newShareID = uuid.v4().toString().replace(/-/g,"");
+
+	db.files.update({owner: shareFile.owner, fileName:shareFile.fileName}, 
+					{$set:{shareID:newShareID}}, 
+					function(err, file){
+						if(err){
+							console.log("got to error of db")
+							res.status(400);
+							res.json({'status':false, 
+					      			  'message':"Failed to connect: this " +
+					      			  " file does not exist"});
+						}
+						res.json({'status': true})
+					});
+});
+
+
+router.post('/share/remove', function(req, res){
+
+	var shareFile = req.body;
+
+	db.files.update({owner: shareFile.owner, fileName:shareFile.fileName}, 
+					{$set:{shareID:null}}, 
+					function(err, file){
+						if(err){
+							console.log("got to error of db")
+							res.status(400);
+							res.json({'status':false, 
+					      			  'message':"Failed to connect: this " +
+					      			  " file does not exist"});
+						}
+						res.json({'status': true})
+					});
+});
+
+
+
+
 
 module.exports = router;

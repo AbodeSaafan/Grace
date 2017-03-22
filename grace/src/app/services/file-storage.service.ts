@@ -8,6 +8,7 @@ import {Router} from '@angular/router'
 export class FileStorageService {
 
 	apiURL:string = "http://localhost:3000/files";
+	shareAPI:string = "http://localhost:3000/share";
 	userEmail: string = "";
 
 	constructor(private http: Http, private authorizeService: AuthorizeService, private router: Router) { }
@@ -50,4 +51,36 @@ export class FileStorageService {
 		return this.http.post(this.apiURL+"/save",params).map(res => res.json());
 	}
 
+	createAShare(fileName: string, email: string){
+		
+		let params: URLSearchParams = new URLSearchParams();
+		params.set('owner', email);
+		params.set('fileName', fileName);
+
+		return this.http.post(this.shareAPI + "/create",params)
+				.map(res => res.json());
+	}
+
+	deleteAShare(fileName: string, email: string){
+
+		let params: URLSearchParams = new URLSearchParams();
+		params.set('owner', email);
+		params.set('fileName', fileName);
+
+		return this.http.post(this.shareAPI + "/remove",params)
+				.map(res => res.json());
+	}
+
+	getSharedFile(shareID:string){
+
+		let params: URLSearchParams = new URLSearchParams();
+		params.set('shareID', shareID);
+
+		return this.http.get(this.shareAPI, {
+			search: params
+		}).map(res => res.json());
+	}
 }
+
+
+
