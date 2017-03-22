@@ -63,7 +63,7 @@ div{
     width: 100%;
 }
 
-input[type=password], [type=email] {
+input[type=password], [type=email], [type=text] {
     width: 90%;
     padding: 12px 20px;
     
@@ -81,7 +81,7 @@ input[type=password], [type=email] {
 
 }
 
-#currentPass, #newEmail, #newPass{
+#currentPass, #newEmail, #newPass, #newName{
     width: 90%;
     padding: 12px 20px;
 

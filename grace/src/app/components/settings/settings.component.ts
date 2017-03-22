@@ -17,8 +17,6 @@ export class SettingsComponent implements OnInit, AfterViewInit {
   @ViewChild('settingsPanel') settingsPanel;
   container: any;
   user: FormGroup;
-  pass = false;
-  email = false;
   username: string;
 
 	 constructor(private fb: FormBuilder, private AuthorizeService: AuthorizeService) {
@@ -41,59 +39,45 @@ export class SettingsComponent implements OnInit, AfterViewInit {
       newPassword: ['', [Validators.required, Validators.minLength(2)]],
       currentPassword: ['', [Validators.required, Validators.minLength(2)]],
       newEmail: ['', Validators.required], 
-      confirmPass: ['', [Validators.required, Validators.minLength(2)]]
+      confirmPass: ['', [Validators.required, Validators.minLength(2)]], 
+      first: ['', [Validators.required, Validators.minLength(2)]],
+      last: ['', [Validators.required, Validators.minLength(2)]]
     });
-      
+
+       $("#passDiv").hide();
+       $("#nameDiv").hide();
+       $("#emailDiv").hide();
     }
 
+    clearForm(){
+      this.user.patchValue({
+          newPassword: '',
+          currentPassword: '', 
+          newEmail: '',
+          confirmPass: '', 
+          first: '', 
+          last: ''
+        })
+    }
   	changePassword(){
-      if (this.pass == false){
-        $("#passButton").show();
-        this.user.patchValue({
-          newPassword: '',
-          currentPassword: '', 
-          newEmail: '',
-          confirmPass: ''
-        })
-        $("#emailButton").hide();
-        this.pass = true;
-        this.email = false;
-      }
-      else{
-        $("#passButton").hide();
-        this.pass = false;
-        this.user.patchValue({
-          newPassword: '',
-          currentPassword: '', 
-          newEmail: '',
-          confirmPass: ''
-        })
-      }
+        this.clearForm();
+        $("#passDiv").slideToggle();
+        $("#nameDiv").slideUp();
+        $("#emailDiv").slideUp();
+
   	}
- 	changeEmail(){
-      if (this.email == false){
-        $("#emailButton").show();
-        $("#passButton").hide();
-        this.user.patchValue({
-          currentPassword: '',
-          confirmPass: '', 
-          newEmail: ''
-        })
-        this.email = true;
-        this.pass = false;
-
-      }
-      else{
-        $("#emailButton").hide();
-        this.email = false;
-        this.user.patchValue({
-          currentPassword: '',
-          confirmPass: '', 
-          newEmail: ''
-        })
-
-      }  
-     }
+   	changeEmail(){
+        this.clearForm();
+        $("#emailDiv").slideToggle();
+        $("#nameDiv").slideUp();
+        $("#passDiv").slideUp();
+    }
+     changeName(){
+        this.clearForm();
+        $("#nameDiv").slideToggle();
+        $("#emailDiv").slideUp();
+        $("#passDiv").slideUp();
+    }
 
     ngAfterViewInit(){
       console.log(this.settingsPanel);

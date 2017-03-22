@@ -5,7 +5,7 @@
   	<hr>
   	<button  class="settings" (click)="changePassword()" > Change password </button>
 
-	<div id = "passButton" style="display:none">
+	<div id = "passDiv" style="display:none">
 	  	<form [formGroup]="user">
 
   				<input type="password" id="newPass" formControlName="newPassword" placeholder="New Password" minlength="6" maxlength="18" required pattern="[a-zA-Z0-9?!$]+">
@@ -14,16 +14,15 @@
 
 	       		<input type="password" id="currentPass" formControlName="confirmPass" placeholder="Confirm Password" minlength="6" maxlength="18" required pattern="[a-zA-Z0-9?!$]+">
 	      		<button id="changeBtn" type="submit" (click)="onSubmitPass()"> Change password</button>
-	 	 </form>
-	 	 
+	 	 </form> 
 
   	</div>  	
 
-   	<button class="settings" (click)="changeEmail()" > Change email </button>
 
-   	<div id = "emailButton" style="display:none">
+  	<button class="settings" (click)="changeEmail()" > Change email </button>
+
+   	<div id = "emailDiv" style="display:none">
 	  	<form [formGroup]="user">
-	  		 	 <!-- <input type="text"> -->
 
 	 	 		<input formControlName="newEmail" id= "newEmail" placeholder="New Email" type="email" maxlength="45" required pattern="[a-zA-Z0-9._]+@[a-zA-Z]+.[a-zA-z]+">
 
@@ -32,9 +31,28 @@
 	       		<input type="password" id="currentPass" formControlName="confirmPass" placeholder="Confirm Password" minlength="6" maxlength="18" required pattern="[a-zA-Z0-9?!$]+">
 	      		<button id="changeBtn" type="submit" (click)="onSubmitEmail()"> Change email</button>
 	 	 </form>
-	 	  	
 
   	</div> 
+
+
+<button class="settings" (click)="changeName()"> Change name </button>
+
+   	<div id = "nameDiv" style="display:none">
+	  	<form [formGroup]="user">
+	  		 	 <!-- <input type="text"> -->
+
+	 	 		<input type="text" formControlName="first" id ="newName" placeholder="First Name" minlength="2" maxlength="25" required pattern="[a-zA-Z]+">
+
+	 	 		<input type="text" formControlName="last" id ="newName" placeholder="Last Name" minlength="2" maxlength="25" required pattern="[a-zA-Z]+">
+
+	       		<input type="password" id="currentPass" formControlName="currentPassword" placeholder="Current Password" minlength="6" maxlength="18" required pattern="[a-zA-Z0-9?!$]+">
+
+	       		<input type="password" id="currentPass" formControlName="confirmPass" placeholder="Confirm Password" minlength="6" maxlength="18" required pattern="[a-zA-Z0-9?!$]+">
+	      		<button id="changeBtn" type="submit" (click)="onSubmitEmail()"> Change name</button>
+	 	 </form>
+
+  	</div> 
+
 
    	<br>
  	 <!-- <md-slide-toggle (click)="changeTheme()" color="primary"> Toggle dark theme </md-slide-toggle> -->
