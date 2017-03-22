@@ -1,4 +1,4 @@
-<!-- 	<div class="form">
+<div class="form">
 		<form [formGroup]="user">
  	 		<input formControlName="first" placeholder="First Name" minlength="2" maxlength="25" required pattern="[a-zA-Z]+">
        		<input formControlName="last" placeholder="Last Name" minlength="2" maxlength="25" required pattern="[a-zA-Z]+">
@@ -8,20 +8,19 @@
       		<input formControlName="confirmPass" placeholder="Confirm Password" type="password" minlength="6" maxlength="18" required pattern="[a-zA-Z0-9?!$]+">
 		</div>
  	 	</form>
- 	</div> -->
+ 	</div>
 
-   <table class="example-full-width" cellspacing="0" style="margin-top:150px"><tr>
-    <td><md-input-container class="example-full-width">
-      <input mdInput placeholder="City" class="inputItem">
-    </md-input-container></td>
-    <td><md-input-container class="example-full-width">
-      <input mdInput placeholder="State">
-    </md-input-container></td>
-    <td><md-input-container class="example-full-width">
-      <input mdInput #postalCode maxlength="5" placeholder="Postal Code" value="94043">
-      <md-hint align="end">{{postalCode.value.length}} / 5</md-hint>
-    </md-input-container></td>
-  </tr></table>
+   <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <div style="background-color:white;padding:6px 15px 0px 15px;box-shadow: 0px 1px 1px #777;">
+          <md-input-container class="example-full-width">
+            <input mdInput placeholder="City" class="inputItem">
+          </md-input-container>
+          </div>
+      </td>
+    </tr>
+  </table>
 
  	<div class="submit">
  	 	<button (click)="onSubmit()"> Register</button>

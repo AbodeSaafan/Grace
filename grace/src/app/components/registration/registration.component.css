@@ -6,13 +6,12 @@
 }
 
 input {
-    width: 80%;
-    position: relative;
-	left: 21px;
+  width: 80%;
+  position: relative;
 	background-color: white;
 	color: black;
 	line-height: 22px;
-	text-align: center;
+	text-align: left;
 	border-radius: 5px;
 	}
 
