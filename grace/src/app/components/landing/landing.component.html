@@ -4,7 +4,7 @@
 	<h6 id="motto">>  Convenient coding starts here<i class="loading ">_ </i></h6>
 	<table id="landingChoicesTable">
 		<tr>
-			<td><button md-raised-button class="normalButton" (click)="registerClicked()">Register</button></td>
+			<td><button md-raised-button class="normalButton" id="registerButton" (click)="registerClicked()">Register</button></td>
 			<td><button md-raised-button class="selectedButton normalButton" id="loginButton" (click)="loginClicked()">Login</button></td>
 		</tr>
 		<tr>
@@ -15,10 +15,18 @@
 
 	<div id="backdrop" class="backdropDiv" (click)="bgClicked()"></div>
 	<div id="loginForm" class="formDiv">
+		<div class="closeX" (click)="bgClicked()">
+			<img class="cancelImg" src="../../../assets/cancel.svg" alt="">
+		</div>
+
 		<app-login ></app-login>
 	</div>
 
 	<div id="registerForm" class="formDiv">
+		<div class="closeX" (click)="bgClicked()">
+			<img class="cancelImg" src="../../../assets/cancel.svg" alt="">
+		</div>
+
 		<app-registration></app-registration>
 	</div>
 	

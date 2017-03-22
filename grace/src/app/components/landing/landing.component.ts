@@ -30,8 +30,6 @@ export class LandingComponent {
     backdrop.hide();
 
 
-
-
     $(window).resize(function() {
       var leftSpace = $(window).width()/2 - $(".formDiv").width()/1.7;
       formDivs.css({left: leftSpace});
@@ -60,6 +58,9 @@ export class LandingComponent {
   }
 
 	loginClicked() {
+    $("#registerButton").removeClass("selectedButton");
+    $("#loginButton").addClass("selectedButton");
+
     $("#registerForm").hide();
     this.backdropIn();
 
@@ -70,6 +71,9 @@ export class LandingComponent {
 	}
 
 	registerClicked() {
+    $("#registerButton").addClass("selectedButton");
+    $("#loginButton").removeClass("selectedButton");
+
     $("#loginForm").hide();
     this.backdropIn();
 
