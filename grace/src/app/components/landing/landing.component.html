@@ -1,4 +1,4 @@
-<div class="header"><img align="center" src="../../assets/grace_repl_splash_logo.svg"></div>
+<div class="header"><img align="center" src="../../assets/grace_repl_header_logo.svg"></div>
 <div id="landingChoices">
 
 	<h6 id="motto">>  Convenient coding starts here<i class="loading ">_ </i></h6>
@@ -13,7 +13,18 @@
 		
 	</table>
 
-	<app-registration id="registerForm" *ngIf="shown == 'REGISTER'"></app-registration>
+	<!-- <app-registration id="registerForm" *ngIf="shown == 'REGISTER'"></app-registration>
 	<app-login *ngIf="shown == 'LOGIN'"></app-login>
-	<app-compiler *ngIf="shown == 'GUEST'"></app-compiler>
+	<app-compiler *ngIf="shown == 'GUEST'"></app-compiler> -->
+	<div id="loginForm" style="width:100%;">
+		<app-login ></app-login>
+	</div>
+
+	<div id="registerForm" style="width:100%;">
+		<app-registration></app-registration>
+	</div>
+	
+	<br>
+	<br>
+	<br>
 </div>

@@ -26,10 +26,11 @@ button {
 
 .header {
 	/*float: right;*/
-	padding-top: 50px;
+	padding-top: 8%;
+	padding-bottom: 2%;
 	position: relative;
 	margin: auto;
-	width: 25%;
+	width: 40%;
 }
 img{
 	display: block;
@@ -47,8 +48,6 @@ h6{
 }
 
 .normalButton{
-	/*background-color: #404041;*/
-    padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -57,32 +56,38 @@ h6{
     font-family: "ubuntu";
   	src: url('../../../assets/ubuntu_font.ttf');
   	-webkit-transition-duration: 0.2s;
-  	color: #fff;
-  	background-color: #404041;
+  	color: #404041;
+  	background-color: #f7f7f7;
+  	border: 1px solid #aaa;
   	border-radius: 2px;
 }
 .normalButton:hover{
-	background-color: #303031;
+	background-color: #fff;
 }
 
 .selectedButton {
+	border-color: #d91b5b;
+	border-width: 2px;
 	background-color: #d91b5b;
 	color: #fff;
 }
 .selectedButton:hover {
-	background-color: #C91954;
+	background-color: #fff;
+	color: #C91954;
 }
 
+/*C91954*/
 
 #motto{
 	margin-top: 4%;
-	margin-bottom: 4%;
+	margin-bottom: 5%;
 	font-weight: normal;
+	color: #111;
 	font-size: 15px;
  	font-family: "Space Mono" ,monospace;
 }
 td{
-	height: 75px;
+	height: 60px;
 }
 table{
 	position: relative;
