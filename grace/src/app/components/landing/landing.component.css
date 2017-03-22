@@ -56,7 +56,6 @@ h6{
     border-radius: 1px;
     font-family: "ubuntu";
   	src: url('../../../assets/ubuntu_font.ttf');
-  	-webkit-transition-duration: 0.2s;
   	color: #404041;
   	background-color: #f7f7f7;
   	border: 1px solid #aaa;
@@ -105,8 +104,8 @@ i{
 
 .formDiv {
 	margin: 0 auto;
-	height: 40%;
-	width: 40%;
+	width: 30%;
+	height: auto;
 	top: 0px;
 	left: 0px;
 	background-color: #fff;
@@ -149,6 +148,7 @@ i{
 
 .bg {
 	background-image: url("../../../assets/city.png");
+	background-size: cover;
 	position: absolute;
 	top: 0;
 	right: 0;

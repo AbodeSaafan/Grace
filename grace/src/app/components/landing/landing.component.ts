@@ -19,8 +19,8 @@ export class LandingComponent {
 
   ngOnInit() {
     var formDivs = $(".formDiv");
-    var leftSpace = $(window).width()/2 - formDivs.width()/1.7;
-    var topSpace = $(window).height()/2 - formDivs.height()/1.4;
+    var leftSpace = $(window).width()/2 - formDivs.width()/1.6;
+    var topSpace = $(window).height()/2 - formDivs.height()/0.5;
 
     formDivs.hide();
     formDivs.css({opacity: 0.0, top: topSpace, left: leftSpace});
@@ -83,7 +83,10 @@ export class LandingComponent {
     });
 	}
 
-  bgClicked() {
+  bgClicked(obj1, obj2) {
+    obj1.emptyForm();
+    obj2.emptyForm();
+    
     $(".formDiv").animate({opacity: 0.0}, 200,function(){
       $(this).hide();
     })

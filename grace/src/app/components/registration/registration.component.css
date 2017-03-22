@@ -1,62 +1,6 @@
-.form{
-	/*float: right;*/
-	position: relative;
-	margin: 0 auto;
-	width: 50%;
-}
-
-input {
-  width: 80%;
-  position: relative;
-	background-color: white;
-	color: black;
-	line-height: 22px;
-	text-align: left;
-	border-radius: 5px;
-	}
-
-input:focus {
-    background-color: white;
-    color: black;
-
-}
-
-.submit {
-	width:50%;
-	position: relative;
-	margin: 0 auto;
-}
-button{
-	position: relative;
-	top: 20px;
-	background-color: #404041; 
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 13px;
-    border-radius: 4px;
-    font-family: "ubuntu";
-  	src: url('../../../assets/ubuntu_font.ttf');
-  	-webkit-transition-duration: 0.4s;
-
-  	position: relative;
-  	margin: 0 auto;
-
-
-  	width: 100%;
-  }
-
-button:hover{
-	background-color: #d91b5b;
-    color: black;
-     width: 100%;
-
-}
-
 .example-form {
-  width: 500px;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .example-full-width {
@@ -69,4 +13,29 @@ button:hover{
 
 .mat-input-element::-moz-placeholder {
   color: #444;
+}
+
+td {
+  border-left: 5px solid white;
+  border-right: 5px solid white;
+}
+
+.submitButton {
+  background-color: #d91b5b;
+  border: 2px solid #d91b5b;
+  color: white;
+  width: 55%;
+  text-align: center;
+}
+
+.submitButton:hover {
+  background-color: #fff;
+  color: #d91b5b;
+}
+
+.formTitle {
+  padding: 0px;
+  margin: 0px;
+  padding-bottom: 3%;
+  border-bottom: 2px solid #444;
 }

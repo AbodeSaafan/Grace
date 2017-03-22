@@ -34,5 +34,10 @@ export class LoginComponent  {
     }
 
   }
+
+  emptyForm(){
+    alert("emptying");
+  }
+  
 }
 

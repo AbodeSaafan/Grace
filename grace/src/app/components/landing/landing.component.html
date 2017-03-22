@@ -14,21 +14,21 @@
 		
 	</table>
 
-	<div id="backdrop" class="backdropDiv" (click)="bgClicked()"></div>
+	<div id="backdrop" class="backdropDiv" (click)="bgClicked(logForm,regForm)"></div>
 	<div id="loginForm" class="formDiv">
-		<div class="closeX" (click)="bgClicked()">
+		<div class="closeX" (click)="bgClicked(logForm,regForm);">
 			<img class="cancelImg" src="../../../assets/cancel.svg" alt="">
 		</div>
 
-		<app-login ></app-login>
+		<app-login #logForm></app-login>
 	</div>
 
 	<div id="registerForm" class="formDiv">
-		<div class="closeX" (click)="bgClicked()">
+		<div class="closeX" (click)="bgClicked(regForm,logForm);">
 			<img class="cancelImg" src="../../../assets/cancel.svg" alt="">
 		</div>
 
-		<app-registration></app-registration>
+		<app-registration #regForm></app-registration>
 	</div>
 	
 	<br>
