@@ -94,9 +94,12 @@ input[type=password], [type=email] {
     display: inline-block;
     text-align: center;
     border:1px solid #bbb;
-
 }
 
+#userName{
+    text-align: center;
+
+}
 
 #changeBtn{
     background-color: #d91b5b; /* Green */

@@ -40,7 +40,8 @@ export class SettingsComponent implements OnInit, AfterViewInit {
       this.user = this.fb.group({
       newPassword: ['', [Validators.required, Validators.minLength(2)]],
       currentPassword: ['', [Validators.required, Validators.minLength(2)]],
-      newEmail: ['', Validators.required]
+      newEmail: ['', Validators.required], 
+      confirmPass: ['', [Validators.required, Validators.minLength(2)]]
     });
       
     }
@@ -48,6 +49,12 @@ export class SettingsComponent implements OnInit, AfterViewInit {
   	changePassword(){
       if (this.pass == false){
         $("#passButton").show();
+        this.user.patchValue({
+          newPassword: '',
+          currentPassword: '', 
+          newEmail: '',
+          confirmPass: ''
+        })
         $("#emailButton").hide();
         this.pass = true;
         this.email = false;
@@ -55,14 +62,23 @@ export class SettingsComponent implements OnInit, AfterViewInit {
       else{
         $("#passButton").hide();
         this.pass = false;
-
+        this.user.patchValue({
+          newPassword: '',
+          currentPassword: '', 
+          newEmail: '',
+          confirmPass: ''
+        })
       }
   	}
  	changeEmail(){
       if (this.email == false){
         $("#emailButton").show();
         $("#passButton").hide();
-
+        this.user.patchValue({
+          currentPassword: '',
+          confirmPass: '', 
+          newEmail: ''
+        })
         this.email = true;
         this.pass = false;
 
@@ -70,10 +86,15 @@ export class SettingsComponent implements OnInit, AfterViewInit {
       else{
         $("#emailButton").hide();
         this.email = false;
+        this.user.patchValue({
+          currentPassword: '',
+          confirmPass: '', 
+          newEmail: ''
+        })
 
       }  
      }
-     
+
     ngAfterViewInit(){
       console.log(this.settingsPanel);
       //this.settingsPanel.open();
@@ -92,21 +113,33 @@ export class SettingsComponent implements OnInit, AfterViewInit {
     }
 
     onSubmitPass(){
-      this.AuthorizeService.isAuthenticated().subscribe(data =>{
-          this.AuthorizeService.changePass(this.user.value.newPassword,this.user.value.currentPassword);
-      },function(error){
-        alert("not your account");
-      });
+
+    if (this.user.value.confirmPass == this.user.value.currentPassword)  {
+        this.AuthorizeService.isAuthenticated().subscribe(data =>{
+                this.AuthorizeService.changePass(this.user.value.newPassword,this.user.value.currentPassword);
+
+            },function(error){
+              alert("not your account");
+            });
+    }
+    else{
+      alert("wrong password");
+    }
     }
 
     onSubmitEmail(){
-      this.AuthorizeService.isAuthenticated().subscribe(data =>{
-        this.AuthorizeService.changeEmail(this.user.value.newEmail, this.user.value.currentPassword);
 
-      },function(error){
-        alert("not your account");
-      }
-      )
+    if (this.user.value.confirmPass == this.user.value.currentPassword)  {
+        this.AuthorizeService.isAuthenticated().subscribe(data =>{
+              this.AuthorizeService.changeEmail(this.user.value.newEmail, this.user.value.currentPassword);
+      
+            },function(error){
+              alert("not your account");
+            });
+    }
+    else{
+       alert("Passwords don't match.")
+    }
     }
 
     
