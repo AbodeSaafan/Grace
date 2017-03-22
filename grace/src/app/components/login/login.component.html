@@ -1,10 +1,25 @@
-<div class="form">
-	<form [formGroup]="user">
-       
-      	<input formControlName="email" placeholder="Email" type="email" name="email" maxlength="45" required>
-      	<input formControlName="password" placeholder="Password" type="password" required pattern="[a-zA-Z0-9?!$]+">
-  	</form>
-</div>
-<div class="submit">
- 	<button (click)="onSubmit()"> Login</button>
-</div>
+<h3 class="formTitle">Login</h3>
+<br>
+
+<form (ngSubmit)="onSubmit()">
+	<table class="example-full-width" cellspacing="0">
+		<tr>
+			<td>
+	        	<md-input-container class="example-full-width">
+	            <input mdInput id="loginEmail" placeholder="Email"  
+	              type="email" name="email" required>
+	         	</md-input-container>
+      		</td>
+		</tr>
+		<tr>
+			<td>
+	        	<md-input-container class="example-full-width">
+	            <input mdInput id="loginPassword" placeholder="Password"  
+	              type="password" name="email" required>
+	         	</md-input-container>
+      		</td>
+		</tr>
+	</table>
+<br>
+<button md-raised-button class="submitButton" type="submit">Sign In</button>
+</form>

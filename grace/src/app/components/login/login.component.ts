@@ -1,7 +1,7 @@
-import { Component, Inject} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Component, Inject, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthorizeService} from './../../services/authorize.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-login',
@@ -10,33 +10,23 @@ import {AuthorizeService} from './../../services/authorize.service';
 })
 
 
-// ngOnInit?
-export class LoginComponent  {
-  user: FormGroup;
-  constructor(private fb: FormBuilder, private AuthorizeService: AuthorizeService) {}
+export class LoginComponent implements OnInit {
+
+  email: any;
+  password: any;
+
+  constructor(private AuthorizeService: AuthorizeService) {}
   ngOnInit() {
-    this.user = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(2)]],
-    });
+    this.email = $("#loginEmail");
+    this.password = $("#loginPassword");
   }
   onSubmit() {
-      // here you go Julius
-    
-  if( this.user.status == 'INVALID') {
-        console.log(this.user.status);
-
-  } else {
-    // check account exists
-        console.log('check for account');
-        this.AuthorizeService.signIn(this.user.value.email, this.user.value.password);
-        
-    }
-
+      this.AuthorizeService.signIn(this.email.val(), this.password.val());
   }
 
   emptyForm(){
-    alert("emptying");
+    this.email.val("");
+    this.password.val("");
   }
   
 }
