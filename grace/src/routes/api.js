@@ -298,6 +298,56 @@ router.post('/changeUser', function(req,res){
 	}
 });
 
+router.post('/deleteAccount',function(req,res){
+
+	userAccount = req.body;
+
+	db.users.findOne({_id: userAccount._id}, function(err, checkUser){
+
+		/* Check if the user exist in the database*/
+		if (checkUser) {
+
+			/* Creates a new hash using the pass sent by user*/
+			const hash = crypto.createHash('sha256');
+			hash.update(checkUser.salt+userAccount.pass);
+			var hashHex = hash.digest('hex');
+
+			/* Check if the hash matches the user hash in database*/
+			if (hashHex === checkUser.pass){
+						
+				db.users.remove({_id: userAccount._id});
+
+					   
+				/* Update new file owner*/
+				db.files.remove({owner: userAccount._id},{multi:true}, 
+					function(err, file){
+						if(err){
+							res.status(400);
+							res.json({'status':false, 
+								      'message':"Failed to connect: this " +
+									  " file does not exist"});
+							}
+						});
+					    			
+				}else{
+					res.status(400);
+					res.json({'status':false, 
+						      'message':"Failed to connect: the password " + 
+						      "is incorrect"});
+				}	
+
+			/* Successful delete*/
+			res.json({'status':true, 
+				      'message':"Account has been terminated."});	
+
+		}else{
+			res.status(400);
+			res.json({'status':false, 
+					  'message':"Failed to connect: this user " + 
+					  "does not exist"});
+		}
+	});
+});
 
 /******************* Compiler *******************/
 
