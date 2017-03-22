@@ -6,6 +6,7 @@ import {LandingComponent} from './components/landing/landing.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {SettingsComponent} from './components/settings/settings.component';
 import {UserCoderComponent} from './components/user-coder/user-coder.component';
+import { SharedViewComponent } from './components/shared-view/shared-view.component';
 
 const appRoutes: Routes = [
 	{
@@ -27,6 +28,10 @@ const appRoutes: Routes = [
 	{
 		path: 'user',
 		component: UserCoderComponent
+	},
+	{
+		path: 'share',
+		component:  SharedViewComponent
 	}
 ];
 
