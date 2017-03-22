@@ -10,10 +10,10 @@ import {AuthorizeService} from './../../services/authorize.service';
 })
 
 
-// ngOnInit?
 export class RegistrationComponent  {
   user: FormGroup;
   constructor(private fb: FormBuilder, private AuthorizeService: AuthorizeService) {}
+  
   ngOnInit() {
     this.user = this.fb.group({
       first: ['', [Validators.required, Validators.minLength(2)]],

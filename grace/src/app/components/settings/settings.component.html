@@ -1,13 +1,40 @@
 <md-sidenav-container class="sideNav" id="navContainer">
   <md-sidenav class="nav" #settingsPanel mode="over" (close)="sendToBack();" (open-start)="sendToFront();">
-  	<h2> Name here </h2>
+  	<h2> {{username}} </h2>
 
   	<hr>
-  	<button  id="disabler"></button>
-  	<button class="settings" (click)="changePassword()" > Change password </button>
+  	<button  class="settings" (click)="changePassword()" > Change password </button>
+
+	<div id = "passButton" style="display:none">
+	  	<form [formGroup]="user">
+
+  				<input type="password" id="newPass" formControlName="newPassword" placeholder="New Password" minlength="6" maxlength="18" required pattern="[a-zA-Z0-9?!$]+">
+
+	       		<input type="password" id="currentPass" formControlName="currentPassword" placeholder="Current Password" minlength="6" maxlength="18" required pattern="[a-zA-Z0-9?!$]+">
+	      		
+	 	 </form>
+	 	 <button id="changeBtn" (click)="onSubmitPass()"> Change password</button>
+
+  	</div>  	
+
    	<button class="settings" (click)="changeEmail()" > Change email </button>
+
+   	<div id = "emailButton" style="display:none">
+	  	<form [formGroup]="user">
+	  		 	 <!-- <input type="text"> -->
+
+	 	 		<input formControlName="newEmail" id= "newEmail" placeholder="New Email" type="email" maxlength="45" required pattern="[a-zA-Z0-9._]+@[a-zA-Z]+.[a-zA-z]+">
+
+	       		<input type="password" id="currentPass" formControlName="currentPassword" placeholder="Current Password" minlength="6" maxlength="18" required pattern="[a-zA-Z0-9?!$]+">
+	      		
+	 	 </form>
+	 	  	<button id="changeBtn"(click)="onSubmitEmail()"> Change email</button>
+
+  	</div> 
+
    	<br>
  	 <md-slide-toggle (click)="changeTheme()" color="primary"> Toggle dark theme </md-slide-toggle>
+ 	
 
   </md-sidenav>
 </md-sidenav-container>
