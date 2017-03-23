@@ -1,8 +1,8 @@
 <!-- Keyword is config, use square bracket to do allocate a variable -->
 
 <!-- Custom Header -->
-<app-header [config]="guestHeader" (logoClick)="logoClicked()"></app-header>
-
+<app-header [config]="guestHeader" (logoClick)="logoClicked()"
+				(rightButtonClick)="signupClicked()"></app-header>
 
 <!-- light -->
 <app-compiler theme="solarized_light" editorText="'enter code...'"

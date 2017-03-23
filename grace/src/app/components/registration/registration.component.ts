@@ -37,7 +37,7 @@ export class RegistrationComponent implements OnInit {
               this.email.val(), this.password.val());
       }
       else {
-        this.snackBar.open("Passwords do not match.");
+        this.snackBar.open("Passwords do not match", '' ,{duration: 3000});
         this.password.val("");
         this.confirm.val("");
        }

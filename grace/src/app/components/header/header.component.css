@@ -24,20 +24,19 @@
 }
 
 .headerButtonStyle{
-  background-color: white;
-  border: 1px solid #ddd;
+  background-color: #d91b5b;
+  border: 1px solid #d91b5b;
   font-size: 12px;
   height: 30px;
   line-height: 27px;
   padding: 0 20px;
-  
-  color: #aaa;
+  cursor: pointer;
+  color: #fff;
 }
 
 .headerButtonStyle:hover {
-  border: 1px solid #bbb;
-  cursor: pointer;
-  color: #333;
+  border: 1px solid #c80a4a;
+  background-color: #c80a4a;
 }
 
 .headerButtonImg {

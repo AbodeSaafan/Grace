@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderConfig } from '../header/header.component';
 import {Router} from '@angular/router';
+import { MdSnackBar } from '@angular/material';
+import * as $ from 'jquery';
 
 @Component({
 	selector: 'app-guest-coder',
@@ -11,26 +13,31 @@ export class GuestCoderComponent implements OnInit {
 
 	guestHeader: HeaderConfig;
 
-	constructor(private router: Router) {
+	constructor(private router: Router, public snackBar: MdSnackBar) {
 		// If left content  == 'none', the button will not show
 		// likewise for right content
 		this.guestHeader = {
-			leftButtonContent: "guestL",
-			rightButtonContent: "guestR",
+			leftButtonContent: "none",
+			rightButtonContent: "Sign Up",
 			leftButtonSrc: "",
 			rightButtonSrc: ""
 		}
 	}
 
 	mySaveFunction(){
-		alert("You must be a registered user to save online!");
+		this.snackBar.open("You must be a registered user to save online!", '' ,{duration: 3000});
 	}
 
 	logoClicked(){
 		this.router.navigateByUrl("/");
 	}
 
+	signupClicked(){
+		this.router.navigateByUrl("/");
+	}
+
 	ngOnInit() {
+		$("#tempy").hide();
 	}
 
 }
