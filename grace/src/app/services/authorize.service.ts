@@ -3,6 +3,7 @@ import { Http, URLSearchParams } from '@angular/http';
 import {Router} from '@angular/router';
 import {routerTransition} from '../router.animations';
 import 'rxjs/add/operator/map';
+import { MdSnackBar } from '@angular/material';
 
 @Injectable()
 export class AuthorizeService {
@@ -10,7 +11,7 @@ export class AuthorizeService {
 	/* The address to connect to the api*/
 	private apiConnection = "http://localhost:3000";
 
-	constructor(private http: Http, private router: Router) {}
+	constructor(private http: Http, private router: Router,public snackBar: MdSnackBar) {}
 
 	/**** Set of user methods ****/
 
@@ -41,10 +42,8 @@ export class AuthorizeService {
         			routeUser.navigateByUrl('/dash');
         		},function(error){
         			/* Message for failed account creation*/
-    				alert("Failed to create a new account:\n"+
-    					  "The email contains invalid characters or " +
-    					  "an account with the email " + email + " already"+
-    					  "exists. Please enter a new email.");
+        			this.snackBar.open("Failed to create account with this email",
+        							   'Okay' ,{duration: 5000});
     			}
         );
 	}
@@ -78,9 +77,9 @@ export class AuthorizeService {
 
         		/* Failed to log the your in*/
         		},function(error){
-    				alert("Failed to login:\n"+
-    					  "The email or password entered is incorrect.\n"+
-    					  "Please signin using the correct credentials");
+        			this.snackBar.open("Failed to login: "+
+        							   "Please signin using the correct credentials.",
+        							   'Okay' ,{duration: 5000});
     			}
     		);
 	}
@@ -103,13 +102,16 @@ export class AuthorizeService {
 					/* successful logout*/
 				/* Failed to remove the token from the user*/
 				}, function(err) {
-					alert("You need to log in to log out. Please log in");
+					this.snackBar.open("You need to log in to log out. "+
+        							   "Please log in.",
+        							   'Okay' ,{duration: 5000});
 			});
 
 		/* Token did not match*/
 		},function(err) {
-				alert("This is unusual:\n"+
-					  "It seems that this account does not belong to you");
+				this.snackBar.open("Failed to connect: "+
+        						   "An error has occurred. ",
+        						   'Okay' ,{duration: 5000});
 		});
 
 		/* Remove credentials of the user before signout*/
@@ -138,6 +140,7 @@ export class AuthorizeService {
 		params.set('_newid',email);
 		params.set('newpass', pass);
 
+		var newbar = this;
 		/* Check user account for token match before changing user settings*/
 		this.isAuthenticated()
 			.subscribe(data=>{
@@ -145,8 +148,10 @@ export class AuthorizeService {
 				/* makes a changeUser call to api*/
 				this.http.post(this.apiConnection + "/changeUser", params)
 					.subscribe(logout => {
-						alert("Your changes have been made. \n" +
-							  "On your next login the changes will take place.");
+						
+						newbar.snackBar.open("Changes successful: "+
+        							   		 "Changes will be reflected on the next login",
+        							   		 'Okay' ,{duration: 5000});
 
 						/* Set the users email and token upon login*/
         				localStorage.setItem('token',logout.json().token);
@@ -158,17 +163,16 @@ export class AuthorizeService {
 
 					/* Failed to change settings due to incorrect password*/
 					}, function(err) {
-						alert("Failed to change settings:\n"+
-								  "Please try changing settings again");
+						this.snackBar.open("Failed to change settings.",
+        							       'Okay' ,{duration: 5000});
 					});
 
 				/* Failed to change settings due to incorrect token*/
 				},function(err) {
-					alert("This is unusual:\n"+
-					 	  "It seems that this account does "+
-					 	  "not belong to you");
+					this.snackBar.open("Failed to connect: "+
+					 	  			   "An error has occurred.",
+        							   'Okay' ,{duration: 5000});
 			});
-
 	}
 
 	/* Change email settings by making a call to changeUser*/
@@ -199,15 +203,16 @@ export class AuthorizeService {
 		params.set('_id', localStorage.getItem('email'));
 		params.set('pass', pass);
 
+		var newbar = this;
+
 		this.isAuthenticated()
 			.subscribe(data=>{
 
 				/* makes a changeUser call to api*/
 				this.http.post(this.apiConnection + "/deleteAccount", params)
 					.subscribe(logout => {
-						alert("Your account has been successfully deleted.\n" +
-							  "Thanks for considering Grace REPL for your " +
-							  " online compiling application!!!");
+						newbar.snackBar.open("Your account has been successfully deleted.",
+        							         'Okay' ,{duration: 5000});
 
 						/* Remove credentials of the user before signout*/
 						localStorage.removeItem('email');
@@ -219,16 +224,15 @@ export class AuthorizeService {
 
 					/* Failed to change settings due to incorrect password*/
 					}, function(err) {
-						alert("Account deletion failed:\n"+
-							  "Looks like you will be sticking around for "+
-							  "a little while longer.");
+						this.snackBar.open("Account deletion failed.",
+        							       'Okay' ,{duration: 5000});
 					});
 
 				/* Failed to change settings due to incorrect token*/
 				},function(err) {
-					alert("This is unusual:\n"+
-					 	  "It seems that this account does "+
-					 	  "not belong to you");
+					this.snackBar.open("Failed to connect: "+
+					 	  			   "An error has occurred.",
+        							   'Okay' ,{duration: 5000});
 			});
 	}
 
