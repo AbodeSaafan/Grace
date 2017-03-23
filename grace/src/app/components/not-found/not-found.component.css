@@ -22,36 +22,18 @@ input:focus {
 
 }
 
+#circle{
+  position:absolute;
+  top:43.5%;
+  left:46.5%;
+  margin:0 auto;
+}
+
 #countdown{
   position:absolute;
   top: 45%;
   left: 50.25%;
   text-align: center;
-}
-
-.circle {
-  position:absolute;
-  top:50%;
-  left:45%;
-  padding:15px;
-  -ms-transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  top: 40%;
-  left: 45%;
-  border: 16px solid #ffffff;
-  border-top: 16px solid #d91b5b; /* Pink */
-  border-radius: 50%;
-  width: 80px;
-  height: 80px;
-  animation: spin 10.5s linear infinite;
-  margin: 0 auto;
-  rotate: 50%;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }
 
 .normalButton:hover{

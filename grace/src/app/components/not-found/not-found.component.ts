@@ -10,13 +10,18 @@ import { MaterialModule } from '@angular/material';
 })
 export class NotFoundComponent implements OnInit {
 
-  constructor(private router: Router) { 
+  progress : number = 120; // because we want to count all to zero
+
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
-  	// start off at 10
-  	var setStart = 9;
+
+  	// start off at 5
+  	var setStart = 5;
   	var countdown = setInterval(() => {
+
+      this.progress = (this.progress - 20);
 
   		var countDisplay = document.getElementById("countdown");
   		countDisplay.innerHTML = setStart.toString();
