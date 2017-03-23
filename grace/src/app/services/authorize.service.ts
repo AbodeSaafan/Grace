@@ -164,7 +164,7 @@ export class AuthorizeService {
         				localStorage.setItem('email',logout.json().email);
         				
         				/* Moves user to dashboard*/
-        				routeUser.navigateByUrl('/dash');
+        				routeUser.navigateByUrl('/');
 
 
 					/* Failed to change settings due to incorrect password*/

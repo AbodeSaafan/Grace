@@ -72,6 +72,12 @@
 	border-left: 1px solid #dedede;
 }
 
+.darkenLayout {
+	background-color: #404041;
+	color: #d91b5b;
+	border-color: #333;
+}
+
 /*#consoleTools {
 	background-color: blue;
 }
