@@ -46,7 +46,6 @@ export class LandingComponent {
    }
 
   guestClicked() {
-		console.log("guest clicked!!");
 		this.router.navigateByUrl('/guest');
 	}
 
