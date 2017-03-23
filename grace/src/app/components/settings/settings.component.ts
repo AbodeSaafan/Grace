@@ -47,8 +47,8 @@ export class SettingsComponent implements OnInit, AfterViewInit {
       currentPassword: ['', [Validators.required, Validators.minLength(2)]],
       newEmail: ['', Validators.required], 
       confirmPass: ['', [Validators.required, Validators.minLength(2)]], 
-      first: ['', [Validators.required, Validators.minLength(2)]],
-      last: ['', [Validators.required, Validators.minLength(2)]]
+      first: ['', [Validators.required, Validators.minLength(1)]],
+      last: ['', [Validators.required, Validators.minLength(1)]]
     });
 
        $("#passDiv").hide();
@@ -121,6 +121,22 @@ export class SettingsComponent implements OnInit, AfterViewInit {
     if (this.user.value.confirmPass == this.user.value.currentPassword)  {
         this.AuthorizeService.isAuthenticated().subscribe(data =>{
               this.AuthorizeService.changeEmail(this.user.value.newEmail, this.user.value.currentPassword);
+      
+            },function(error){
+              alert("not your account");
+            });
+    }
+    else{
+       alert("Your passwords do not match.")
+    }
+    }
+
+    onSubmitName(){
+
+    if (this.user.value.confirmPass == this.user.value.currentPassword)  {
+        this.AuthorizeService.isAuthenticated().subscribe(data =>{
+              this.AuthorizeService.changeFname(this.user.value.first, this.user.value.currentPassword);
+              this.AuthorizeService.changeLname(this.user.value.last, this.user.value.currentPassword);
       
             },function(error){
               alert("not your account");

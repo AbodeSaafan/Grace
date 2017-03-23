@@ -72,7 +72,7 @@ export class AuthorizeService {
         			/* Set default color*/
         			if (localStorage.getItem('theme') === null)
         				localStorage.setItem('theme','light');
-        			
+
         			/* Moves user to dashboard*/
         			routeUser.navigateByUrl('/dash');
 
@@ -100,7 +100,7 @@ export class AuthorizeService {
 			this.http.post(this.apiConnection + "/deleteToken", params)
 				/* Removed token from the user*/
 				.subscribe(logout => {
-					alert("successful logout");
+					/* successful logout*/
 				/* Failed to remove the token from the user*/
 				}, function(err) {
 					alert("You need to log in to log out. Please log in");
@@ -148,22 +148,17 @@ export class AuthorizeService {
 						alert("Your changes have been made");
 
 						/* Set the users email and token upon login*/
-        				localStorage.setItem('token',data.json().token);
-        				localStorage.setItem('lname',data.json().lname);
-        				localStorage.setItem('fname',data.json().fname);
-        				localStorage.setItem('email',data.json().email);
+        				localStorage.setItem('token',logout.json().token);
+        				localStorage.setItem('lname',logout.json().lname);
+        				localStorage.setItem('fname',logout.json().fname);
+        				localStorage.setItem('email',logout.json().email);
+        				console.log(data.lname);
 
 
 					/* Failed to change settings due to incorrect password*/
 					}, function(err) {
-						if (err.json().userlog === null){
-							alert("Failed to change settings:\n"+
-								  "Please enter the correct password to make"+
-								  "changes.");
-						}else{
-							alert("Failed to change settings:\n"+
-								  err.json().userlog);
-						}
+						alert("Failed to change settings:\n"+
+								  "Please try changing settings again");
 					});
 
 				/* Failed to change settings due to incorrect token*/
