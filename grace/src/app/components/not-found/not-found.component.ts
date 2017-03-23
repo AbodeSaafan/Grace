@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { MaterialModule } from '@angular/material';
-
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-not-found',
@@ -16,6 +16,9 @@ export class NotFoundComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.centreItem($("#circle"), 2.0);
+    this.centreItem($("#countdown"), 1.8);
 
   	// starts off at 5, want to count to 0
   	var setStart = 4;
@@ -43,7 +46,12 @@ export class NotFoundComponent implements OnInit {
       setStart --; 
 
   	}, 1000);
+  }
 
+  centreItem(obj, ratio){
+    var winWidth = $(window).width();
+    var objWidth = obj.width();
+    obj.css({left: winWidth/2 - objWidth/ratio});
   }
 
   onClick(){
