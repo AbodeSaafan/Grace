@@ -68,7 +68,24 @@ export class CompilerComponent implements OnInit {
 	ngAfterViewInit() {
 		this.compileEditor = this.editor.getEditor();
 		this.consoleEditor = this.editor2.getEditor();
-    }
+		var comp = this;
+
+		$(document).bind('keydown', function(e) {
+			if(e.ctrlKey && (e.which == 83)) {
+				e.preventDefault();
+				comp.sendSaveClick();
+				return false;
+			}
+		});
+
+		$(document).bind('keydown', function(e) {
+			if(e.ctrlKey && (e.which == 13)) {
+				e.preventDefault();
+				comp.compileCode();
+				return false;
+			}
+		});
+	}
 
     compiledReturn:string = "";
 	codeToCompile:string = "";
