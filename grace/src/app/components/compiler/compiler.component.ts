@@ -65,6 +65,17 @@ export class CompilerComponent implements OnInit {
     	});
 	}
 
+	toggleTheme() {
+		var currentTheme = this.compileEditor.getTheme();
+		if (currentTheme=="ace/theme/solarized_light") {
+			this.editor.setTheme("tomorrow_night_eighties");
+			this.editor2.setTheme("tomorrow_night_eighties");
+		} else if (currentTheme=="ace/theme/tomorrow_night_eighties") {
+			this.editor.setTheme("solarized_light");
+			this.editor2.setTheme("solarized_light");
+		}
+	}
+
 	ngAfterViewInit() {
 		this.compileEditor = this.editor.getEditor();
 		this.consoleEditor = this.editor2.getEditor();
