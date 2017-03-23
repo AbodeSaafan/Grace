@@ -25,7 +25,7 @@ export class UserCoderComponent implements OnInit {
   constructor(private router: Router, private authorizeService: AuthorizeService, 
     private fileStorage: FileStorageService, public snackBar: MdSnackBar) {
   	this.userHeader = {
-      leftButtonContent: "Settings",
+      leftButtonContent: "none",
       rightButtonContent: "Logout",
       leftButtonSrc: "",
       rightButtonSrc: ""
