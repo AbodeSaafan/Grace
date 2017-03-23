@@ -29,12 +29,25 @@ md-list-item:hover{
 	float: right;
 }
 
+.importButton {
+	background-color: #f8f8f8;
+	border: 1px solid #ccc;
+	color: #404041;
+	float: right;
+	display: inline;
+}
+
+.importButton:hover {
+	background-color: white;
+}
+
 img {
 	margin-right: 7%;
 }
 
 .filesTableTitle {  
 	margin-left: 12px;
+	margin-right: 12px;
 }
 
 button{

@@ -5,7 +5,13 @@
 
 <app-settings #sidePanel ></app-settings>
 
-<div class="filesTableTitle"><h1>Files</h1></div>
+<div class="filesTableTitle">
+  <h1>Files
+<button md-raised-button class="importButton" (click)="importTrigger()">Import
+  <input type="file" id="fileImport" (change)="fileImportAttempted($event)" style="display:none;">
+</button></h1>
+
+</div>
 <md-list>
   <md-list-item *ngFor="let file of files; let i = index;">
     <md-icon md-list-avatar>note</md-icon>
