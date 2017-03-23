@@ -47,8 +47,8 @@ export class SettingsComponent implements OnInit, AfterViewInit {
       currentPassword: ['', [Validators.required, Validators.minLength(2)]],
       newEmail: ['', Validators.required], 
       confirmPass: ['', [Validators.required, Validators.minLength(2)]], 
-      first: ['', [Validators.required, Validators.minLength(1)]],
-      last: ['', [Validators.required, Validators.minLength(1)]]
+      first: ['', [Validators.required, Validators.minLength(2)]],
+      last: ['', [Validators.required, Validators.minLength(2)]]
     });
 
        $("#passDiv").hide();
