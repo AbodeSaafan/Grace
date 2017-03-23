@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { FileStorageService } from '../../services/file-storage.service';
 import { HeaderConfig } from '../header/header.component';
 import { MaterialModule} from '@angular/material';
@@ -15,14 +15,20 @@ import * as $ from 'jquery';
   
 export class SettingsComponent implements OnInit, AfterViewInit {
   @ViewChild('settingsPanel') settingsPanel;
+  @Output() tglTheme: EventEmitter<any> = new EventEmitter();
   container: any;
   user: FormGroup;
   username: string;
+  color = 'accent';
+  checked = false;
+  disabled = false;
+  themeText: string;
 
 	 constructor(private fb: FormBuilder, private AuthorizeService: AuthorizeService) {
    }
 
   	ngOnInit() {
+      this.themeText = "dark theme";
       this.username = localStorage.getItem("fname");
       var container = $("#navContainer");
       container.css({'z-index': -5});
@@ -124,6 +130,16 @@ export class SettingsComponent implements OnInit, AfterViewInit {
     else{
        alert("Passwords don't match.")
     }
+    }
+
+    themeToggle(){
+      if (this.themeText == "dark theme") {
+        this.themeText = "light theme";
+      } else if (this.themeText == "light theme") {
+        this.themeText = "dark theme";
+      }
+
+      this.tglTheme.emit();
     }
 
     

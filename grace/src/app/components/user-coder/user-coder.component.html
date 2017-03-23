@@ -6,7 +6,7 @@
 		(leftButtonClick)="sidePanel.toggleSettings()"
 		(rightButtonClick)="logoutClicked()"></app-header>
 
-<app-settings #sidePanel></app-settings>
+<app-settings #sidePanel (tglTheme)="compilerComp.toggleTheme()"></app-settings>
 
 
 <!-- light -->
