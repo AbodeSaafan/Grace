@@ -4,6 +4,7 @@ import { HeaderConfig } from '../header/header.component';
 import { MaterialModule} from '@angular/material';
 import {AuthorizeService} from './../../services/authorize.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { MdSnackBar } from '@angular/material';
 
 import * as $ from 'jquery';
 
@@ -24,8 +25,8 @@ export class SettingsComponent implements OnInit, AfterViewInit {
   disabled = false;
   themeText: string;
 
-	 constructor(private fb: FormBuilder, private AuthorizeService: AuthorizeService) {
-   }
+	 constructor(private fb: FormBuilder, private AuthorizeService: AuthorizeService, 
+               public snackBar: MdSnackBar) {}
 
   	ngOnInit() {
 
@@ -102,48 +103,59 @@ export class SettingsComponent implements OnInit, AfterViewInit {
     }
 
     onSubmitPass(){
-
+    var comp = this;
     if (this.user.value.confirmPass == this.user.value.currentPassword)  {
         this.AuthorizeService.isAuthenticated().subscribe(data =>{
                 this.AuthorizeService.changePass(this.user.value.newPassword,this.user.value.currentPassword);
 
             },function(error){
-              alert("Strange, this does not seem to be your account");
+
+              comp.snackBar.open("Failed to connect: "+
+                        "An error has occurred.",
+                         'Okay' ,{duration: 5000});
             });
     }
     else{
-       alert("Your passwords do not match.")
+      comp.snackBar.open("Your passwords do not match.",
+                         'Okay' ,{duration: 5000});
     }
     }
 
     onSubmitEmail(){
+    var comp = this;
 
     if (this.user.value.confirmPass == this.user.value.currentPassword)  {
         this.AuthorizeService.isAuthenticated().subscribe(data =>{
               this.AuthorizeService.changeEmail(this.user.value.newEmail, this.user.value.currentPassword);
       
             },function(error){
-              alert("not your account");
+              comp.snackBar.open("Failed to connect: "+
+                        "An error has occurred.",
+                         'Okay' ,{duration: 5000});
             });
     }
     else{
-       alert("Your passwords do not match.")
+       comp.snackBar.open("Your passwords do not match.",
+                         'Okay' ,{duration: 5000});
     }
     }
 
     onSubmitName(){
-
+    var comp = this;
     if (this.user.value.confirmPass == this.user.value.currentPassword)  {
         this.AuthorizeService.isAuthenticated().subscribe(data =>{
               this.AuthorizeService.changeFname(this.user.value.first, this.user.value.currentPassword);
               this.AuthorizeService.changeLname(this.user.value.last, this.user.value.currentPassword);
       
             },function(error){
-              alert("not your account");
+              comp.snackBar.open("Failed to connect: "+
+                        "An error has occurred.",
+                         'Okay' ,{duration: 5000});
             });
     }
     else{
-       alert("Your passwords do not match.")
+      comp.snackBar.open("Your passwords do not match.",
+                         'Okay' ,{duration: 5000});
     }
     }
 
