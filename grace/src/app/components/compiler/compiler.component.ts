@@ -144,6 +144,26 @@ export class CompilerComponent implements OnInit {
 		
 	}
 
+	darken() {
+		$(".toolbar").addClass("darkenLayout");
+		$(".editorToolbarButton").addClass("darkenLayout");
+		$(".consoleToolbarButton").addClass("darkenLayout");
+		$(".divider").addClass("darkenLayout");
+		$(".container").addClass("darkenLayout");
+		$(".container2").addClass("darkenLayout");
+		document.body.style.background = "#404041";
+	}
+
+	lighten() {
+		$(".toolbar").removeClass("darkenLayout");
+		$(".editorToolbarButton").removeClass("darkenLayout");
+		$(".consoleToolbarButton").removeClass("darkenLayout");
+		$(".divider").removeClass("darkenLayout");
+		$(".container").removeClass("darkenLayout");
+		$(".container2").removeClass("darkenLayout");
+		document.body.style.background = "#ffffff";
+	}
+
 	clearConsole(){
 		this.consoleEditor.setValue("");
 	}
