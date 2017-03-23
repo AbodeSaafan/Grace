@@ -31,18 +31,28 @@ export class SharedViewComponent implements OnInit {
   }
 
   ngOnInit() {
-  	var comp = this;
     this.fileCode = this.fileIDFromURL;
     this.paramsSub = this.activatedRoute.params.subscribe(params => this.id = params['id']);
+
+    this.loadFile();
+
+    // Refresh code every 10 seconds
+    setInterval(() => {this.loadFile();} , 1000 * 10)
+
+  }
+
+  loadFile(){
+    var comp = this;
     this.fileStorage.getSharedFile(this.id).subscribe(data => {
-    	localStorage.setItem('shareID',this.id);
-    	localStorage.setItem('sharedFileName', data.fileName);
-    	localStorage.setItem('sharedFileCode', data.file);
-    	comp.fileName = data.fileName;
-    	comp.fileCode = data.file;
+      localStorage.setItem('shareID',this.id);
+      localStorage.setItem('sharedFileName', data.fileName);
+      localStorage.setItem('sharedFileCode', data.file);
+      comp.fileName = data.fileName;
+      comp.fileCode = data.file;
+      comp.snackBar.open("File loaded", '' ,{duration: 1000});
     },
     function(error){
-    	comp.router.navigateByUrl('/404');
+      comp.router.navigateByUrl('/404');
     });
   }
 
