@@ -4,6 +4,7 @@ import { HeaderConfig } from '../header/header.component';
 import { MaterialModule, MdSnackBar } from '@angular/material';
 import { AuthorizeService } from '../../services/authorize.service';
 import { Router } from '@angular/router';
+import * as $ from 'jquery';
 
 @Component({
 	selector: 'app-dashboard',
@@ -25,7 +26,20 @@ export class DashboardComponent implements OnInit {
 			leftButtonSrc: "",
 			rightButtonSrc: ""
 		}
-		
+	}
+	importTrigger(){
+		$("#fileImport").trigger("click");
+	}
+
+	fileImportAttempted(event) {
+		alert("hi there");
+  		var file = event.target.files[0],read = new FileReader();
+		read.readAsBinaryString(file);
+		var main = this;
+
+		read.onloadend = function(){
+		    main.fileMake(file.name, read.result);
+		}
 	}
 
 	refreshFiles(){
@@ -140,6 +154,36 @@ export class DashboardComponent implements OnInit {
 		}
 	}
 
+	fileMake(newFileName, fileContent) {
+		if (newFileName != null){
+			for (let file of this.files){
+				if( newFileName == file.fileName){
+					alert("Sorry your file name must be unique, try again")
+					return false;
+				}
+			}
+
+
+			this.authorizeService.isAuthenticated().subscribe(data => {
+				var email = localStorage.getItem('email');
+
+				// File name is good we can create it
+				this.fileStorage.addAFile(newFileName,email,fileContent)
+				.subscribe(output => { })
+
+				this.fileStorage.getMyFiles()
+				.subscribe(output => { this.files = output });
+
+				this.snackBar.open("File imported","",{duration: 3000});
+			},
+			function(error){
+				alert('Request Failed');
+				this.router.navigateByUrl('/');
+			});
+
+		}
+	}
+
 	fileDelete(index){
 		var r = confirm("Are you sure you want to delete your file?");
 		if (r == true) {
@@ -163,6 +207,5 @@ export class DashboardComponent implements OnInit {
 		} 
 
 	}
-
 
 }
