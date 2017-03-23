@@ -145,7 +145,8 @@ export class AuthorizeService {
 				/* makes a changeUser call to api*/
 				this.http.post(this.apiConnection + "/changeUser", params)
 					.subscribe(logout => {
-						alert("Your changes have been made");
+						alert("Your changes have been made. \n" +
+							  "On your next login the changes will take place.");
 
 						/* Set the users email and token upon login*/
         				localStorage.setItem('token',logout.json().token);
