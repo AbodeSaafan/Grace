@@ -10,28 +10,37 @@ import { MaterialModule } from '@angular/material';
 })
 export class NotFoundComponent implements OnInit {
 
-  progress : number = 120; // because we want to count all to zero
+  progress : number = 100; // because we want to count all to zero
 
   constructor(private router: Router) {
   }
 
   ngOnInit() {
 
-  	// start off at 5
-  	var setStart = 5;
+  	// starts off at 5, want to count to 0
+  	var setStart = 4;
   	var countdown = setInterval(() => {
 
       this.progress = (this.progress - 20);
+      var countDisplay = document.getElementById("countdown");
 
-  		var countDisplay = document.getElementById("countdown");
-  		countDisplay.innerHTML = setStart.toString();
+      if (setStart > 0){
+        countDisplay.innerHTML = setStart.toString();
+      }
+
+      // don't want to display "0 seconds remaining"
+      // it sounds pretentious
+      else if (setStart === 0){
+        countDisplay.innerHTML = "";
+      }
   		
-  		setStart --; 
-  		
-  		if (setStart < 0){
+      // navigate upon timeout
+  		else {
   			this.router.navigateByUrl("/");
   			clearInterval(countdown);
   		}
+
+      setStart --; 
 
   	}, 1000);
 
