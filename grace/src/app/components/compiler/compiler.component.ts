@@ -84,7 +84,7 @@ export class CompilerComponent implements OnInit {
 			} else if(output.error) {
 				this.compiledReturn = output.error;
 			} else {
-				this.compiledReturn = "infinite\n";
+				this.compiledReturn = "The program does not halt or nothing was printed\n";
 			}
 			var currentOutput = this.consoleEditor.getValue();
 			this.consoleEditor.setValue(currentOutput + this.compiledReturn);
