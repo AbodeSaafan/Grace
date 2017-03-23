@@ -12,6 +12,7 @@ export class CompilerComponent implements OnInit {
 
 	// Ace editor options ---------------------------------
 	@Input() theme: string;
+	@Input() disabled: string;
 	@Input() editorText: string;
 	@Input() editorFileName: string;
 	@Output() saveClick: EventEmitter<any> = new EventEmitter();
