@@ -11,6 +11,7 @@ import { MdSnackBar } from '@angular/material';
   templateUrl: './user-coder.component.html',
   styleUrls: ['./user-coder.component.css', '../../app.component.css']
 })
+
 export class UserCoderComponent implements OnInit {
 	
 	userHeader: HeaderConfig;
@@ -79,6 +80,4 @@ export class UserCoderComponent implements OnInit {
     });
     
   }
-
-
 }

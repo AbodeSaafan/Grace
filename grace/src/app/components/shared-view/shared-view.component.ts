@@ -9,6 +9,7 @@ import { MdSnackBar } from '@angular/material';
   templateUrl: './shared-view.component.html',
   styleUrls: ['./shared-view.component.css']
 })
+
 export class SharedViewComponent implements OnInit {
 
 	sharedHeader: HeaderConfig;
@@ -19,15 +20,13 @@ export class SharedViewComponent implements OnInit {
 	paramsSub: any;
 
   constructor(private router: Router, private fileStorage: FileStorageService, 
-  			  public snackBar: MdSnackBar, private activatedRoute: ActivatedRoute) {
+    public snackBar: MdSnackBar, private activatedRoute: ActivatedRoute) {
   	this.sharedHeader = {
       leftButtonContent: "none",
       rightButtonContent: "Sign Up",
       leftButtonSrc: "",
       rightButtonSrc: ""
     }
-
-    
   }
 
   ngOnInit() {

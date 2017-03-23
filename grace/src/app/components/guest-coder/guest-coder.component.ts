@@ -14,8 +14,6 @@ export class GuestCoderComponent implements OnInit {
 	guestHeader: HeaderConfig;
 
 	constructor(private router: Router, public snackBar: MdSnackBar) {
-		// If left content  == 'none', the button will not show
-		// likewise for right content
 		this.guestHeader = {
 			leftButtonContent: "none",
 			rightButtonContent: "Sign Up",

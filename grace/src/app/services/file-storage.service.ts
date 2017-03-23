@@ -14,8 +14,6 @@ export class FileStorageService {
 	constructor(private http: Http, private authorizeService: AuthorizeService, private router: Router) { }
 
 	getMyFiles(){
-		// Good to go get the files associated with the email
-		//this.userEmail = this.authorizeService.getEmail();
 		this.userEmail = localStorage.getItem('email');
 		let params: URLSearchParams = new URLSearchParams();
 		params.set('owner', this.userEmail);
@@ -52,13 +50,12 @@ export class FileStorageService {
 	}
 
 	createAShare(fileName: string, email: string){
-		
 		let params: URLSearchParams = new URLSearchParams();
 		params.set('owner', email);
 		params.set('fileName', fileName);
 
 		return this.http.post(this.shareAPI + "/create",params)
-				.map(res => res.json());
+		.map(res => res.json());
 	}
 
 	deleteAShare(fileName: string, email: string){
@@ -68,7 +65,7 @@ export class FileStorageService {
 		params.set('fileName', fileName);
 
 		return this.http.post(this.shareAPI + "/remove",params)
-				.map(res => res.json());
+		.map(res => res.json());
 	}
 
 	getSharedFile(shareID:string){
@@ -81,6 +78,3 @@ export class FileStorageService {
 		}).map(res => res.json());
 	}
 }
-
-
-
