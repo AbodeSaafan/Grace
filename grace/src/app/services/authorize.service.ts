@@ -137,7 +137,7 @@ export class AuthorizeService {
 		/* Check user account for token match before changing user settings*/
 		this.isAuthenticated()
 			.subscribe(data=>{
-				console.log(1111);
+
 				/* makes a changeUser call to api*/
 				this.http.post(this.apiConnection + "/changeUser", params)
 					.subscribe(logout => {
@@ -162,7 +162,7 @@ export class AuthorizeService {
 						}
 					});
 
-					/* Failed to change settings due to incorrect token*/
+				/* Failed to change settings due to incorrect token*/
 				},function(err) {
 					alert("This is unusual:\n"+
 					 	  "It seems that this account does "+
@@ -207,7 +207,7 @@ export class AuthorizeService {
 					.subscribe(logout => {
 						alert("Your account has been successfully deleted.\n" +
 							  "Thanks for considering Grace REPL for your " +
-							  " online compling application!!!");
+							  " online compiling application!!!");
 
 						/* Remove credentials of the user before signout*/
 						localStorage.removeItem('email');
@@ -221,7 +221,7 @@ export class AuthorizeService {
 					}, function(err) {
 						alert("Account deletion failed:\n"+
 							  "Looks like you will be sticking around for "+
-							  "a little longer.");
+							  "a little while longer.");
 					});
 
 				/* Failed to change settings due to incorrect token*/

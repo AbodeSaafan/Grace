@@ -217,7 +217,7 @@ router.post('/changeUser', function(req,res){
 
 						checkUser._id = user._newid
 
-					/* Find the user in the database*/
+						/* Find the user in the database*/
 						db.users.findOne({_id: user._newid}, 
 							function(err, checkUser){
 
@@ -298,6 +298,7 @@ router.post('/changeUser', function(req,res){
 	}
 });
 
+/* Deletes an email account*/
 router.post('/deleteAccount',function(req,res){
 
 	userAccount = req.body;
@@ -351,6 +352,7 @@ router.post('/deleteAccount',function(req,res){
 
 /******************* Compiler *******************/
 
+/* Gets the python compiled code*/
 router.get('/compile', function(req, res){
 	// Compile code here
 	var options = {stats : true}
@@ -367,6 +369,7 @@ router.get('/compile', function(req, res){
 
 var db = mongojs('files');
 
+/* Gets all the files for a user*/
 router.get('/files', function(req, res){
 
 	db.files.find({owner: req.query.owner},function(err,file){
@@ -381,6 +384,7 @@ router.get('/files', function(req, res){
 	});
 });
 
+/* Creates a new file*/
 router.post('/files/add', function(req, res){
 	var userInput = req.body;
 	var file = {owner: userInput.owner, 
@@ -395,6 +399,7 @@ router.post('/files/add', function(req, res){
 		});
 	});
 
+/* Saves a file*/
 router.post('/files/save', function(req, res){
 	var userInput = req.body;
 	var file = {dateModified: userInput.dateModified, file: decodeURIComponent(userInput.file) }
@@ -407,6 +412,7 @@ router.post('/files/save', function(req, res){
 	});
 });
 
+/* Deletes a file*/
 router.post('/files/delete', function(req, res){
 	var userInput = req.body;
 	db.files.remove({owner: userInput.owner, fileName: userInput.fileName});
@@ -414,33 +420,38 @@ router.post('/files/delete', function(req, res){
 
 /******************* File Sharing *******************/
 
+/* Gets a file based on a share link*/
 router.get('/share', function(req, res){
 
 	findShareID = req.query.shareID;
 
+	/* Check if no share link was provided*/
 	if (findShareID === null){
 		res.status(400);
 			res.json({'status':false, 
 					      'message':"Failed to connect: there is no file " + 
 					      "with this link"});
+
 	}else{
 		db.files.find({shareID: req.query.shareID},function(err,file){
-		if(err|| file===null){
-			res.status(400);
-			res.json({'status':false, 
-					      'message':"Failed to connect: this file " + 
-					      "does not exist"});
 
-		}else{
-			file.status = true;
-			res.send(file[0]);
-		}
+			/* Check if the file does not exist with the link*/
+			if(err|| file===null){
+				res.status(400);
+				res.json({'status':false, 
+						      'message':"Failed to connect: this file " + 
+						      "does not exist"});
+
+			}else{
+				file.status = true;
+				res.send(file[0]);
+			}
 
 	});
 	}
 });
 
-
+/* Creates a share link for a file*/
 router.post('/share/create', function(req, res){
 
 	var shareFile = req.body;
@@ -450,18 +461,20 @@ router.post('/share/create', function(req, res){
 	db.files.update({owner: shareFile.owner, fileName:shareFile.fileName}, 
 					{$set:{shareID:newShareID}}, 
 					function(err, file){
+
 						if(err){
-							console.log("got to error of db")
 							res.status(400);
 							res.json({'status':false, 
 					      			  'message':"Failed to connect: this " +
 					      			  " file does not exist"});
 						}
+
 						res.json({'status': true})
 					});
 });
 
 
+/* Removes a share link from a file*/
 router.post('/share/remove', function(req, res){
 
 	var shareFile = req.body;
@@ -469,13 +482,15 @@ router.post('/share/remove', function(req, res){
 	db.files.update({owner: shareFile.owner, fileName:shareFile.fileName}, 
 					{$set:{shareID:null}}, 
 					function(err, file){
+
+						/* Failed to remove the file*/
 						if(err){
-							console.log("got to error of db")
 							res.status(400);
 							res.json({'status':false, 
 					      			  'message':"Failed to connect: this " +
 					      			  " file does not exist"});
 						}
+
 						res.json({'status': true})
 					});
 });
