@@ -46,7 +46,7 @@ export class CompilerComponent implements OnInit {
     }
 
     ngOnInit() {
-    	
+    	this.editor.setTheme("tomorrow_night_eighties");
 
     	var w = $(window);
     	var bar = $(".toolbar");
@@ -66,17 +66,23 @@ export class CompilerComponent implements OnInit {
 	}
 
 	toggleTheme() {
-		var currentTheme = this.compileEditor.getTheme();
-		if (currentTheme=="ace/theme/solarized_light") {
+
+		var currentTheme = localStorage.getItem('theme');
+		if (currentTheme==="dark") {
 			this.editor.setTheme("tomorrow_night_eighties");
 			this.editor2.setTheme("tomorrow_night_eighties");
-		} else if (currentTheme=="ace/theme/tomorrow_night_eighties") {
+		} else if (currentTheme==="light") {
 			this.editor.setTheme("solarized_light");
 			this.editor2.setTheme("solarized_light");
 		}
 	}
 
 	ngAfterViewInit() {
+		if (localStorage.getItem("theme")==='dark'){
+			this.editor.setTheme("tomorrow_night_eighties");
+			this.editor2.setTheme("tomorrow_night_eighties");
+		}
+		
 		this.compileEditor = this.editor.getEditor();
 		this.consoleEditor = this.editor2.getEditor();
 		var comp = this;

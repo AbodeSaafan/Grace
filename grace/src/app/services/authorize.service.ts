@@ -69,6 +69,10 @@ export class AuthorizeService {
         			localStorage.setItem('fname',data.json().fname);
         			localStorage.setItem('email',data.json().email);
 
+        			/* Set default color*/
+        			if (localStorage.getItem('theme') === null)
+        				localStorage.setItem('theme','light');
+        			
         			/* Moves user to dashboard*/
         			routeUser.navigateByUrl('/dash');
 

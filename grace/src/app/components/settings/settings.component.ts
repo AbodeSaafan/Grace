@@ -28,7 +28,8 @@ export class SettingsComponent implements OnInit, AfterViewInit {
    }
 
   	ngOnInit() {
-      this.themeText = "dark theme";
+
+      this.themeText = localStorage.getItem('theme')+" theme";
       this.username = localStorage.getItem("fname");
       var container = $("#navContainer");
       container.css({'z-index': -5});
@@ -107,11 +108,11 @@ export class SettingsComponent implements OnInit, AfterViewInit {
                 this.AuthorizeService.changePass(this.user.value.newPassword,this.user.value.currentPassword);
 
             },function(error){
-              alert("not your account");
+              alert("Strange, this does not seem to be your account");
             });
     }
     else{
-       alert("Passwords don't match.")
+       alert("Your passwords do not match.")
     }
     }
 
@@ -126,15 +127,18 @@ export class SettingsComponent implements OnInit, AfterViewInit {
             });
     }
     else{
-       alert("Passwords don't match.")
+       alert("Your passwords do not match.")
     }
     }
 
     themeToggle(){
-      if (this.themeText == "dark theme") {
+
+      if (localStorage.getItem('theme')==='dark'){
         this.themeText = "light theme";
-      } else if (this.themeText == "light theme") {
+        localStorage.setItem('theme','light');
+      }else{
         this.themeText = "dark theme";
+        localStorage.setItem('theme','dark');
       }
 
       this.tglTheme.emit();
