@@ -26,12 +26,12 @@ export class AuthorizeService {
 		params.set('pass', pass);
 		
 		var routeUser = this.router;
+		var comp = this;
 
 		/* makes a register call to the api*/
 		return this.http.post(this.apiConnection + "/register", params)
 				.subscribe(data => {
 
-					console.log(1);
 					/* Store token and email upon successful creation*/
         			localStorage.setItem('token',data.json().token);
         			localStorage.setItem('email',email);
@@ -42,7 +42,7 @@ export class AuthorizeService {
         			routeUser.navigateByUrl('/dash');
         		},function(error){
         			/* Message for failed account creation*/
-        			this.snackBar.open("Failed to create account with this email",
+        			comp.snackBar.open("Failed to create account with this email",
         							   'Okay' ,{duration: 5000});
     			}
         );
@@ -57,6 +57,7 @@ export class AuthorizeService {
 		params.set('pass', pass);
 
 		var routeUser = this.router;
+		var comp = this;
 
 		/* makese signin call to api*/
 		return this.http.get(this.apiConnection + "/signin", {search: params})
@@ -77,7 +78,7 @@ export class AuthorizeService {
 
         		/* Failed to log the your in*/
         		},function(error){
-        			this.snackBar.open("Failed to login: "+
+        			comp.snackBar.open("Failed to login: "+
         							   "Please signin using the correct credentials.",
         							   'Okay' ,{duration: 5000});
     			}
@@ -92,6 +93,8 @@ export class AuthorizeService {
 		params.set('_id', localStorage.getItem('email'));
 		params.set('token', localStorage.getItem('token'));
 
+		var comp = this;
+
 		/* Check user account for token match before signout*/
 		this.isAuthenticated().subscribe(data=>{
 
@@ -102,14 +105,14 @@ export class AuthorizeService {
 					/* successful logout*/
 				/* Failed to remove the token from the user*/
 				}, function(err) {
-					this.snackBar.open("You need to log in to log out. "+
+					comp.snackBar.open("You need to log in to log out. "+
         							   "Please log in.",
         							   'Okay' ,{duration: 5000});
 			});
 
 		/* Token did not match*/
 		},function(err) {
-				this.snackBar.open("Failed to connect: "+
+				comp.snackBar.open("Failed to connect: "+
         						   "An error has occurred. ",
         						   'Okay' ,{duration: 5000});
 		});
@@ -141,6 +144,8 @@ export class AuthorizeService {
 		params.set('newpass', pass);
 
 		var newbar = this;
+		var routeUser = this.router;
+
 		/* Check user account for token match before changing user settings*/
 		this.isAuthenticated()
 			.subscribe(data=>{
@@ -149,8 +154,7 @@ export class AuthorizeService {
 				this.http.post(this.apiConnection + "/changeUser", params)
 					.subscribe(logout => {
 						
-						newbar.snackBar.open("Changes successful: "+
-        							   		 "Changes will be reflected on the next login",
+						newbar.snackBar.open("Changes successful",
         							   		 'Okay' ,{duration: 5000});
 
 						/* Set the users email and token upon login*/
@@ -158,18 +162,20 @@ export class AuthorizeService {
         				localStorage.setItem('lname',logout.json().lname);
         				localStorage.setItem('fname',logout.json().fname);
         				localStorage.setItem('email',logout.json().email);
-        				console.log(data.lname);
+        				
+        				/* Moves user to dashboard*/
+        				routeUser.navigateByUrl('/dash');
 
 
 					/* Failed to change settings due to incorrect password*/
 					}, function(err) {
-						this.snackBar.open("Failed to change settings.",
+						newbar.snackBar.open("Failed to change settings.",
         							       'Okay' ,{duration: 5000});
 					});
 
 				/* Failed to change settings due to incorrect token*/
 				},function(err) {
-					this.snackBar.open("Failed to connect: "+
+					newbar.snackBar.open("Failed to connect: "+
 					 	  			   "An error has occurred.",
         							   'Okay' ,{duration: 5000});
 			});
@@ -224,13 +230,13 @@ export class AuthorizeService {
 
 					/* Failed to change settings due to incorrect password*/
 					}, function(err) {
-						this.snackBar.open("Account deletion failed.",
+						newbar.snackBar.open("Account deletion failed.",
         							       'Okay' ,{duration: 5000});
 					});
 
 				/* Failed to change settings due to incorrect token*/
 				},function(err) {
-					this.snackBar.open("Failed to connect: "+
+					newbar.snackBar.open("Failed to connect: "+
 					 	  			   "An error has occurred.",
         							   'Okay' ,{duration: 5000});
 			});
