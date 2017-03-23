@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
 	}
 
 	fileImportAttempted(event) {
-		alert("hi there");
+		
   		var file = event.target.files[0],read = new FileReader();
 		read.readAsBinaryString(file);
 		var main = this;
