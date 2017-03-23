@@ -86,8 +86,6 @@ export class SettingsComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit(){
-      console.log(this.settingsPanel);
-      //this.settingsPanel.open();
     }
 
     sendToBack() {
