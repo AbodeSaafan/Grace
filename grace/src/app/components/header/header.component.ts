@@ -34,9 +34,14 @@ export class HeaderComponent implements OnInit {
 		});
 	}
 
-	darken() {
-		$("#graceHeaderLogo").attr("src","../../../assets/grace_header_logo2.svg");
-		$("#topBar").addClass("darkenBar");
+	backgroundToggle() {
+		if($("#topBar").hasClass("darkenBar")) {
+			$("#graceHeaderLogo").attr("src","../../../assets/grace_header_logo.svg");
+			$("#topBar").removeClass("darkenBar");
+		} else {
+			$("#graceHeaderLogo").attr("src","../../../assets/grace_header_logo2.svg");
+			$("#topBar").addClass("darkenBar");
+		}
 	}
 
 	lighten() {
