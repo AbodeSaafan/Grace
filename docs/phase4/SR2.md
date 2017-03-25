@@ -1,3 +1,5 @@
+* CRUCIAL NOTE: Please read SR2README. *
+
 *NOTE: System design document underwent no changes this phase. A single paragraph explanation- as the professor required- has been attached to the bottom of the document.*
 # SCRUM Retrospective Meeting 2- GRACE uBryte
 
