@@ -63,12 +63,12 @@
 	width: 49.7%;
 }
 
-#saveButton {
+.saveBorder {
 	border-left: 1px solid #dedede;
 	border-right: 1px solid #dedede;
 }
 
-#clearButton {
+.clearBorder {
 	border-left: 1px solid #dedede;
 }
 
