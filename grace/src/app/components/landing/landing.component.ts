@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router'
-import { routerTransition } from '../../router.animations';
 import * as $ from 'jquery';
 import {AuthorizeService} from '../../services/authorize.service';
 
@@ -9,8 +8,6 @@ import {AuthorizeService} from '../../services/authorize.service';
   selector: 'app-landing',
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.css'],
-  animations: [routerTransition()],
-  //host: {'[@routerTransition]': '/'}
 })
 export class LandingComponent {
 
