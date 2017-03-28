@@ -20,7 +20,8 @@ export class UserCoderComponent implements OnInit {
   email: string;
   exiting: boolean;
   parentRouter;
-  @ViewChild ('compilerComp') compilerComp: any;
+  @ViewChild ('myCompiler') myCompiler: any;
+  @ViewChild ('myHeader') myHeader: any;
 
   constructor(private router: Router, private authorizeService: AuthorizeService, 
     private fileStorage: FileStorageService, public snackBar: MdSnackBar) {
@@ -32,7 +33,7 @@ export class UserCoderComponent implements OnInit {
     }
 
     // Auto save every 5 minutes
-    setInterval(() => {this.compilerComp.sendSaveClick();} , 1000 * 60 * 5  )
+    setInterval(() => {this.myCompiler.sendSaveClick();} , 1000 * 60 * 5  )
 
   }
 
@@ -42,11 +43,21 @@ export class UserCoderComponent implements OnInit {
     this.email = localStorage.getItem('email');
   }
 
+  ngAfterViewInit() {
+    var currentTheme = localStorage.getItem("theme");
+    if (currentTheme === "dark") {
+      this.myCompiler.darken();
+      this.myHeader.darken();
+    } else if (currentTheme === "light") {
+      this.myCompiler.lighten();
+      this.myHeader.lighten();
+    }
+  }
+
   logoClicked(){
     this.exiting = true;
-    this.compilerComp.sendSaveClick();
-    
-    this.router.navigateByUrl("/dash")
+    this.router.navigateByUrl("/dash");
+    this.myCompiler.sendSaveClick();
 
     localStorage.removeItem('codeForUser');
     localStorage.removeItem('fileNameForUser');
@@ -54,6 +65,10 @@ export class UserCoderComponent implements OnInit {
 
   logoutClicked() {
     this.authorizeService.signOut();
+  }
+
+  performToggleTheme(header, compiler){
+    compiler.toggleTheme();
   }
 
   saveClicked(fileCode) {

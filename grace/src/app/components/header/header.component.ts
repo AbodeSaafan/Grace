@@ -28,19 +28,18 @@ export class HeaderComponent implements OnInit {
 	ngOnInit() {
 	}
 
-	backgroundToggle() {
-		if($("#topBar").hasClass("darkenBar")) {
-			$("#graceHeaderLogo").attr("src","../../../assets/grace_header_logo.svg");
-			$("#topBar").removeClass("darkenBar");
-		} else {
+	darken() {
+		if(!$("#topBar").hasClass("darkenBar")) {
 			$("#graceHeaderLogo").attr("src","../../../assets/grace_header_logo2.svg");
 			$("#topBar").addClass("darkenBar");
 		}
 	}
 
 	lighten() {
-		$("#graceHeaderLogo").attr("src","../../../assets/grace_header_logo.svg");
-		$("#topBar").removeClass("darkenBar");
+		if($("#topBar").hasClass("darkenBar")) {
+			$("#graceHeaderLogo").attr("src","../../../assets/grace_header_logo.svg");
+			$("#topBar").removeClass("darkenBar");
+		}
 	}
 
 }

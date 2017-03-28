@@ -46,8 +46,6 @@ export class CompilerComponent implements OnInit {
     }
 
     ngOnInit() {
-    	this.editor.setTheme("tomorrow_night_eighties");
-
     	var w = $(window);
     	var bar = $(".toolbar");
     	var resizer = $("#resizer");
@@ -65,22 +63,13 @@ export class CompilerComponent implements OnInit {
     	});
 	}
 
-	toggleTheme() {
-
-		var currentTheme = localStorage.getItem('theme');
-		if (currentTheme==="dark") {
-			this.editor.setTheme("tomorrow_night_eighties");
-			this.editor2.setTheme("tomorrow_night_eighties");
-		} else if (currentTheme==="light") {
-			this.editor.setTheme("solarized_light");
-			this.editor2.setTheme("solarized_light");
-		}
-	}
-
 	ngAfterViewInit() {
 		if (localStorage.getItem("theme")==='dark'){
 			this.editor.setTheme("tomorrow_night_eighties");
 			this.editor2.setTheme("tomorrow_night_eighties");
+		} else if (localStorage.getItem("theme")==='light') {
+			this.editor.setTheme("solarized_light");
+			this.editor2.setTheme("solarized_light");
 		}
 		
 		this.compileEditor = this.editor.getEditor();
@@ -144,18 +133,10 @@ export class CompilerComponent implements OnInit {
 		
 	}
 
-	backgroundToggle() {
-		if($(".toolbar").hasClass("darkenLayout")) {
-			alert("1");
-			$(".toolbar").removeClass("darkenLayout");
-			$(".editorToolbarButton").removeClass("darkenLayout");
-			$(".consoleToolbarButton").removeClass("darkenLayout");
-			$(".divider").removeClass("darkenLayout");
-			$(".container").removeClass("darkenLayout");
-			$(".container2").removeClass("darkenLayout");
-			document.body.style.background = "#ffffff";
-		} else {
-			alert("2");
+	darken() {
+		this.editor.setTheme("tomorrow_night_eighties");
+		this.editor2.setTheme("tomorrow_night_eighties");
+		if(!$(".toolbar").hasClass("darkenLayout")) {
 			$(".toolbar").addClass("darkenLayout");
 			$(".editorToolbarButton").addClass("darkenLayout");
 			$(".consoleToolbarButton").addClass("darkenLayout");
@@ -163,6 +144,24 @@ export class CompilerComponent implements OnInit {
 			$(".container").addClass("darkenLayout");
 			$(".container2").addClass("darkenLayout");
 			document.body.style.background = "#404041";
+			$(".editorToolbarButton").addClass("darkenButton");
+			$(".consoleToolbarButton").addClass("darkenButton");
+		}
+	}
+
+	lighten() {
+		this.editor.setTheme("solarized_light");
+		this.editor2.setTheme("solarized_light");
+		if($(".toolbar").hasClass("darkenLayout")) {
+			$(".toolbar").removeClass("darkenLayout");
+			$(".editorToolbarButton").removeClass("darkenLayout");
+			$(".consoleToolbarButton").removeClass("darkenLayout");
+			$(".divider").removeClass("darkenLayout");
+			$(".container").removeClass("darkenLayout");
+			$(".container2").removeClass("darkenLayout");
+			document.body.style.background = "#ffffff";
+			$(".editorToolbarButton").removeClass("darkenButton");
+			$(".consoleToolbarButton").removeClass("darkenButton");
 		}
 	}
 

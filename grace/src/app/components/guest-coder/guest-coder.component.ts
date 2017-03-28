@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HeaderConfig } from '../header/header.component';
 import {Router} from '@angular/router';
 import { MdSnackBar } from '@angular/material';
@@ -12,6 +12,7 @@ import * as $ from 'jquery';
 export class GuestCoderComponent implements OnInit {
 
 	guestHeader: HeaderConfig;
+	@ViewChild ('guestCompiler') guestCompiler: any;
 
 	constructor(private router: Router, public snackBar: MdSnackBar) {
 		this.guestHeader = {
@@ -35,7 +36,10 @@ export class GuestCoderComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		$("#tempy").hide();
+	}
+
+	ngAfterViewInit(){
+		this.guestCompiler.lighten();
 	}
 
 }

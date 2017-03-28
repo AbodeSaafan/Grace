@@ -78,6 +78,13 @@
 	border-color: #333;
 }
 
+.darkenButton {
+}
+
+.darkenButton:hover {
+	background-color: #444;
+}
+
 /*#consoleTools {
 	background-color: blue;
 }

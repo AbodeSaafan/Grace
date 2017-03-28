@@ -1,9 +1,5 @@
 .headerBar{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 
-*, *::before, *::after {
-  box-sizing: inherit;
-}
-
 @font-face {
   font-family: "ubuntu";
   src: url('../../../assets/ubuntu_font.ttf');
@@ -70,6 +66,7 @@ img.headerImgStyle {
 
 .darkenBar {
   background-color: #404041;
+  border-color: #303031;
 }
 
 

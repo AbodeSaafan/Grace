@@ -1,14 +1,14 @@
 <!-- Keyword is config, use square bracket to do allocate a variable -->
 
 <!-- Custom Header -->
-<app-header [config]="userHeader"
+<app-header #myHeader [config]="userHeader"
 		(logoClick)="logoClicked()"
 		(leftButtonClick)="sidePanel.toggleSettings()"
 		(rightButtonClick)="logoutClicked()"></app-header>
 
-<app-settings #sidePanel (tglTheme)="compilerComp.toggleTheme()"></app-settings>
+<app-settings #sidePanel></app-settings>
 
 
 <!-- light -->
-<app-compiler #compilerComp theme="solarized_light" [editorText]="codeText" [editorFileName]="codeFileName"
+<app-compiler #myCompiler theme="solarized_light" [editorText]="codeText" [editorFileName]="codeFileName"
 				(saveClick)="saveClicked($event)"></app-compiler>
