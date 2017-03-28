@@ -26,12 +26,6 @@ export class HeaderComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		var w = $(window);
-		var logo = $('.logo');
-		logo.css({left: (w.width()/2) - (logo.width()/2) });
-		w.resize(function() {
-			logo.css({left: (w.width()/2) - (logo.width()/2) });
-		});
 	}
 
 	backgroundToggle() {

@@ -18,18 +18,22 @@
   border-bottom: 1px solid #ddd;
   top: 0;
   width: 100%;
-  padding: 10px 3%;
+  text-align: center;
+  text-indent: -140px;
+  padding: 10px 0px;
   margin: 0px;
   height: 52px;
 }
 
 .headerButtonStyle{
+  text-indent: 0px;
   background-color: #d91b5b;
   border: 1px solid #d91b5b;
   font-size: 12px;
   height: 30px;
   line-height: 27px;
   padding: 0 20px;
+  position: absolute;
   cursor: pointer;
   color: #fff;
 }
@@ -49,18 +53,17 @@ img.headerImgStyle {
 }
 
 .headerLeftButton {
-  float: left;
+  left: 1%;
 }
 
 .headerRightButton {
-  float:right;
-  position: inline;
+  right: 1%;
 }
 
 .headerLogo {
   height: 30px;
   vertical-align: middle;
-  display: block;
+  display: inline-block;
   position: absolute;
   cursor: pointer;
 }
