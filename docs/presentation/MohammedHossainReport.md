@@ -1,8 +1,8 @@
 # Individual Report
 
 ## Mohammed Hossain
-# 1001465540
-# hossa170
+## 1001465540
+## hossa170
 
 ## Most Significant Individual Contribution
 
@@ -11,7 +11,7 @@ In terms of reducing workload for my peers, the answer would most likely be desi
 
 ## New Technical Concept
 
-## Web development isn't one of my bigger strengths or areas of familiarity. As such interfacing with AngularJS and MongoDB for MEAN really forced me to learn strategies which I hadn't considered before. Even barring the specific technology, the implementation of all these parts to create such a large website is the overarching skill I learned from this project, and I feel confident about my web development prospects going forward.
+Web development isn't one of my bigger strengths or areas of familiarity. As such interfacing with AngularJS and MongoDB for MEAN really forced me to learn strategies which I hadn't considered before. Even barring the specific technology, the implementation of all these parts to create such a large website is the overarching skill I learned from this project, and I feel confident about my web development prospects going forward.
 
 ## Main Strengths as a Team Member
 
