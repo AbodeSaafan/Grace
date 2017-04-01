@@ -13,11 +13,12 @@ Some information about the team developing this project can be found here at [uB
 
 | UTORID | Name | 
 | --- | --- |
-| saafanab | Abode/Abdulqader Saafan |
-| ghazisha | Shayan Ghazi |
-| nafradav | Vincent Nafrada |
+
 | barboza4 | Julius Barboza |
+| ghazisha | Shayan Ghazi |
 | hossa170 | Mohammed Hossain |
+| nafradav | Vincent Nafrada |
+| saafanab | Abode/Abdulqader Saafan |
 
 #### Name Significance 
 
