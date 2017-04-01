@@ -13,7 +13,6 @@ Some information about the team developing this project can be found here at [uB
 
 | UTORID | Name | 
 | --- | --- |
-
 | barboza4 | Julius Barboza |
 | ghazisha | Shayan Ghazi |
 | hossa170 | Mohammed Hossain |
