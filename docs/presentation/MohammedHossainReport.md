@@ -18,4 +18,4 @@ My main strength as a team member was my persistent presence in group coding ses
 
 ## Main Weaknesses as a Team Member
 
-My greatest weakness would likely be my availability for individual coding sessions. As I was taking a unique courseload from my team mates and was often busy with non-CSC301 work at home, I wasn't as strong of a presence as I wanted to be on the individual coding front. 
+My greatest weakness would likely be my availability for individual coding sessions. As I took a Math course, and was often busy with non-CSC301 work at home, I wasn't as strong of a presence as I wanted to be on the individual coding front. 
