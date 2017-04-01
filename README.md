@@ -11,7 +11,7 @@ GRACE is an online system where you can create and share python programs. GRACE 
 
 Some information about the team developing this project can be found here at [uBryte](http://ubryte.com/).
 
-| Name | UTORID | 
+| UTORID | Name | 
 | --- | --- |
 | saafanab | Abode/Abdulqader Saafan |
 | ghazisha | Shayan Ghazi |
