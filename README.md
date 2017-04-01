@@ -7,9 +7,14 @@ GRACE is being developed as a final project for CSC301 2017 Winter.
 
 GRACE is an online system where you can create and share python programs. GRACE also allows you to practice pair programming letting you share the file with your partner to act as a navigator. 
 
-### Team
+### Team and UTORID
 
 Some information about the team developing this project can be found here at [uBryte](http://ubryte.com/).
+saafanab - Abode/Abdulqader Saafan
+ghazisha - Shayan Ghazi
+nafradav - Vincent Nafrada
+barboza4 - Julius Barboza
+hossa170 - Mohammed Hossain
 
 
 #### Name Significance 
